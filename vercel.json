@@ -3,12 +3,7 @@
   "outputDirectory": "dist",
   "framework": null,
   "rewrites": [
-    { "source": "/api/health", "destination": "/api/health" },
-    { "source": "/api/ai/chat", "destination": "/api/ai/chat" },
-    { "source": "/api/ai/ad-create", "destination": "/api/ai/ad-create" },
-    { "source": "/api/ai/web-import", "destination": "/api/ai/web-import" },
-    { "source": "/api/webhook/whatsapp", "destination": "/api/webhook/whatsapp" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
   ],
   "functions": {
     "api/**/*.ts": {
