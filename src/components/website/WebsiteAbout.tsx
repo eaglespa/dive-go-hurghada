@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import { SocialMediaBar } from '../common/SocialMediaBar';
 import { useLanguage } from '../../context/LanguageContext';
+import aboutFleetImg from '../../assets/images/daily_scuba_diving_1790535763765.jpg';
 
 export const WebsiteAbout: React.FC = () => {
   const { t } = useLanguage();
@@ -125,7 +126,7 @@ export const WebsiteAbout: React.FC = () => {
           <div className="relative">
             <div className="rounded-3xl overflow-hidden shadow-2xl border border-slate-800 relative aspect-4/3 bg-slate-800 card-sheen group">
               <img
-                src="/src/assets/images/daily_scuba_diving_1790535763765.jpg"
+                src={aboutFleetImg}
                 alt="Certified divers exploring coral wall in Red Sea"
                 className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
                 referrerPolicy="no-referrer"

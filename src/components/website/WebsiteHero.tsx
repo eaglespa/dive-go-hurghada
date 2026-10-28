@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { AppState } from '../../services/store';
 import { useLanguage } from '../../context/LanguageContext';
+import heroImg from '../../assets/images/hero_red_sea_diving_1790535752456.jpg';
 
 interface WebsiteHeroProps {
   state: AppState;
@@ -35,7 +36,7 @@ export const WebsiteHero: React.FC<WebsiteHeroProps> = ({ state, onOpenBooking }
       {/* Background Image with Dynamic Oceanic Sheen */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/src/assets/images/hero_red_sea_diving_1790535752456.jpg"
+          src={heroImg}
           alt="Scuba diving over vibrant coral reefs in Red Sea Hurghada"
           className="w-full h-full object-cover object-center filter brightness-90 scale-105 animate-float-slow duration-1000"
           referrerPolicy="no-referrer"

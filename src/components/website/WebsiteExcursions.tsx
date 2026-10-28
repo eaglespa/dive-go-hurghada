@@ -22,6 +22,7 @@ import { useLanguage } from '../../context/LanguageContext';
 import padiLogo from '../../assets/padi_logo.jpg';
 import cmasLogo from '../../assets/CMAS.jpg';
 import bsacLogo from '../../assets/BSAC_Logo_2017.jpeg';
+import defaultHeroImg from '../../assets/images/hero_red_sea_diving_1790535752456.jpg';
 
 // Import photos for the Hurghada Quad Desert Safari slideshow
 import susaf1 from '../../assets/images/SUSAF (1).avif';
@@ -431,7 +432,7 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
     if (service.category === 'diving') {
       return dailyJpg1;
     }
-    return '/src/assets/images/hero_red_sea_diving_1790535752456.jpg';
+    return defaultHeroImg;
   };
 
   const filteredServices = state.services.filter((s) => {
