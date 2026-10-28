@@ -1,0 +1,344 @@
+import { LanguageCode, ServiceTranslation } from './types';
+
+export const SERVICES_TRANSLATIONS: Record<string, Record<LanguageCode, ServiceTranslation>> = {
+  'srv-dgh-daily-dive': {
+    en: {
+      title: 'Daily Boat Diving & Intro Dives in Hurghada',
+      description:
+        'Introductory scuba dives and guided boat dives for beginners and certified divers. Experience spectacular Red Sea coral reefs accompanied by experienced PADI instructors, complete with comprehensive safety briefing, 2 guided dives, chef-prepared buffet lunch, and hotel transfers.',
+      inclusions: ['2 Guided Dives', '12L Aluminum Tanks & Weights', 'Chef Lunch Buffet', 'Soft Drinks & Water', 'Hotel Transfers'],
+    },
+    de: {
+      title: 'Tägliches Bootstauchen & Schnuppertauchen in Hurghada',
+      description:
+        'Schnuppertauchgänge und geführte Bootstauchgänge für Einsteiger und zertifizierte Taucher. Erleben Sie spektakuläre Riffe unter Anleitung erfahrener PADI-Instruktoren mit fundierter Sicherheitseinweisung, 2 Tauchgängen, Mittagsbuffet und Hoteltransfer.',
+      inclusions: ['2 geführte Tauchgänge', '12L Tanks & Blei', 'Mittagsbuffet vom Chefkoch', 'Softdrinks & Wasser', 'Hoteltransfer inklusive'],
+    },
+    ru: {
+      title: 'Дейли-дайвинг с яхты и пробные погружения в Хургаде',
+      description:
+        'Ознакомительные погружения для новичков и гидированные погружения для сертифицированных дайверов. Исследуйте яркие коралловые рифы в сопровождении инструкторов PADI с подробным инструктажем, 2 погружениями, обедом и трансфером.',
+      inclusions: ['2 погружения с гидом', 'Баллоны 12л и груза', 'Шведский стол на яхте', 'Напитки и вода', 'Трансфер из отеля'],
+    },
+    ar: {
+      title: 'رحلة الغوص اليومي باليخت والغوص التجريبي بالغردقة',
+      description:
+        'غطسات تجريبية للمبتدئين وغطسات إرشادية للمحترفين على أجمل شعاب البحر الأحمر بإشراف مدربي PADI المحترفين. تشمل شرحاً وافياً للأمان، غطستين باليخت، بوفيه غداء طازج وانتقالات مجانية من الفندق.',
+      inclusions: ['غطستان بصحبة مرشد', 'أسطوانات 12 لتر وأوزان', 'بوفيه غداء على اليخت', 'مشروبات ومياه معدنية', 'توصيل من وإلى الفندق'],
+    },
+    fr: {
+      title: 'Plongée quotidienne en bateau & baptêmes à Hurghada',
+      description:
+        'Baptêmes de plongée et plongées guidées en bateau pour débutants et plongeurs certifiés. Découvrez de magnifiques récifs coralliens encadrés par des instructeurs PADI avec briefing complet, 2 plongées, déjeuner buffet et transferts hôtel.',
+      inclusions: ['2 plongées guidées', 'Bouteilles 12L & plombs', 'Déjeuner buffet du chef', 'Boissons & eau', 'Transferts hôtel inclus'],
+    },
+    pl: {
+      title: 'Codzienne nurkowanie z łodzi i intro w Hurghadzie',
+      description:
+        'Nurkowania intro dla początkujących oraz nurkowania z przewodnikiem dla certyfikowanych nurków. Odkryj wspaniałe rafy koralowe Morza Czerwonego pod okiem instruktorów PADI z pełnym instruktażem, 2 nurkowaniami, obiadem i transferem.',
+      inclusions: ['2 nurkowania z przewodnikiem', 'Butle 12L i balast', 'Obiad w formie bufetu', 'Napoje i woda', 'Transfer z hotelu'],
+    },
+    it: {
+      title: 'Immersioni giornaliere in barca e battesimo del mare a Hurghada',
+      description:
+        'Battesimi del mare e immersioni guidate da barca per principianti e sub brevettati. Ammirate spettacolari barriere coralline con istruttori PADI, briefing completo di sicurezza, 2 immersioni, pranzo a buffet e trasferimenti hotel.',
+      inclusions: ['2 immersioni guidate', 'Bombole 12L e zavorra', 'Pranzo a buffet a bordo', 'Bevande e acqua', 'Transfer da/per hotel'],
+    },
+    cs: {
+      title: 'Denní potápění z lodi a zkušební ponory v Hurghadě',
+      description:
+        'Zkušební ponory pro začátečníky a ponory s průvodcem pro certifikované potápěče. Zažijte velkolepé korálové útesy pod vedením instruktorů PADI s podrobnou instruktáží, 2 ponory, obědem a transferem.',
+      inclusions: ['2 ponory s průvodcem', '12L lahve a závaží', 'Oběd formou bufetu', 'Nealko nápoje a voda', 'Transfery z hotelu'],
+    },
+    nl: {
+      title: 'Dagelijks bootduiken & introductieduiken in Hurghada',
+      description:
+        'Introductieduiken voor beginners en begeleide bootduiken voor gebrevetteerde duikers. Ervaar spectaculaire koraalriffen onder leiding van PADI-instructeurs, inclusief veiligheidsbriefing, 2 duiken, lunchbuffet en hoteltransfer.',
+      inclusions: ['2 begeleide duiken', '12L tanks & lood', 'Vers lunchbuffet', 'Frisdrank & water', 'Hoteltransfers inbegrepen'],
+    },
+  },
+  'srv-dgh-private-speedboat': {
+    en: {
+      title: 'Private Speedboat & Dolphin Watching (Orange Bay)',
+      description:
+        'Experience the Red Sea at its finest – fast, exclusive, and full of adventure! Explore the coast of Hurghada aboard our modern speedboat, enjoy wild dolphin encounters in their natural habitat, snorkeling on pristine coral reefs, and private island stops at stunning Orange Bay.',
+      inclusions: ['Private Speedboat Charter with Captain', 'Wild Dolphin Spotting & Swimming', 'Snorkeling Masks & Life Vests', 'Orange Bay Island Stop', 'Fresh Fruits & Soft Drinks', 'Round-trip Hotel Transfers'],
+    },
+    de: {
+      title: 'Privates Speedboat & Delfinbeobachtung (Orange Bay)',
+      description:
+        'Erleben Sie das Rote Meer schnell, exklusiv und voller Abenteuer! Erkunden Sie die Küste von Hurghada mit unserem modernen Speedboat, genießen Sie Delfinbeobachtung in freier Wildbahn, Schnorcheln an Korallenriffen und private Inselstopps an der Orange Bay.',
+      inclusions: ['Privates Speedboot mit Kapitän', 'Delfinbeobachtung & Schwimmen', 'Schnorchelausrüstung & Westen', 'Stopp auf Orange Bay', 'Frische Früchte & Getränke', 'Hoteltransfer Hin- & Rückfahrt'],
+    },
+    ru: {
+      title: 'Приватный скоростной катер и дельфины (Orange Bay)',
+      description:
+        'Откройте Красное море на максимальной скорости и с полным комфортом! Прогулка на современном скоростном катере, поиск дельфинов в открытом море, снорклинг на коралловых рифах и высадка на белоснежный остров Оранж Бэй.',
+      inclusions: ['Индивидуальный катер с капитаном', 'Плавание рядом с дельфинами', 'Маски, трубки и жилеты', 'Остановка на острове Orange Bay', 'Свежие фрукты и напитки', 'Трансфер из отеля туда и обратно'],
+    },
+    ar: {
+      title: 'لانش سريع خاص ورحلة الدلافين وجزيرة أورانج باي',
+      description:
+        'استمتع بأجمل ما في البحر الأحمر بخصوصية وسرعة وتشويق! جولة خاصة باللانش السريع على ساحل الغردقة لمشاهدة الدلافين في بيئتها الطبيعية، والسنوركلينج على أنقى الشعاب المرجانية وزيارة جزيرة أورانج باي الساحرة.',
+      inclusions: ['إيجار لانش سريع خاص مع قبطان', 'مشاهدة الدلافين البرية والسباحة', 'معدات سنوركل وسترات نجاة', 'توقف في جزيرة أورانج باي', 'فواكه طازجة ومشروبات', 'انتقالات ذهاب وإياب من الفندق'],
+    },
+    fr: {
+      title: 'Speedboat privé & observation des dauphins (Orange Bay)',
+      description:
+        'Vivez la Mer Rouge à grande vitesse en toute exclusivité ! Naviguez le long de Hurghada à bord de notre speedboat moderne, nagez près des dauphins sauvages, faites du snorkeling sur les récifs et profitez d’un arrêt sur l’île d’Orange Bay.',
+      inclusions: ['Speedboat privé avec skipper', 'Rencontre avec les dauphins', 'Masques, tubas et gilets', 'Escale sur l’île Orange Bay', 'Fruits frais et rafraîchissements', 'Transferts hôtel aller-retour'],
+    },
+    pl: {
+      title: 'Prywatny speedboat i pływanie z delfinami (Orange Bay)',
+      description:
+        'Poznaj Morze Czerwone w luksusowym i szybkim wydaniu! Popłyń nowoczesną motorówką wzdłuż wybrzeża Hurghady, spotkaj dzikie delfiny w naturalnym środowisku, nurkuj z rurką i odpocznij na rajskiej wyspie Orange Bay.',
+      inclusions: ['Prywatna motorówka z kapitanem', 'Obserwacja dzikich delfinów', 'Maski, rurki i kamizelki', 'Postój na wyspie Orange Bay', 'Świeże owoce i napoje', 'Transfer z hotelu w obie strony'],
+    },
+    it: {
+      title: 'Motoscafo privato e delfini (Orange Bay)',
+      description:
+        'Vivi il Mar Rosso in modo veloce, esclusivo e avventuroso! Naviga lungo la costa di Hurghada a bordo del nostro motoscafo moderno, avvista i delfini selvatici, fai snorkeling sulla barriera corallina e fermati all’isola di Orange Bay.',
+      inclusions: ['Noleggio motoscafo privato con capitano', 'Nuoto vicino ai delfini', 'Maschere e giubbotti salvagente', 'Sosta all’isola di Orange Bay', 'Frutta fresca e bibite', 'Transfer a/r dal vostro hotel'],
+    },
+    cs: {
+      title: 'Soukromý motorový člun a pozorování delfínů (Orange Bay)',
+      description:
+        'Poznejte Rudé moře rychle, exkluzivně a plné dobrodružství! Plavba na moderním motorovém člunu podél Hurghady, pozorování divokých delfínů, šnorchlování a zastávka na rajském ostrově Orange Bay.',
+      inclusions: ['Soukromý člun s kapitánem', 'Plavání a pozorování delfínů', 'Šnorchlovací výstroj a vesty', 'Zastávka na Orange Bay', 'Čerstvé ovoce a nealko nápoje', 'Transfer z/do hotelu'],
+    },
+    nl: {
+      title: 'Privé speedboot & dolfijnen spotten (Orange Bay)',
+      description:
+        'Ervaar de Rode Zee op zijn best: snel, exclusief en avontuurlijk! Vaar langs Hurghada met onze moderne speedboot, ontmoet wilde dolfijnen, snorkel op ongerepte riffen en geniet van een privéstop op Orange Bay.',
+      inclusions: ['Privé speedboot met schipper', 'Wilde dolfijnen spotten & zwemmen', 'Snorkelmaskers & zwemvesten', 'Stop op Orange Bay eiland', 'Vers fruit & frisdrank', 'Retourtransfer vanaf hotel'],
+    },
+  },
+  'srv-dgh-private-padi': {
+    en: {
+      title: 'Private Diving Lessons & PADI Certification',
+      description:
+        'Personalized 1-on-1 scuba diving course with seasoned PADI Master Diver instructors. Tailored entirely to your learning pace and comfort level – ideal for nervous beginners, families, or intensive scuba certifications.',
+      inclusions: ['1-on-1 Personal Instructor', 'PADI e-Card Certification', 'Complete Rental Equipment', 'Confined & Open Water Boat Dives', 'Daily Lunch Buffet & Transfers'],
+    },
+    de: {
+      title: 'Privater Tauchunterricht & PADI Zertifizierung',
+      description:
+        'Individuell gestalteter 1-zu-1 Tauchkurs mit erfahrenen PADI Master Diver Instruktoren. Angepasst an Ihr persönliches Lerntempo und Ihre Wünsche – besonders empfehlenswert für Gäste mit Angst vor dem Tauchen oder für intensives Lernen.',
+      inclusions: ['Persönlicher 1-zu-1 Instruktor', 'Offizielle PADI e-Card Zertifizierung', 'Komplette Leihausrüstung', 'Pool- & Freiwassertauchgänge vom Boot', 'Tägliches Mittagsbuffet & Transfers'],
+    },
+    ru: {
+      title: 'Индивидуальные курсы дайвинга и сертификат PADI',
+      description:
+        'Персональный курс дайвинга 1-на-1 с опытными инструкторами PADI Master Diver. Индивидуальный темп обучения без стресса — идеально для новичков, семей и тех, кто хочет получить международный сертификат дайвера.',
+      inclusions: ['Персональный инструктор 1-на-1', 'Международный сертификат PADI e-Card', 'Полный комплект снаряжения', 'Погружения в бассейне и с яхты в море', 'Ежедневный обед и трансферы'],
+    },
+    ar: {
+      title: 'تعليم غوص خاص 1-على-1 ورخصة PADI الدولية',
+      description:
+        'دورة تدريب غوص فردية مخصصة مع مدرب PADI Master Diver محترف. تناسب تماماً سرعة تعلمك وراحتك النفسية — مثالية للمبتدئين المتخوفين من الغوص، العائلات، أو الراغبين في نيل رخصة غوص دولية معتمدة.',
+      inclusions: ['مدرب شخصي مخصص 1-على-1', 'بطاقة رخصة PADI الإلكترونية الدولية', 'معدات غوص كاملة وحديثة', 'تدريب عملي وغطسات يخت في البحر المفتوح', 'بوفيه غداء يومي وانتقالات مجانية'],
+    },
+    fr: {
+      title: 'Cours de plongée privés & Certification PADI',
+      description:
+        'Formation sous-marine personnalisée 1-à-1 avec un instructeur PADI Master Diver chevronné. Adaptée à votre rythme d’apprentissage et à vos attentes — idéal pour les débutants anxieux ou pour un brevet accéléré.',
+      inclusions: ['Instructeur personnel dédié 1-à-1', 'Certification officielle PADI e-Card', 'Équipement complet de location', 'Plongées en milieu protégé et depuis le bateau', 'Déjeuner buffet quotidien et transferts'],
+    },
+    pl: {
+      title: 'Prywatny kurs nurkowania i certyfikat PADI',
+      description:
+        'Indywidualny kurs nurkowania 1 na 1 z doświadczonym instruktorem PADI Master Diver. Dostosowany do Twojego tempa i komfortu — idealny dla osób niepewnych pod wodą lub szukających intensywnego szkolenia.',
+      inclusions: ['Osobisty instruktor 1 na 1', 'Certyfikat PADI e-Card', 'Kompletny sprzęt nurkowy', 'Zajęcia basenowe i nurkowania z łodzi', 'Codzienny obiad i transfery'],
+    },
+    it: {
+      title: 'Lezioni private di subacquea e brevetto PADI',
+      description:
+        'Corso subacqueo personalizzato 1-a-1 con istruttori esperti PADI Master Diver. Adattato ai vostri ritmi di apprendimento — ideale per principianti timorosi o per chi desidera conseguire il brevetto internazionale.',
+      inclusions: ['Istruttore personale 1-a-1', 'Brevetto internazionale PADI e-Card', 'Attrezzatura completa inclusa', 'Immersioni in piscina e da barca in mare', 'Pranzo a buffet giornaliero e transfer'],
+    },
+    cs: {
+      title: 'Soukromé lekce potápění a certifikace PADI',
+      description:
+        'Individuální potápěčský kurz 1 na 1 se zkušenými instruktory PADI Master Diver. Přizpůsobený vašemu tempu a potřebám — ideální pro začátečníky s obavami z hloubky i pro intenzivní výuku.',
+      inclusions: ['Osobní instruktor 1 na 1', 'Mezinárodní certifikát PADI e-Card', 'Kompletní výstroj v ceně', 'Trénink a ponory z lodi v moři', 'Denní obědový bufet a transfery'],
+    },
+    nl: {
+      title: 'Privé duiklessen & PADI-certificering',
+      description:
+        'Gepersonaliseerde 1-op-1 duikcursus met ervaren PADI Master Diver instructeurs. Volledig afgestemd op jouw tempo en comfortniveau — ideaal voor nerveuze beginners of intensieve duikbrevetten.',
+      inclusions: ['Persoonlijke 1-op-1 instructeur', 'Officiële PADI e-Card certificering', 'Complete duikuitrusting huur', 'Binnenwater- en bootduiken in zee', 'Dagelijks lunchbuffet & transfers'],
+    },
+  },
+  'srv-dgh-tauchsafari': {
+    en: {
+      title: '7-Day Red Sea Liveaboard Diving Safari',
+      description:
+        'Experience the ultimate 7-day Red Sea diving adventure exploring North, South, Sharm El Sheikh, and Dahab. Dive world-famous shipwrecks and pristine deep-sea reefs aboard a luxury liveaboard with seasoned dive masters and full-board catering.',
+      inclusions: ['7 Days / 6 Nights Luxury Liveaboard', 'Up to 3-4 Guided Dives Daily & Night Dives', 'Tanks & Weights Included', 'Full Board Buffet Lunch & Unlimited Drinks', 'Complimentary Hotel Transfers'],
+    },
+    de: {
+      title: '7 Tage Tauchsafari Rotes Meer (Nord & Süd & Dahab)',
+      description:
+        'Erleben Sie das ultimative 7-Tage Tauchsafari-Abenteuer im Roten Meer über Nord, Süd, Sharm El Sheikh und Dahab. Spektakuläre Steilwände und legendäre Wracks mit erfahrenen Guides und Vollpension.',
+      inclusions: ['7 Tage / 6 Nächte Luxus-Safarischiﬀ', 'Bis zu 3-4 Tauchgänge täglich & Nachttauchgänge', 'Tanks & Blei inklusive', 'Vollpension-Buffet & unbegrenzte Getränke', 'Hoteltransfers inklusive'],
+    },
+    ru: {
+      title: '7-дневное дайвинг-сафари по Красному морю',
+      description:
+        'Незабываемое 7-дневное дайвинг-сафари на комфортабельной яхте: маршруты Север, Юг, Шарм-эль-Шейх и Дахаб. Легендарные рэки, отвесные рифы, погружения без ограничений и полный пансион.',
+      inclusions: ['7 дней / 6 ночей на сафарийной яхте', 'До 3-4 погружений в день и ночные дайвы', 'Баллоны и груза включены', 'Шведский стол и напитки полный пансион', 'Трансфер из отеля'],
+    },
+    ar: {
+      title: 'سفاري غوص البحر الأحمر 7 أيام (شمال، جنوب، شرم الشيخ، دهب)',
+      description:
+        'عِش أروع مغامرة غوص حية لمدة 7 أيام على متن يخت سفاري فاخر تجوب أجمل مسارات البحر الأحمر: الشمال، الجنوب، شرم الشيخ، ودهب. غوص غير محدود على أشهر السفن الغارقة والشعاب المرجانية مع إقامة وإعاشة كاملة.',
+      inclusions: ['إقامة 7 أيام / 6 ليالي على يخت سفاري فاخر', 'حتى 3 إلى 4 غطسات يومياً وغطسات ليلية', 'أسطوانات وأوزان مجاناً', 'بوفيه طعام متكامل ومشروبات مستمرة', 'انتقالات فندقية مجانية'],
+    },
+    fr: {
+      title: 'Safari Plongée Croisière 7 Jours Mer Rouge',
+      description:
+        'Vivez 7 jours exceptionnels en croisière plongée à la découverte du Nord, Sud, Charm el-Cheikh et Dahab. Épaves légendaires et tombants vertigineux à bord d’un bateau tout confort avec pension complète.',
+      inclusions: ['7 Jours / 6 Nuits en bateau de croisière', '3 à 4 plongées guidées par jour et plongées de nuit', 'Bouteilles et plombs inclus', 'Pension complète et boissons à volonté', 'Transferts hôtel inclus'],
+    },
+    pl: {
+      title: '7-dniowe safari nurkowe po Morzu Czerwonym',
+      description:
+        'Niezapomniana 7-dniowa wyprawa nurkowa liveaboard: Północ, Południe, Szarm el-Szejk i Dahab. Nielimitowane nurkowania na wrakach i rafach z pełnym wyżywieniem.',
+      inclusions: ['7 dni / 6 nocy na luksusowej łodzi safari', 'Do 3-4 nurkowań dziennie i nurkowania nocne', 'Butle i balast w cenie', 'Pełne wyżywienie i napoje', 'Transfery z hotelu'],
+    },
+    it: {
+      title: 'Safari Subacqueo 7 Giorni Mar Rosso',
+      description:
+        'Vivi un safari liveaboard di 7 giorni nel Mar Rosso esplorando Nord, Sud, Sharm El Sheikh e Dahab. Immersioni illimitate sui relitti più famosi e barriere incontaminate.',
+      inclusions: ['7 giorni / 6 notti a bordo di yacht safari', 'Fino a 3-4 immersioni al giorno e notturne', 'Bombole e zavorra incluse', 'Pensione completa a buffet', 'Transfer da hotel inclusi'],
+    },
+    cs: {
+      title: '7denní potápěčské safari po Rudém moři',
+      description:
+        'Zažijte 7denní safari na lodi v Rudém moři přes Sever, Jih, Šarm a Dahab. Vraky a korálové útesy s plnou penzí a neomezeným potápěním.',
+      inclusions: ['7 dní / 6 nocí na safari lodi', '3-4 ponory denně včetně nočních', 'Lahve a zátěž v ceně', 'Plná penze formou bufetu a nápoje', 'Transfery z hotelu'],
+    },
+    nl: {
+      title: '7-daagse Liveaboard Duiksafari Rode Zee',
+      description:
+        'Ultieme 7-daagse liveaboard duiksafari langs Noord, Zuid, Sharm El Sheikh en Dahab. Legendarische scheepswrakken en riffen met volpension.',
+      inclusions: ['7 Dagen / 6 nachten op luxe liveaboard', 'Tot 3-4 duiken per dag & nachtduiken', 'Flessen en lood inbegrepen', 'Volpension buffet & drankjes', 'Hoteltransfers inbegrepen'],
+    },
+  },
+  'srv-dgh-desert-safari': {
+    en: {
+      title: 'Hurghada Quad Desert Safari & Bedouin Adventure',
+      description:
+        'Ride your own ATV quad bike through the breathtaking desert landscapes of Hurghada. Guided by certified instructors with full safety gear, Bedouin village cultural tour, herbal tea, camel riding, and a barbecue dinner under starlit skies.',
+      inclusions: ['Quad Bike ATV Ride (approx. 45km)', 'Spider Buggy & Camel Ride', 'Bedouin Village Tour & Tea', 'BBQ Dinner & Oriental Show', 'Hotel Transfers'],
+    },
+    de: {
+      title: 'Quad-Safari in Hurghada – Abenteuer in der Wüste',
+      description:
+        'Fahrt mit dem Quad durch die faszinierende Wüstenlandschaft Hurghadas. Begleitung durch qualifiziertes Personal, gründliche Sicherheitseinweisung, Beduinendorf, traditioneller Beduinentee, Kamelreiten und BBQ unter dem Sternenhimmel.',
+      inclusions: ['Quad-Fahrt (ca. 45 km)', 'Spider-Buggy & Kamelreiten', 'Beduinendorf & traditioneller Tee', 'BBQ-Abendessen & Show', 'Hoteltransfer Hin- & Rückfahrt'],
+    },
+    ru: {
+      title: 'Сафари на квадроциклах в Хургаде и бедуинская деревня',
+      description:
+        'Гонка на мощных квадроциклах по песчаным каньонам египетской пустыни. Сопровождение опытных инструкторов, катание на багги и верблюдах, посещение аутентичной деревни бедуинов, бедуинский чай и барбекю-ужин под звездами.',
+      inclusions: ['Заезд на квадроциклах (около 45 км)', 'Катание на спайдер-багги и верблюдах', 'Бедуинская деревня и травяной чай', 'Ужин-барбекю и восточное шоу', 'Трансфер из отеля'],
+    },
+    ar: {
+      title: 'سفاري البيتش باجي في صحراء الغردقة وسهرة بدوية',
+      description:
+        'قيادة ممتعة للموتوسيكلات الصحراوية (البيتش باجي) بين جبال ووديان صحراء الغردقة الساحرة بصحبة مرشدين محترفين. تشمل زيارة قرية بدوية، شاي الأعشاب البدوي، ركوب الجمال، عشاء باربكيو مشوي وعروضاً شرقية.',
+      inclusions: ['جولة بيتش باجي رباعي (حوالي 45 كم)', 'سبايدر باجي وركوب الجمال', 'زيارة القرية البدوية والشاي البدوي', 'عشاء مشويات وحفل فلكلوري', 'انتقالات الفندق ذهاباً وعودة'],
+    },
+    fr: {
+      title: 'Safari Quad dans le Désert de Hurghada & Soirée Bédouine',
+      description:
+        'Pilotez votre propre quad à travers les paysages désertiques de Hurghada. Encadrement professionnel, visite d’un village bédouin traditionnel, dégustation de thé, balade à dos de chameau et dîner barbecue sous les étoiles.',
+      inclusions: ['Circuit en quad (environ 45 km)', 'Buggy spider & balade en chameau', 'Village bédouin & thé traditionnel', 'Dîner barbecue & spectacle oriental', 'Transferts hôtel inclus'],
+    },
+    pl: {
+      title: 'Safari na quadach w Hurghadzie i wioska beduińska',
+      description:
+        'Przejażdżka quadem przez malownicze pustynne krajobrazy Hurghady. Opieka instruktorów, jazda buggy i na wielbłądach, wizyta w tradycyjnej wiosce beduińskiej, herbata ziołowa oraz kolacja z grilla pod gwiazdami.',
+      inclusions: ['Jazda na quadzie (ok. 45 km)', 'Spider buggy i jazda na wielbłądzie', 'Zwiedzanie wioski beduińskiej i herbata', 'Kolacja BBQ i pokaz orientalny', 'Transfer z hotelu'],
+    },
+    it: {
+      title: 'Safari in Quad nel Deserto di Hurghada e Villaggio Beduino',
+      description:
+        'Guidate il vostro quad attraverso i suggestivi paesaggi desertici di Hurghada. Istruttori certificati, sosta in un autentico villaggio beduino, tè tradizionale, giro sul cammello e cena barbecue sotto le stelle.',
+      inclusions: ['Guida su quad ATV (circa 45 km)', 'Spider buggy e cavalcata su cammello', 'Visita villaggio beduino e tè', 'Cena barbecue e spettacolo serale', 'Transfer da/per hotel'],
+    },
+    cs: {
+      title: 'Safari na čtyřkolkách v poušti Hurghady a beduínská vesnice',
+      description:
+        'Jízda na čtyřkolkách úchvatnou pouštní krajinou Hurghady pod dohledem instruktorů. Zahrnuje jízdu buginou, svezení na velbloudu, návštěvu beduínské vesnice s tradičním čajem a grilovanou večeři pod hvězdami.',
+      inclusions: ['Jízda na čtyřkolce (cca 45 km)', 'Spider bugina a jízda na velbloudu', 'Beduínská vesnice a čaj', 'Grilovaná večeře a orientální show', 'Transfery z hotelu'],
+    },
+    nl: {
+      title: 'Quadsafari in de woestijn van Hurghada & Bedoeïenendorp',
+      description:
+        'Rijd op je eigen quad door de adembenemende woestijn van Hurghada. Begeleid door gecertificeerde instructeurs, bezoek aan een bedoeïenendorp, kameelrijden, kruidenthee en een barbecuediner onder de sterrenhemel.',
+      inclusions: ['Quadrit (ong. 45 km)', 'Spider buggy & kameelrit', 'Bedoeïenendorp & traditionele thee', 'BBQ-diner & oosterse show', 'Hoteltransfers inbegrepen'],
+    },
+  },
+  'srv-dgh-dolphin-house': {
+    en: {
+      title: 'Dolphin House Snorkeling Safari (Shaab El Erg)',
+      description:
+        'Full-day boat excursion to the famous Dolphin House (Shaab El Erg). Swim and snorkel near wild spinner dolphins in their protected marine lagoon, with 2 vibrant coral reef stops, fresh onboard lunch buffet, and unlimited soft drinks.',
+      inclusions: ['Snorkeling Equipment (Mask, Snorkel, Fins)', 'Life Jackets', 'Chef Buffet Lunch & Unlimited Drinks', 'Banana Boat Water Fun', 'Hotel Transfers'],
+    },
+    de: {
+      title: 'Dolphin House Schnorchelsafari (Shaab El Erg)',
+      description:
+        'Tagesausflug zum legendären Dolphin House (Shaab El Erg). Schwimmen und Schnorcheln in der Nähe von wilden Delfinen im geschützten Riffgebiet, 2 Schnorchelstopps mit bunten Fischen und Korallen, frisches Mittagsbuffet und Softdrinks.',
+      inclusions: ['Komplette Schnorchelausrüstung', 'Rettungswesten für Groß & Klein', 'Mittagsbuffet vom Chefkoch & Getränke', 'Bananaboot-Wasserspaß', 'Hoteltransfer inklusive'],
+    },
+    ru: {
+      title: 'Снорклинг с дельфинами в бухте Dolphin House (Шааб Эль Эрг)',
+      description:
+        'Морская прогулка на весь день в знаменитую бухту Dolphin House. Плавание и снорклинг рядом с дикими дельфинами в охраняемой лагуне, 2 остановки на ярких рифах, горячий обед от шеф-повара и напитки.',
+      inclusions: ['Снаряжение для снорклинга (маски, трубки, ласты)', 'Спасательные жилеты', 'Шведский стол и напитки', 'Катание на банане', 'Трансфер из отеля туда и обратно'],
+    },
+    ar: {
+      title: 'رحلة بيت الدلافين والسنوركلينج (شعب العرق)',
+      description:
+        'رحلة بحرية ليوم كامل إلى منطقة بيت الدلافين الشهيرة (شعب العرق). سباحة وسنوركلينج بالقرب من الدلافين البرية في محميتها الطبيعية، وتوقفان على شعاب مرجانية خلابة، وبوفيه غداء شهي ومشروبات مجانية.',
+      inclusions: ['معدات سنوركلينج كاملة (نظارات وزعانف)', 'سترات نجاة آمنة للكبار والأطفال', 'بوفيه غداء ومشروبات غير محدودة', 'ألعاب مائية (بنانا بوت)', 'انتقالات الفندق ذهاباً وإياباً'],
+    },
+    fr: {
+      title: 'Snorkeling aux Dauphins à Dolphin House (Shaab El Erg)',
+      description:
+        'Journée en mer vers le célèbre Dolphin House (Shaab El Erg). Nagez et observez les dauphins sauvages dans leur lagon préservé, 2 arrêts snorkeling sur des récifs colorés, buffet chaud à bord et boissons à volonté.',
+      inclusions: ['Matériel de snorkeling complet', 'Gilets de sauvetage adaptés', 'Buffet préparé par le chef & boissons', 'Jeux nautiques (banane)', 'Transferts hôtel inclus'],
+    },
+    pl: {
+      title: 'Rejs do Dolphin House i pływanie z delfinami (Shaab El Erg)',
+      description:
+        'Całodniowy rejs statkiem do słynnego Dolphin House. Pływanie i snorkeling w pobliżu dzikich delfinów w chronionej lagunie, 2 postoje na rafach koralowych, pyszny obiad w formie bufetu i nielimitowane napoje.',
+      inclusions: ['Sprzęt do snorkelingu (maska, rurka, płetwy)', 'Kamizelki asekuracyjne', 'Obiad w formie bufetu i napoje bez ograniczeń', 'Atrakcje wodne (banan)', 'Transfer z hotelu'],
+    },
+    it: {
+      title: 'Snorkeling con i Delfini a Dolphin House (Shaab El Erg)',
+      description:
+        'Escursione giornaliera in barca verso la celebre Dolphin House (Shaab El Erg). Nuotate e fate snorkeling vicino ai delfini selvatici nella laguna protetta, 2 soste sulla barriera corallina, pranzo a buffet e bevande.',
+      inclusions: ['Attrezzatura da snorkeling completa', 'Giubbotti salvagente per tutti', 'Pranzo a buffet a bordo e bibite', 'Giro sulla banana boat', 'Transfer hotel a/r'],
+    },
+    cs: {
+      title: 'Šnorchlování s delfíny v Dolphin House (Shaab El Erg)',
+      description:
+        'Celodenní lodní výlet k proslulému Dolphin House. Plavání a šnorchlování v blízkosti divokých delfínů v chráněné zátoce, 2 zastávky na korálových útesech, čerstvý obědový bufet a neomezené nealko nápoje.',
+      inclusions: ['Šnorchlovací výstroj (maska, šnorchl, ploutve)', 'Záchranné vesty pro dospělé i děti', 'Čerstvý oběd a nápoje po celý den', 'Jízda na nafukovacím banánu', 'Transfer z/do hotelu'],
+    },
+    nl: {
+      title: 'Dolphin House Snorkelsafari (Shaab El Erg)',
+      description:
+        'Hele dag bootexcursie naar het beroemde Dolphin House. Zwem en snorkel vlak bij wilde dolfijnen in een beschermde lagune, 2 kleurrijke rifstops, vers lunchbuffet en onbeperkt frisdrank aan boord.',
+      inclusions: ['Snorkeluitrusting (masker, snorkel, vinnen)', 'Zwemvesten voor jong en oud', 'Vers lunchbuffet van de chef & drankjes', 'Bananenboot waterpret', 'Hoteltransfers inbegrepen'],
+    },
+  },
+};
+
+export function getServiceTranslation(serviceId: string, lang: LanguageCode): ServiceTranslation | null {
+  return SERVICES_TRANSLATIONS[serviceId]?.[lang] || null;
+}

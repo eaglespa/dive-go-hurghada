@@ -43,9 +43,13 @@ export interface ServiceItem {
   category: 'diving' | 'sea_trip' | 'desert_safari' | 'transfer' | 'city_tour' | 'cruise' | 'activity';
   description: string;
   priceAdult: number;
+  adultPriceLabel?: string;
   priceChild: number;
+  childPriceLabel?: string;
   currency: string;
   durationHours: number;
+  durationLabel?: string;
+  destinations?: string[];
   departureTimes: string[];
   meetingPoint: string;
   pickupAreasIncluded: string[];

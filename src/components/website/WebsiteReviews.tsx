@@ -13,166 +13,36 @@ import {
   X,
   Send,
 } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
+import { getLocalizedReviews, CustomerReview } from '../../translations/reviewsTranslations';
 
-export interface CustomerReview {
-  id: string;
-  author: string;
-  cityCountry: string;
-  avatarText: string;
-  category: 'DIVING' | 'DOLPHIN' | 'PADI' | 'SAFARI';
-  tripTitle: string;
-  rating: number;
-  date: string;
-  comment: string;
-  verified: boolean;
-  highlightTag: string;
-  source: 'Google Reviews' | 'TripAdvisor' | 'Direct Guest';
-}
-
-const INITIAL_REVIEWS: CustomerReview[] = [
-  {
-    id: 'rev-1',
-    author: 'Marcus & Julia Weber',
-    cityCountry: 'Munich, Germany 🇩🇪',
-    avatarText: 'MW',
-    category: 'DIVING',
-    tripTitle: 'Daily Boat Diving (2 Guided Dives)',
-    rating: 5,
-    date: 'September 2026',
-    comment:
-      'Outstanding 3 days of boat diving! The vessel was spotless, lunch was freshly cooked and delicious, and our dive guide Ahmed showed us eagle rays and giant morays at Abu Ramada. Professional German safety briefing and punctually picked us up from Steigenberger ALDAU Beach.',
-    verified: true,
-    highlightTag: 'Saw Eagle Rays & Turtles',
-    source: 'TripAdvisor',
-  },
-  {
-    id: 'rev-2',
-    author: 'Sarah & Liam Jenkins',
-    cityCountry: 'Manchester, United Kingdom 🇬🇧',
-    avatarText: 'SJ',
-    category: 'DOLPHIN',
-    tripTitle: 'Dolphin House Snorkeling Safari',
-    rating: 5,
-    date: 'August 2026',
-    comment:
-      'A magical highlight of our Red Sea holiday! We swam alongside a pod of wild spinner dolphins in the lagoon at Shaab El Erg. The crew took incredible care of our 7-year-old daughter, provided perfect life vests, and made sure everyone was safe.',
-    verified: true,
-    highlightTag: 'Wild Dolphins Encounter',
-    source: 'Google Reviews',
-  },
-  {
-    id: 'rev-3',
-    author: 'Claire & Pierre Dubois',
-    cityCountry: 'Lyon, France 🇫🇷',
-    avatarText: 'CD',
-    category: 'PADI',
-    tripTitle: 'PADI Open Water Diver Course',
-    rating: 5,
-    date: 'July 2026',
-    comment:
-      'Completed our PADI certification with Instructor Youssef. Super patient, bilingual French instruction, top-tier Mares equipment, and calm confined water sessions before open sea boat dives. We felt completely safe and thrilled!',
-    verified: true,
-    highlightTag: 'PADI Certified 5-Star',
-    source: 'Google Reviews',
-  },
-  {
-    id: 'rev-4',
-    author: 'Krzysztof Nowak',
-    cityCountry: 'Warsaw, Poland 🇵🇱',
-    avatarText: 'KN',
-    category: 'DIVING',
-    tripTitle: 'Daily Boat Diving (Abu Nuhas Wrecks)',
-    rating: 5,
-    date: 'September 2026',
-    comment:
-      'Best dive operator in Hurghada. We visited the Giannis D and Carnatic shipwrecks. The captain was exceptionally skilled at mooring in choppy seas. Generous bottom times, small buddy teams (max 4 per guide), and 15L tanks available on request.',
-    verified: true,
-    highlightTag: 'World-Class Wreck Dives',
-    source: 'TripAdvisor',
-  },
-  {
-    id: 'rev-5',
-    author: 'Elena & Marco Rossi',
-    cityCountry: 'Milan, Italy 🇮🇹',
-    avatarText: 'MR',
-    category: 'SAFARI',
-    tripTitle: 'Super Desert Quad Safari & Bedouin BBQ',
-    rating: 5,
-    date: 'August 2026',
-    comment:
-      'Incredible adrenaline rush through the Hurghada desert mountains! 45km riding quad ATVs followed by camel riding, authentic Bedouin tea, and a delicious evening grill buffet under the stars. Perfect family adventure.',
-    verified: true,
-    highlightTag: 'Thrilling Quad Adventure',
-    source: 'Google Reviews',
-  },
-  {
-    id: 'rev-6',
-    author: 'Sander Van Der Beek',
-    cityCountry: 'Amsterdam, Netherlands 🇳🇱',
-    avatarText: 'SV',
-    category: 'DIVING',
-    tripTitle: 'Discover Scuba Diving (Beginners)',
-    rating: 5,
-    date: 'August 2026',
-    comment:
-      'I was very nervous before my first introductory dive, but Dive Go Hurghada made it so easy. The instructor stayed holding my hand until I relaxed, and then we hovered over stunning coral gardens full of clownfish and blue-spotted rays. Unforgettable!',
-    verified: true,
-    highlightTag: 'Zero Stress for Beginners',
-    source: 'Direct Guest',
-  },
-  {
-    id: 'rev-7',
-    author: 'Lukas & Anna Steiner',
-    cityCountry: 'Zurich, Switzerland 🇨🇭',
-    avatarText: 'LS',
-    category: 'DOLPHIN',
-    tripTitle: 'Dolphin House Snorkeling Safari',
-    rating: 5,
-    date: 'September 2026',
-    comment:
-      'Transparent booking, no hidden port fees, and respectful ethical dolphin encounters following HEPCA eco-guidelines. The boat has plenty of shade, clean restrooms, and the crew treats the marine reserve with deep respect.',
-    verified: true,
-    highlightTag: 'Ethical & Eco-Friendly',
-    source: 'TripAdvisor',
-  },
-  {
-    id: 'rev-8',
-    author: 'Jan & Petra Dvořák',
-    cityCountry: 'Prague, Czech Republic 🇨🇿',
-    avatarText: 'JD',
-    category: 'PADI',
-    tripTitle: 'PADI Advanced Open Water Diver',
-    rating: 5,
-    date: 'July 2026',
-    comment:
-      'Did Deep Dive (30m) and Navigation specialties. Clear academic briefings, brand-new dive computers, and very welcoming vibe on the sundeck between dives. Highly recommend Dive Go Hurghada to anyone visiting Egypt!',
-    verified: true,
-    highlightTag: 'PADI Advanced Certified',
-    source: 'Google Reviews',
-  },
-];
-
-const CATEGORIES = [
-  { id: 'ALL', label: 'All Reviews (5.0 ★)' },
-  { id: 'DIVING', label: 'Scuba Diving 🤿' },
-  { id: 'DOLPHIN', label: 'Dolphin House 🐬' },
-  { id: 'PADI', label: 'PADI Courses 📜' },
-  { id: 'SAFARI', label: 'Quad Safari 🏜️' },
-];
 
 export const WebsiteReviews: React.FC = () => {
-  const [reviews, setReviews] = useState<CustomerReview[]>(() => {
+  const { t, language } = useLanguage();
+
+  const categories = [
+    { id: 'ALL', label: t.reviews.catAll },
+    { id: 'DIVING', label: t.reviews.catDiving },
+    { id: 'DOLPHIN', label: t.reviews.catDolphin },
+    { id: 'PADI', label: t.reviews.catPadi },
+    { id: 'SAFARI', label: t.reviews.catSafari },
+  ];
+
+  const [userCustomReviews, setUserCustomReviews] = useState<CustomerReview[]>(() => {
     try {
-      const saved = localStorage.getItem('dive_go_hurghada_guest_reviews');
+      const saved = localStorage.getItem('dive_go_hurghada_user_reviews');
       if (saved) {
         const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        if (Array.isArray(parsed)) return parsed;
       }
     } catch (e) {
       // fallback
     }
-    return INITIAL_REVIEWS;
+    return [];
   });
+
+  const baseReviews = getLocalizedReviews(language);
+  const reviews = [...userCustomReviews, ...baseReviews];
 
   const [activeCategory, setActiveCategory] = useState<string>('ALL');
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -236,10 +106,10 @@ export const WebsiteReviews: React.FC = () => {
       source: 'Direct Guest',
     };
 
-    const updated = [newRev, ...reviews];
-    setReviews(updated);
+    const updated = [newRev, ...userCustomReviews];
+    setUserCustomReviews(updated);
     try {
-      localStorage.setItem('dive_go_hurghada_guest_reviews', JSON.stringify(updated));
+      localStorage.setItem('dive_go_hurghada_user_reviews', JSON.stringify(updated));
     } catch (e) {
       // ignore
     }
@@ -281,44 +151,43 @@ export const WebsiteReviews: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
           <div className="max-w-2xl">
             <span className="text-cyan-400 font-bold text-xs uppercase tracking-wider block mb-2">
-              Verified Traveler Experiences
+              {t.reviews.kicker}
             </span>
             <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight leading-tight text-balance">
-              Loved by Divers & Families Worldwide
+              {t.reviews.title}
             </h2>
             <p className="text-sm text-slate-400 mt-2 leading-relaxed text-balance">
-              Explore authentic reviews from certified divers and holidaymakers across Europe and the Middle East who
-              ventured into the Red Sea with Dive Go Hurghada.
+              {t.reviews.description}
             </p>
           </div>
 
           {/* Social Proof Score Card */}
           <div className="flex items-center gap-4 bg-slate-950/80 border border-slate-800 p-4 rounded-2xl shrink-0 backdrop-blur-sm shadow-xl">
-            <div className="text-center border-r border-slate-800 pr-4">
+            <div className="text-center border-r border-slate-800 pr-4 rtl:border-r-0 rtl:border-l rtl:pr-0 rtl:pl-4">
               <span className="text-3xl font-black text-white block">4.9</span>
               <div className="flex text-amber-400 text-xs">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="h-3.5 w-3.5 fill-amber-400" />
                 ))}
               </div>
-              <span className="text-[10px] text-slate-400 mt-0.5 block">1,240+ Reviews</span>
+              <span className="text-[10px] text-slate-400 mt-0.5 block">{t.reviews.reviewsCount}</span>
             </div>
 
             <div className="space-y-1 text-xs">
-              <div className="flex items-center space-x-1.5 text-emerald-400 font-bold text-[11px]">
+              <div className="flex items-center space-x-1.5 rtl:space-x-reverse text-emerald-400 font-bold text-[11px]">
                 <CheckCircle2 className="h-3.5 w-3.5" />
-                <span>100% Verified Guests</span>
+                <span>{t.reviews.verifiedGuests}</span>
               </div>
-              <div className="flex items-center space-x-1.5 text-cyan-400 text-[11px]">
+              <div className="flex items-center space-x-1.5 rtl:space-x-reverse text-cyan-400 text-[11px]">
                 <Award className="h-3.5 w-3.5" />
-                <span>TripAdvisor Choice 2026</span>
+                <span>{t.reviews.award}</span>
               </div>
               <button
                 onClick={() => setShowReviewModal(true)}
-                className="text-[11px] text-white hover:text-cyan-300 font-semibold underline flex items-center space-x-1 cursor-pointer pt-0.5"
+                className="text-[11px] text-white hover:text-cyan-300 font-semibold underline flex items-center space-x-1 rtl:space-x-reverse cursor-pointer pt-0.5"
               >
                 <PlusCircle className="h-3 w-3" />
-                <span>Leave a Review</span>
+                <span>{t.reviews.leaveReview}</span>
               </button>
             </div>
           </div>
@@ -327,8 +196,8 @@ export const WebsiteReviews: React.FC = () => {
         {/* Category Filter Chips & Carousel Nav Controls */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
           {/* Category Tabs */}
-          <div className="flex overflow-x-auto space-x-2 pb-1 sm:pb-0 no-scrollbar">
-            {CATEGORIES.map((cat) => {
+          <div className="flex overflow-x-auto space-x-2 rtl:space-x-reverse pb-1 sm:pb-0 no-scrollbar">
+            {categories.map((cat) => {
               const isActive = activeCategory === cat.id;
               return (
                 <button
@@ -347,9 +216,9 @@ export const WebsiteReviews: React.FC = () => {
           </div>
 
           {/* Carousel Arrow Controls */}
-          <div className="flex items-center space-x-2 self-end sm:self-auto">
-            <span className="text-[11px] text-slate-400 mr-2 hidden sm:inline">
-              Showing {currentIndex + 1} of {filteredReviews.length}
+          <div className="flex items-center space-x-2 rtl:space-x-reverse self-end sm:self-auto">
+            <span className="text-[11px] text-slate-400 mr-2 rtl:mr-0 rtl:ml-2 hidden sm:inline">
+              {t.reviews.showing} {currentIndex + 1} {t.reviews.of} {filteredReviews.length}
             </span>
             <button
               onClick={handlePrev}
@@ -460,25 +329,21 @@ export const WebsiteReviews: React.FC = () => {
                 <div className="h-12 w-12 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center mx-auto">
                   <CheckCircle2 className="h-6 w-6" />
                 </div>
-                <h3 className="text-lg font-bold text-white">Thank You for Your Feedback!</h3>
-                <p className="text-xs text-slate-300">
-                  Your review has been successfully submitted and added to the Dive Go Hurghada guest showcase.
-                </p>
+                <h3 className="text-lg font-bold text-white">{t.reviews.modalSuccess}</h3>
               </div>
             ) : (
               <form onSubmit={handleSubmitNewReview} className="space-y-4 text-xs">
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center space-x-2 rtl:space-x-reverse">
                   <Sparkles className="h-5 w-5 text-cyan-400" />
-                  <h3 className="text-base font-bold text-white">Share Your Red Sea Experience</h3>
+                  <h3 className="text-base font-bold text-white">{t.reviews.modalTitle}</h3>
                 </div>
                 <p className="text-slate-400 text-[11px]">
-                  Help future divers and families by leaving your authentic feedback about our boats, instructors, and
-                  excursions.
+                  {t.reviews.description}
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-slate-300 font-semibold mb-1">Your Name *</label>
+                    <label className="block text-slate-300 font-semibold mb-1">{t.reviews.modalName} *</label>
                     <input
                       type="text"
                       required
@@ -490,7 +355,7 @@ export const WebsiteReviews: React.FC = () => {
                   </div>
 
                   <div>
-                    <label className="block text-slate-300 font-semibold mb-1">City & Country</label>
+                    <label className="block text-slate-300 font-semibold mb-1">{t.reviews.modalCity}</label>
                     <input
                       type="text"
                       value={formCity}
@@ -503,7 +368,7 @@ export const WebsiteReviews: React.FC = () => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-slate-300 font-semibold mb-1">Excursion Taken</label>
+                    <label className="block text-slate-300 font-semibold mb-1">{t.reviews.modalTrip}</label>
                     <select
                       value={formTrip}
                       onChange={(e) => {
@@ -515,17 +380,17 @@ export const WebsiteReviews: React.FC = () => {
                       }}
                       className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-cyan-500"
                     >
-                      <option value="Daily Boat Diving (2 Guided Dives)">Daily Boat Diving (2 Dives)</option>
-                      <option value="Discover Scuba Diving (Beginners)">Discover Scuba Diving</option>
-                      <option value="Dolphin House Snorkeling Safari">Dolphin House Snorkeling</option>
-                      <option value="PADI Open Water Diver Course">PADI Open Water Course</option>
-                      <option value="Super Desert Quad Safari & Bedouin BBQ">Super Desert Quad Safari</option>
+                      <option value={t.reviews.catDiving}>{t.reviews.catDiving}</option>
+                      <option value={t.navbar.dailyDiving}>{t.navbar.dailyDiving}</option>
+                      <option value={t.reviews.catDolphin}>{t.reviews.catDolphin}</option>
+                      <option value={t.reviews.catPadi}>{t.reviews.catPadi}</option>
+                      <option value={t.reviews.catSafari}>{t.reviews.catSafari}</option>
                     </select>
                   </div>
 
                   <div>
-                    <label className="block text-slate-300 font-semibold mb-1">Star Rating</label>
-                    <div className="flex items-center space-x-1 pt-1.5">
+                    <label className="block text-slate-300 font-semibold mb-1">{t.reviews.modalRating}</label>
+                    <div className="flex items-center space-x-1 rtl:space-x-reverse pt-1.5">
                       {[1, 2, 3, 4, 5].map((s) => (
                         <button
                           key={s}
@@ -545,7 +410,7 @@ export const WebsiteReviews: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-semibold mb-1">Your Review / Highlights *</label>
+                  <label className="block text-slate-300 font-semibold mb-1">{t.reviews.modalComment} *</label>
                   <textarea
                     required
                     rows={3}
@@ -556,20 +421,20 @@ export const WebsiteReviews: React.FC = () => {
                   />
                 </div>
 
-                <div className="flex items-center justify-end space-x-2 pt-2">
+                <div className="flex items-center justify-end space-x-2 rtl:space-x-reverse pt-2">
                   <button
                     type="button"
                     onClick={() => setShowReviewModal(false)}
-                    className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl transition"
+                    className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl transition cursor-pointer"
                   >
-                    Cancel
+                    {t.reviews.modalCancel}
                   </button>
                   <button
                     type="submit"
-                    className="px-5 py-2 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white rounded-xl font-bold shadow-md shadow-cyan-600/30 flex items-center space-x-1.5 cursor-pointer transition"
+                    className="px-5 py-2 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white rounded-xl font-bold shadow-md shadow-cyan-600/30 flex items-center space-x-1.5 rtl:space-x-reverse cursor-pointer transition"
                   >
                     <Send className="h-3.5 w-3.5" />
-                    <span>Publish Review</span>
+                    <span>{t.reviews.modalSubmit}</span>
                   </button>
                 </div>
               </form>

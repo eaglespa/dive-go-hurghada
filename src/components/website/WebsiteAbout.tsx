@@ -1,23 +1,23 @@
 import React from 'react';
 import {
   ShieldCheck,
-  Award,
   HeartHandshake,
   Anchor,
-  CheckCircle2,
   Users,
   Sparkles,
   MapPin,
-  Waves,
 } from 'lucide-react';
 import { SocialMediaBar } from '../common/SocialMediaBar';
+import { useLanguage } from '../../context/LanguageContext';
 
 export const WebsiteAbout: React.FC = () => {
+  const { t } = useLanguage();
+
   const stats = [
-    { label: 'Years of Excellence', value: '14+' },
-    { label: 'Logged Red Sea Dives', value: '25,000+' },
-    { label: 'Safety Track Record', value: '100%' },
-    { label: 'Average Guest Score', value: '4.9 ★' },
+    { label: t.about.statYears, value: '14+' },
+    { label: t.about.statDives, value: '25,000+' },
+    { label: t.about.statSafety, value: '100%' },
+    { label: t.about.statScore, value: '4.9 ★' },
   ];
 
   return (
@@ -30,25 +30,21 @@ export const WebsiteAbout: React.FC = () => {
           {/* Left Text & Interactive Pillars */}
           <div className="space-y-6">
             <div>
-              <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-cyan-950/80 border border-cyan-800/80 text-cyan-300 text-xs font-semibold mb-3">
+              <div className="inline-flex items-center space-x-1.5 rtl:space-x-reverse px-3 py-1 rounded-full bg-cyan-950/80 border border-cyan-800/80 text-cyan-300 text-xs font-semibold mb-3">
                 <Sparkles className="h-3.5 w-3.5 text-cyan-400" />
-                <span>14 Years of Red Sea Excellence</span>
+                <span>{t.about.kicker}</span>
               </div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight text-balance">
-                About Dive Go Hurghada
+                {t.about.title}
               </h2>
             </div>
 
             <p className="text-sm text-slate-300 leading-relaxed">
-              Founded by passionate PADI Master Scuba Divers, Dive Go Hurghada was established with a singular mission:
-              to offer small-group, personalized Red Sea diving and marine excursions with uncompromising safety
-              standards and fair, transparent pricing.
+              {t.about.p1}
             </p>
 
             <p className="text-sm text-slate-300 leading-relaxed">
-              Whether you are taking your very first breath underwater with an introductory Discover Scuba dive or
-              navigating historic World War II shipwrecks at Abu Nuhas, our multilingual team of certified guides ensures
-              every moment is safe, educational, and unforgettable.
+              {t.about.p2}
             </p>
 
             {/* Quick Metrics Counter Row */}
@@ -70,62 +66,62 @@ export const WebsiteAbout: React.FC = () => {
 
             {/* Core Pillars */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-              <div className="flex items-start space-x-3.5 p-4 bg-slate-900/80 hover:bg-slate-900 rounded-2xl border border-slate-800 hover:border-cyan-500/50 hover:-translate-y-1 transition-all duration-300 group shadow-lg">
-                <div className="p-2 rounded-xl bg-cyan-950 text-cyan-400 border border-cyan-800/80 group-hover:scale-110 transition-transform">
+              <div className="flex items-start space-x-3.5 rtl:space-x-reverse p-4 bg-slate-900/80 hover:bg-slate-900 rounded-2xl border border-slate-800 hover:border-cyan-500/50 hover:-translate-y-1 transition-all duration-300 group shadow-lg">
+                <div className="p-2 rounded-xl bg-cyan-950 text-cyan-400 border border-cyan-800/80 group-hover:scale-110 transition-transform shrink-0">
                   <ShieldCheck className="h-5 w-5" />
                 </div>
                 <div className="text-xs">
                   <h4 className="font-bold text-white mb-0.5 group-hover:text-cyan-300 transition-colors">
-                    PADI 5-Star Safety
+                    {t.about.pillar1Title}
                   </h4>
-                  <p className="text-slate-400">100% emergency O2 and medical first aid on all vessels.</p>
+                  <p className="text-slate-400">{t.about.pillar1Desc}</p>
                 </div>
               </div>
 
-              <div className="flex items-start space-x-3.5 p-4 bg-slate-900/80 hover:bg-slate-900 rounded-2xl border border-slate-800 hover:border-emerald-500/50 hover:-translate-y-1 transition-all duration-300 group shadow-lg">
-                <div className="p-2 rounded-xl bg-emerald-950 text-emerald-400 border border-emerald-800/80 group-hover:scale-110 transition-transform">
+              <div className="flex items-start space-x-3.5 rtl:space-x-reverse p-4 bg-slate-900/80 hover:bg-slate-900 rounded-2xl border border-slate-800 hover:border-emerald-500/50 hover:-translate-y-1 transition-all duration-300 group shadow-lg">
+                <div className="p-2 rounded-xl bg-emerald-950 text-emerald-400 border border-emerald-800/80 group-hover:scale-110 transition-transform shrink-0">
                   <HeartHandshake className="h-5 w-5" />
                 </div>
                 <div className="text-xs">
                   <h4 className="font-bold text-white mb-0.5 group-hover:text-emerald-300 transition-colors">
-                    Eco-Friendly Diving
+                    {t.about.pillar2Title}
                   </h4>
-                  <p className="text-slate-400">HEPCA marine protector guidelines strictly enforced.</p>
+                  <p className="text-slate-400">{t.about.pillar2Desc}</p>
                 </div>
               </div>
 
-              <div className="flex items-start space-x-3.5 p-4 bg-slate-900/80 hover:bg-slate-900 rounded-2xl border border-slate-800 hover:border-blue-500/50 hover:-translate-y-1 transition-all duration-300 group shadow-lg">
-                <div className="p-2 rounded-xl bg-blue-950 text-blue-400 border border-blue-800/80 group-hover:scale-110 transition-transform">
+              <div className="flex items-start space-x-3.5 rtl:space-x-reverse p-4 bg-slate-900/80 hover:bg-slate-900 rounded-2xl border border-slate-800 hover:border-blue-500/50 hover:-translate-y-1 transition-all duration-300 group shadow-lg">
+                <div className="p-2 rounded-xl bg-blue-950 text-blue-400 border border-blue-800/80 group-hover:scale-110 transition-transform shrink-0">
                   <Users className="h-5 w-5" />
                 </div>
                 <div className="text-xs">
                   <h4 className="font-bold text-white mb-0.5 group-hover:text-blue-300 transition-colors">
-                    Small Group Sizes
+                    {t.about.pillar3Title}
                   </h4>
-                  <p className="text-slate-400">Max 5 divers per divemaster for personalized guidance.</p>
+                  <p className="text-slate-400">{t.about.pillar3Desc}</p>
                 </div>
               </div>
 
-              <div className="flex items-start space-x-3.5 p-4 bg-slate-900/80 hover:bg-slate-900 rounded-2xl border border-slate-800 hover:border-amber-500/50 hover:-translate-y-1 transition-all duration-300 group shadow-lg">
-                <div className="p-2 rounded-xl bg-amber-950 text-amber-400 border border-amber-800/80 group-hover:scale-110 transition-transform">
+              <div className="flex items-start space-x-3.5 rtl:space-x-reverse p-4 bg-slate-900/80 hover:bg-slate-900 rounded-2xl border border-slate-800 hover:border-amber-500/50 hover:-translate-y-1 transition-all duration-300 group shadow-lg">
+                <div className="p-2 rounded-xl bg-amber-950 text-amber-400 border border-amber-800/80 group-hover:scale-110 transition-transform shrink-0">
                   <Anchor className="h-5 w-5" />
                 </div>
                 <div className="text-xs">
                   <h4 className="font-bold text-white mb-0.5 group-hover:text-amber-300 transition-colors">
-                    Saqala Square Base
+                    {t.about.pillar4Title}
                   </h4>
-                  <p className="text-slate-400">Centrally located at Saqala Square, Hurghada First (84511).</p>
+                  <p className="text-slate-400">{t.about.pillar4Desc}</p>
                 </div>
               </div>
             </div>
 
-            <div className="pt-2 flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 text-xs">
-              <span className="text-slate-400 text-[11px] font-semibold">Join our social community:</span>
+            <div className="pt-2 flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 rtl:space-x-reverse text-xs">
+              <span className="text-slate-400 text-[11px] font-semibold">{t.about.socialKicker}</span>
               <SocialMediaBar iconSize="sm" />
             </div>
           </div>
 
-          {/* Right Image / Showcase with Dynamic Sheen and Floating Overlay */}
+          {/* Right Image / Showcase */}
           <div className="relative">
             <div className="rounded-3xl overflow-hidden shadow-2xl border border-slate-800 relative aspect-4/3 bg-slate-800 card-sheen group">
               <img
@@ -137,13 +133,12 @@ export const WebsiteAbout: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent" />
 
               <div className="absolute bottom-6 left-6 right-6 p-5 rounded-2xl bg-slate-900/90 backdrop-blur-md border border-slate-700/80 text-xs text-slate-200 shadow-xl group-hover:border-cyan-500/50 transition-colors">
-                <div className="flex items-center space-x-2 text-cyan-400 font-bold text-sm mb-1.5">
+                <div className="flex items-center space-x-2 rtl:space-x-reverse text-cyan-400 font-bold text-sm mb-1.5">
                   <MapPin className="h-4 w-4" />
-                  <span>Dive Go Hurghada Fleet & Center</span>
+                  <span>{t.about.fleetTitle}</span>
                 </div>
                 <p className="text-slate-400 leading-relaxed text-[11px]">
-                  Located at Saqala Square, Hurghada First, with daily departures and complimentary hotel transfers across
-                  Hurghada, Mamsha, Dahar, and Sahl Hasheesh.
+                  {t.about.fleetDesc}
                 </p>
               </div>
             </div>

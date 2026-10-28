@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { Compass, Waves, Anchor, Eye, Sparkles, Navigation, Fish } from 'lucide-react';
+import { Compass, Waves, Eye, Navigation, Fish } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
 
 export const WebsiteDiveSites: React.FC = () => {
   const [selectedSiteIndex, setSelectedSiteIndex] = useState<number | null>(null);
+  const { t, getLocalizedDiveSite } = useLanguage();
 
-  const sites = [
+  const originalSites = [
     {
       name: 'Shaab El Erg (Dolphin House)',
       type: 'Horseshoe Reef & Protected Lagoon',
@@ -12,7 +14,7 @@ export const WebsiteDiveSites: React.FC = () => {
       visibility: '30+ Meters',
       highlights: 'Resident pod of wild spinner dolphins, table corals, blue-spotted rays, hawksbill turtles.',
       level: 'All Levels (Divers & Snorkelers)',
-      marineBio: 'Tursiops dolphins, blue-spotted stingrays, giant clams',
+      marineBio: 'Spinner dolphins, blue-spotted stingrays, giant clams',
       coordinates: '27° 28\' N, 33° 53\' E',
       badgeColor: 'border-emerald-500/40 text-emerald-300 bg-emerald-950/60',
     },
@@ -58,23 +60,24 @@ export const WebsiteDiveSites: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-cyan-950/80 border border-cyan-800/80 text-cyan-300 text-xs font-semibold mb-3">
+          <div className="inline-flex items-center space-x-1.5 rtl:space-x-reverse px-3 py-1 rounded-full bg-cyan-950/80 border border-cyan-800/80 text-cyan-300 text-xs font-semibold mb-3">
             <Compass className="h-3.5 w-3.5 text-cyan-400" />
-            <span>Hurghada Marine Destinations</span>
+            <span>{t.diveSites.kicker}</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight mb-4 text-balance">
-            Legendary Red Sea Dive Sites
+            {t.diveSites.title}
           </h2>
           <p className="text-sm text-slate-400 leading-relaxed text-balance">
-            Hurghada enjoys warm, tranquil waters year-round with visibility exceeding 30 meters. Our captains choose
-            daily dive spots dynamically each morning based on wind conditions and marine life movements.
+            {t.diveSites.description}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {sites.map((site, i) => {
+          {originalSites.map((orig, i) => {
+            const site = getLocalizedDiveSite(i, orig);
             const isHovered = selectedSiteIndex === i;
+
             return (
               <div
                 key={i}
@@ -89,7 +92,7 @@ export const WebsiteDiveSites: React.FC = () => {
                 {/* Site Header */}
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-cyan-400 flex items-center space-x-1.5 mb-1">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-cyan-400 flex items-center space-x-1.5 rtl:space-x-reverse mb-1">
                       <Navigation className="h-3 w-3" />
                       <span>{site.type}</span>
                     </span>
@@ -114,25 +117,25 @@ export const WebsiteDiveSites: React.FC = () => {
 
                 {/* Marine Bio & Coordinates */}
                 <div className="flex items-center justify-between text-[11px] text-slate-400 pt-1">
-                  <div className="flex items-center space-x-1.5 text-cyan-300">
+                  <div className="flex items-center space-x-1.5 rtl:space-x-reverse text-cyan-300">
                     <Fish className="h-3.5 w-3.5 text-cyan-400 shrink-0" />
-                    <span>Bio: {site.marineBio}</span>
+                    <span>{t.diveSites.bioLabel} {site.marineBio}</span>
                   </div>
                   <span className="font-mono text-[10px] text-slate-400">{site.coordinates}</span>
                 </div>
 
                 {/* Depth & Visibility Metrics Bar */}
                 <div className="grid grid-cols-2 gap-3 text-xs text-slate-300 pt-4 border-t border-slate-800">
-                  <div className="flex items-center space-x-2 bg-slate-800/40 p-2.5 rounded-xl border border-slate-800">
+                  <div className="flex items-center space-x-2 rtl:space-x-reverse bg-slate-800/40 p-2.5 rounded-xl border border-slate-800">
                     <Waves className="h-4 w-4 text-cyan-400 shrink-0" />
                     <span>
-                      Depth: <strong className="text-white">{site.depth}</strong>
+                      {t.diveSites.depthLabel} <strong className="text-white">{site.depth}</strong>
                     </span>
                   </div>
-                  <div className="flex items-center space-x-2 bg-slate-800/40 p-2.5 rounded-xl border border-slate-800">
+                  <div className="flex items-center space-x-2 rtl:space-x-reverse bg-slate-800/40 p-2.5 rounded-xl border border-slate-800">
                     <Eye className="h-4 w-4 text-emerald-400 shrink-0" />
                     <span>
-                      Visibility: <strong className="text-white">{site.visibility}</strong>
+                      {t.diveSites.visibilityLabel} <strong className="text-white">{site.visibility}</strong>
                     </span>
                   </div>
                 </div>

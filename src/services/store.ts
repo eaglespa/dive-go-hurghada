@@ -13,7 +13,7 @@ import {
   KnowledgeSourceType,
 } from '../types';
 
-const STORAGE_KEY = 'TRAVEL_AI_COMMAND_CENTER_STATE_V1';
+const STORAGE_KEY = 'TRAVEL_AI_COMMAND_CENTER_STATE_V5';
 
 export const KNOWLEDGE_PRECEDENCE: Record<KnowledgeSourceType, number> = {
   OWNER_VERIFIED: 100,
@@ -215,14 +215,28 @@ export class AppStore {
           parsed.profile.tiktokUrl = 'https://www.tiktok.com/@dive_go_hurghada';
           parsed.profile.yearsExperience = 15;
 
-          // Check if speedboat and safari services are present; if not, merge new services
-          const hasSpeedboat = parsed.services.some((s: any) => s.id === 'srv-dgh-private-speedboat');
-          if (!hasSpeedboat || parsed.services.length < 6) {
-            const blank = this.createInitialBlankState();
-            this.state = blank;
-            this.loadDiveGoHurghadaProfile();
-            return this.state;
-          }
+          // Always enforce childPriceLabel: '(Ask)' and updated excursion pricing
+          parsed.services.forEach((s: any) => {
+            s.childPriceLabel = '(Ask)';
+            if (s.id === 'srv-dgh-desert-safari') {
+              s.priceAdult = 40;
+            }
+            if (s.id === 'srv-dgh-private-speedboat') {
+              s.priceAdult = 180;
+            }
+            if (s.id === 'srv-dgh-private-padi') {
+              s.priceAdult = 0;
+              s.adultPriceLabel = 'Ask';
+              s.durationHours = 8;
+            }
+            if (s.id === 'srv-dgh-tauchsafari') {
+              s.priceAdult = 0;
+              s.adultPriceLabel = 'Ask';
+              s.durationHours = 168;
+              s.durationLabel = '7 Days';
+              s.destinations = ['North', 'South', 'Sharm El Sheikh', 'Dahab'];
+            }
+          });
           return parsed;
         }
       }
@@ -341,9 +355,10 @@ export class AppStore {
         title: 'Daily Boat Diving & Intro Dives in Hurghada',
         category: 'diving',
         description:
-          'Einführungstauchgänge und geführte Bootstauchgänge für Einsteiger und zertifizierte Taucher. Erleben Sie spektakuläre Riffe unter Anleitung erfahrener PADI-Instruktoren mit fundierter Sicherheitseinweisung, 2 Tauchgängen, Mittagsbuffet und Hoteltransfer.',
-        priceAdult: 65,
-        priceChild: 40,
+          'Introductory scuba dives and guided boat dives for beginners and certified divers. Experience spectacular Red Sea coral reefs accompanied by experienced PADI instructors, complete with comprehensive safety briefing, 2 guided dives, chef-prepared buffet lunch, and hotel transfers.',
+        priceAdult: 50,
+        priceChild: 0,
+        childPriceLabel: '(Ask)',
         currency: 'EUR (€)',
         durationHours: 8,
         departureTimes: ['08:00 AM'],
@@ -355,19 +370,20 @@ export class AppStore {
         maxCapacity: 28,
         cancellationPolicy: 'Free cancellation up to 24 hours prior to departure.',
         childPolicy: 'Junior divers must be min 10 years old with certified parent.',
-        languagesOffered: ['German', 'English', 'Arabic', 'Russian', 'Turkish'],
+        languagesOffered: ['English', 'German', 'Arabic', 'Russian', 'French', 'Polish'],
         verificationSource: 'OWNER_VERIFIED',
         updatedAt: new Date().toISOString(),
         isAvailable: true,
       },
       {
         id: 'srv-dgh-private-speedboat',
-        title: 'Privat Speedboat & Dolphin Watching (Orange Bay)',
+        title: 'Private Speedboat & Dolphin Watching (Orange Bay)',
         category: 'sea_trip',
         description:
-          'Erlebt das Rote Meer von seiner schönsten Seite – schnell, exklusiv und voller Abenteuer! Entdeckt die Küste von Hurghada mit unserem modernen Speedboat, genießt Delfinbeobachtung in freier Wildbahn, Schnorcheln an Korallenriffen und private Inselstopps an der traumhaften Orange Bay.',
-        priceAdult: 160,
-        priceChild: 90,
+          'Experience the Red Sea at its finest – fast, exclusive, and full of adventure! Explore the coast of Hurghada aboard our modern speedboat, enjoy wild dolphin encounters in their natural habitat, snorkeling on pristine coral reefs, and private island stops at stunning Orange Bay.',
+        priceAdult: 180,
+        priceChild: 0,
+        childPriceLabel: '(Ask)',
         currency: 'EUR (€)',
         durationHours: 4,
         departureTimes: ['08:30 AM', '01:00 PM'],
@@ -379,21 +395,23 @@ export class AppStore {
         maxCapacity: 8,
         cancellationPolicy: 'Free cancellation up to 24 hours prior.',
         childPolicy: 'All ages welcome. Special child safety vests on board.',
-        languagesOffered: ['German', 'English', 'Arabic', 'Russian'],
+        languagesOffered: ['English', 'German', 'Arabic', 'Russian', 'French', 'Polish'],
         verificationSource: 'OWNER_VERIFIED',
         updatedAt: new Date().toISOString(),
         isAvailable: true,
       },
       {
         id: 'srv-dgh-private-padi',
-        title: 'Privater Tauchunterricht & PADI Zertifizierung',
+        title: 'Private Diving Lessons & PADI Certification',
         category: 'diving',
         description:
-          'Individuell gestalteter 1-on-1 Tauchkurs mit erfahrenen PADI Master Diver Instruktoren. Angepasst an Ihr persönliches Lerntempo und Ihre Wünsche – besonders empfehlenswert für Gäste mit Angst vor dem Tauchen oder für intensives Lernen.',
-        priceAdult: 340,
-        priceChild: 340,
+          'Personalized 1-on-1 scuba diving course with seasoned PADI Master Diver instructors. Tailored entirely to your learning pace and comfort level – ideal for nervous beginners, families, or intensive scuba certifications.',
+        priceAdult: 0,
+        adultPriceLabel: 'Ask',
+        priceChild: 0,
+        childPriceLabel: '(Ask)',
         currency: 'EUR (€)',
-        durationHours: 24,
+        durationHours: 8,
         departureTimes: ['08:00 AM (Day 1)'],
         meetingPoint: 'DiveGo Hurghada Dive School (Saqala Square)',
         pickupAreasIncluded: ['All Hurghada Hotel Zones'],
@@ -403,43 +421,48 @@ export class AppStore {
         maxCapacity: 4,
         cancellationPolicy: 'Full refund if cancelled before course activation.',
         childPolicy: 'Min age 10 for Junior Open Water.',
-        languagesOffered: ['German', 'English', 'Arabic', 'Russian', 'Turkish'],
+        languagesOffered: ['English', 'German', 'Arabic', 'Russian', 'French', 'Polish'],
         verificationSource: 'OWNER_VERIFIED',
         updatedAt: new Date().toISOString(),
         isAvailable: true,
       },
       {
         id: 'srv-dgh-tauchsafari',
-        title: 'Tauchsafari im Roten Meer (Reefs & Wracks)',
+        title: 'Red Sea 7-Day Liveaboard Diving Safari',
         category: 'diving',
         description:
-          'Erleben Sie die faszinierende Unterwasserwelt des Roten Meeres auf professionell geführten Tauchsafaris zu spektakulären Korallenriffen und weltberühmten Wracks wie Abu Nuhas, Thistlegorm und Giftun Island. Maximaler Komfort, kleine Gruppen und erfahrene Guides.',
-        priceAdult: 130,
-        priceChild: 90,
+          'Explore the mesmerizing underwater world of the Red Sea on an epic 7-day liveaboard dive safari covering North, South, Sharm El Sheikh, and Dahab. World-famous offshore reefs and shipwrecks like Abu Nuhas, Thistlegorm, and Ras Mohammed. Maximum comfort, gourmet full-board catering, and expert guides.',
+        priceAdult: 0,
+        adultPriceLabel: 'Ask',
+        priceChild: 0,
+        childPriceLabel: '(Ask)',
         currency: 'EUR (€)',
-        durationHours: 10,
-        departureTimes: ['07:30 AM'],
+        durationHours: 168,
+        durationLabel: '7 Days',
+        destinations: ['North', 'South', 'Sharm El Sheikh', 'Dahab'],
+        departureTimes: ['07:30 AM (Day 1)'],
         meetingPoint: 'Hurghada Port / DiveGo Boat Dock',
         pickupAreasIncluded: ['All Hurghada Hotels'],
-        inclusions: ['3 Guided Boat Dives', 'Tanks & Weights', 'Professional Safari Guide (Max 4 Divers)', 'Full Board Buffet Lunch & Unlimited Drinks', 'Hotel Transfers'],
+        inclusions: ['7 Days / 6 Nights Luxury Liveaboard', 'Up to 3-4 Guided Dives Daily & Night Dives', 'Tanks, Weights & Dive Master Guides', 'Full Board Gourmet Buffet & Unlimited Soft Drinks', 'Complimentary Hotel Transfers'],
         exclusions: ['Equipment Rental (€15/day)', 'National Park Marine Fee (€5)'],
         minParticipants: 2,
         maxCapacity: 20,
         cancellationPolicy: 'Free cancellation up to 24 hours prior.',
         childPolicy: 'Certified divers only (Advanced Open Water or min 20 logged dives).',
-        languagesOffered: ['German', 'English', 'Arabic', 'Russian'],
+        languagesOffered: ['English', 'German', 'Arabic', 'Russian', 'French', 'Polish'],
         verificationSource: 'OWNER_VERIFIED',
         updatedAt: new Date().toISOString(),
         isAvailable: true,
       },
       {
         id: 'srv-dgh-desert-safari',
-        title: 'Quad-Safari in Hurghada – Abenteuer in der Wüste',
+        title: 'Hurghada Quad Desert Safari & Bedouin Adventure',
         category: 'desert_safari',
         description:
-          'Fahrt mit dem Quad durch die faszinierende Wüstenlandschaft Hurghadas. Begleitung durch qualifiziertes Personal, gründliche Sicherheitseinweisung, Beduinendorf, traditioneller Beduinentee und BBQ unter dem Sternenhimmel. Auch als private Tour buchbar!',
-        priceAdult: 35,
-        priceChild: 20,
+          'Ride your own ATV quad bike through the breathtaking desert landscapes of Hurghada. Guided by certified instructors with full safety gear, Bedouin village cultural tour, herbal tea, camel riding, and a barbecue dinner under starlit skies.',
+        priceAdult: 40,
+        priceChild: 0,
+        childPriceLabel: '(Ask)',
         currency: 'EUR (€)',
         durationHours: 5,
         departureTimes: ['01:30 PM', '08:00 AM'],
@@ -451,7 +474,7 @@ export class AppStore {
         maxCapacity: 40,
         cancellationPolicy: 'Free cancellation up to 12 hours prior.',
         childPolicy: 'Drivers min 16 years. Children ride tandem with parent.',
-        languagesOffered: ['German', 'English', 'Russian', 'Arabic', 'Polish'],
+        languagesOffered: ['English', 'German', 'Arabic', 'Russian', 'French', 'Polish'],
         verificationSource: 'OWNER_VERIFIED',
         updatedAt: new Date().toISOString(),
         isAvailable: true,
@@ -461,9 +484,10 @@ export class AppStore {
         title: 'Dolphin House Snorkeling Safari (Shaab El Erg)',
         category: 'sea_trip',
         description:
-          'Tagesausflug zum legendären Dolphin House (Shaab El Erg). Schwimmen und Schnorcheln in der Nähe von wilden Delfinen im geschützten Riffgebiet, 2 Schnorchelstopps mit bunten Fischen und Korallen, frisches Mittagsbuffet und Softdrinks.',
+          'Full-day boat excursion to the famous Dolphin House (Shaab El Erg). Swim and snorkel near wild spinner dolphins in their protected marine lagoon, with 2 vibrant coral reef stops, fresh onboard lunch buffet, and unlimited soft drinks.',
         priceAdult: 40,
-        priceChild: 25,
+        priceChild: 0,
+        childPriceLabel: '(Ask)',
         currency: 'EUR (€)',
         durationHours: 8,
         departureTimes: ['08:00 AM'],
@@ -475,7 +499,7 @@ export class AppStore {
         maxCapacity: 35,
         cancellationPolicy: 'Free cancellation up to 24 hours prior.',
         childPolicy: 'Children under 4 free. Ages 4-11 child price.',
-        languagesOffered: ['German', 'English', 'Arabic', 'French', 'Russian'],
+        languagesOffered: ['English', 'German', 'Arabic', 'Russian', 'French', 'Polish'],
         verificationSource: 'OWNER_VERIFIED',
         updatedAt: new Date().toISOString(),
         isAvailable: true,
@@ -488,7 +512,7 @@ export class AppStore {
         id: 'kb-1',
         category: 'pricing',
         subject: 'Daily Diving Rate & Currency',
-        content: 'Daily boat diving is €65 for 2 dives. Cash accepted in EUR, USD, GBP, and EGP at daily bank exchange rate.',
+        content: 'Daily boat diving is €50 for 2 dives. Child price is on request / (ask). Cash accepted in EUR, USD, GBP, and EGP at daily bank exchange rate.',
         sourceType: 'OWNER_VERIFIED',
         sourceName: 'Owner Direct Confirmation',
         confidence: 1.0,

@@ -216,6 +216,97 @@ export class AiService {
       };
     }
 
+    const cLang = (options.customerLanguage || '').toLowerCase();
+    const isFrench = cLang.includes('french') || cLang.includes('français') || /\b(bonjour|salut|plongée|dauphin|excursion|réserver|prix)\b/i.test(msg);
+    if (isFrench) {
+      if (matchingService) {
+        return {
+          reply: `Bonjour ! Notre excursion "${matchingService.title}" est au tarif de ${matchingService.priceAdult}€ par adulte et ${matchingService.priceChild}€ par enfant. Prise en charge à votre hôtel et déjeuner buffet inclus. Pour quelle date souhaitez-vous réserver ?`,
+          detectedLanguage: 'French',
+          isInjectionBlocked: false,
+          source: 'local-resilient-engine',
+        };
+      }
+      return {
+        reply: `Bienvenue chez ${options.businessProfile.companyName || 'Dive Go Hurghada'} ! Nous proposons des plongées quotidiennes, baptêmes débutants, safaris dauphins et excursions dans le désert. Comment pouvons-nous vous aider ?`,
+        detectedLanguage: 'French',
+        isInjectionBlocked: false,
+        source: 'local-resilient-engine',
+      };
+    }
+
+    const isPolish = cLang.includes('polish') || cLang.includes('polski') || /\b(dzień dobry|nurkowanie|delfin|rezerwacja|cena|wycieczka)\b/i.test(msg);
+    if (isPolish) {
+      if (matchingService) {
+        return {
+          reply: `Dzień dobry! Nasza wycieczka "${matchingService.title}" kosztuje ${matchingService.priceAdult}€ za osobę dorosłą i ${matchingService.priceChild}€ za dziecko. Odbiór z hotelu i obiad w cenie. Na jaki termin chcieliby Państwo zarezerwować?`,
+          detectedLanguage: 'Polish',
+          isInjectionBlocked: false,
+          source: 'local-resilient-engine',
+        };
+      }
+      return {
+        reply: `Witamy w ${options.businessProfile.companyName || 'Dive Go Hurghada'}! Oferujemy codzienne nurkowania z łodzi, kursy PADI, rejsy do Dolphin House i safari na quadach. W czym możemy pomóc?`,
+        detectedLanguage: 'Polish',
+        isInjectionBlocked: false,
+        source: 'local-resilient-engine',
+      };
+    }
+
+    const isItalian = cLang.includes('italian') || cLang.includes('italiano') || /\b(ciao|buongiorno|immersione|delfino|prenotare|prezzo)\b/i.test(msg);
+    if (isItalian) {
+      if (matchingService) {
+        return {
+          reply: `Buongiorno! La nostra escursione "${matchingService.title}" costa €${matchingService.priceAdult} per adulto e €${matchingService.priceChild} per bambino. Include transfer dall'hotel e pranzo a bordo. Per quale data desidera prenotare?`,
+          detectedLanguage: 'Italian',
+          isInjectionBlocked: false,
+          source: 'local-resilient-engine',
+        };
+      }
+      return {
+        reply: `Benvenuti a ${options.businessProfile.companyName || 'Dive Go Hurghada'}! Offriamo immersioni guidate, battesimo del mare per principianti, escursioni a Dolphin House e safari nel deserto. Come possiamo aiutarla oggi?`,
+        detectedLanguage: 'Italian',
+        isInjectionBlocked: false,
+        source: 'local-resilient-engine',
+      };
+    }
+
+    const isCzech = cLang.includes('czech') || cLang.includes('čeština') || /\b(dobrý den|potápění|delfín|rezervace|cena|výlet)\b/i.test(msg);
+    if (isCzech) {
+      if (matchingService) {
+        return {
+          reply: `Dobrý den! Náš výlet "${matchingService.title}" stojí €${matchingService.priceAdult} za dospělého a €${matchingService.priceChild} za dítě. Zahrnuje vyzvednutí v hotelu a oběd na lodi. Na jaký termín byste si přáli rezervaci?`,
+          detectedLanguage: 'Czech',
+          isInjectionBlocked: false,
+          source: 'local-resilient-engine',
+        };
+      }
+      return {
+        reply: `Vítejte v ${options.businessProfile.companyName || 'Dive Go Hurghada'}! Nabízíme denní potápění z lodi, zkušební ponory pro začátečníky, výlety k delfínům a čtyřkolky v poušti. S čím vám můžeme pomoci?`,
+        detectedLanguage: 'Czech',
+        isInjectionBlocked: false,
+        source: 'local-resilient-engine',
+      };
+    }
+
+    const isDutch = cLang.includes('dutch') || cLang.includes('nederlands') || /\b(hallo|goedendag|duiken|dolfijn|boeken|prijs|excursie)\b/i.test(msg);
+    if (isDutch) {
+      if (matchingService) {
+        return {
+          reply: `Hallo! Onze excursie "${matchingService.title}" kost €${matchingService.priceAdult} per volwassene en €${matchingService.priceChild} per kind. Inclusief hoteltransfer en lunchbuffet. Voor welke datum wilt u reserveren?`,
+          detectedLanguage: 'Dutch',
+          isInjectionBlocked: false,
+          source: 'local-resilient-engine',
+        };
+      }
+      return {
+        reply: `Welkom bij ${options.businessProfile.companyName || 'Dive Go Hurghada'}! Wij verzorgen dagelijks bootduiken, introductieduiken, dolfijnensafari's en woestijnquads. Hoe kunnen we u vandaag helpen?`,
+        detectedLanguage: 'Dutch',
+        isInjectionBlocked: false,
+        source: 'local-resilient-engine',
+      };
+    }
+
     if (matchingService) {
       return {
         reply: `Hello! Our "${matchingService.title}" is available at €${matchingService.priceAdult} per adult and €${matchingService.priceChild} per child. It runs for ${matchingService.durationHours} hours with pickup from your hotel lobby included. Which date would you like to reserve?`,
