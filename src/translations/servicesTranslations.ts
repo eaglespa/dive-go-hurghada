@@ -577,6 +577,143 @@ export const SERVICES_TRANSLATIONS: Record<string, Record<LanguageCode, ServiceT
       ],
     },
   },
+  'srv-dgh-luxor-vip': {
+    en: {
+      title: 'Luxor Day Trip by VIP Mini Bus (Max 8 Persons)',
+      description:
+        'Explore the ancient wonders of Thebes on an exclusive VIP small-group day trip from Hurghada to Luxor by comfortable air-conditioned mini bus (strictly limited to 8 persons). Discover Karnak Temple, Valley of the Kings, Queen Hatshepsut Temple, Colossi of Memnon, and enjoy a traditional Nile boat crossing with a certified Egyptologist guide and lunch on the Nile.',
+      inclusions: [
+        'VIP AC Mini Bus Transportation (Max 8 Persons)',
+        'Certified Egyptologist Tour Guide',
+        'All Temple & Monument Entrance Tickets',
+        'Karnak Temple & Valley of the Kings Entry',
+        'Queen Hatshepsut Temple & Colossi of Memnon',
+        'Traditional Egyptian Lunch on the Nile',
+        'Motorboat Nile River Crossing',
+        'Round-Trip Hotel Transfers & Bottled Water',
+      ],
+    },
+    de: {
+      title: 'Luxor-Tagesausflug im VIP-Minibus (Max. 8 Personen)',
+      description:
+        'Entdecken Sie die antiken Wunder von Theben auf einem exklusiven VIP-Kleingruppenausflug von Hurghada nach Luxor im klimatisierten Minibus (maximal 8 Personen). Besichtigen Sie den Karnak-Tempel, das Tal der Könige, den Hatschepsut-Tempel, die Memnonkolosse und genießen Sie eine Nilüberfahrt mit zertifiziertem Ägyptologen und Mittagessen am Nil.',
+      inclusions: [
+        'Fahrt im klimatisierten VIP-Minibus (max. 8 Gäste)',
+        'Zertifizierter deutschsprachiger Ägyptologe',
+        'Alle Eintrittskarten zu Tempeln & Gräbern',
+        'Karnak-Tempel & Tal der Könige',
+        'Hatschepsut-Tempel & Memnonkolosse',
+        'Mittagessen in traditionellem Restaurant am Nil',
+        'Motorbootfahrt über den Nil',
+        'Hoteltransfer Hin & Zurück',
+      ],
+    },
+    ru: {
+      title: 'Экскурсия в Луксор на VIP-минивэне (максимум 8 человек)',
+      description:
+        'Откройте древние сокровища Фив в эксклюзивной мини-группе из Хургады в Луксор на комфортабельном кондиционированном минивэне (строго до 8 человек). Карнакский храм, Долина Царей, храм царицы Хатшепсут, Колоссы Мемнона, переправа по Нилу на катере, лицензированный гид-египтолог и обед на берегу Нила.',
+      inclusions: [
+        'Комфортабельный VIP-минивэн с кондиционером (до 8 чел.)',
+        'Профессиональный русскоговорящий гид-египтолог',
+        'Все входные билеты в храмы и гробницы',
+        'Карнакский храм и Долина Царей',
+        'Храм Хатшепсут и Колоссы Мемнона',
+        'Обед в ресторане на берегу Нила',
+        'Прогулка на моторной лодке по Нилу',
+        'Трансфер из отеля и обратно',
+      ],
+    },
+    ar: {
+      title: 'رحلة الأقصر ومعالم الفراعنة بميني باص VIP (٨ أفراد فقط)',
+      description:
+        'استكشف أسرار الحضارة المصرية القديمة في رحلة يوم كامل حصرية من الغردقة إلى الأقصر بميني باص سياحي مكيف حديث لمجموعة صغيرة متميزة (بحد أقصى ٨ أفراد لضمان الراحة والخصوصية). تشمل زيارة معبد الكرنك، وادي الملوك ومقابر الفراعنة، معبد حتشبسوت، تمثالي ممنون، جولة نيلية باللانش، ومرشد سياحي متخصص وغداء شهي على النيل.',
+      inclusions: [
+        'انتقالات بميني باص سياحي VIP مكيف (٨ أفراد فقط)',
+        'مرشد سياحي معتمد ومتخصص في علم المصريات',
+        'جميع تذاكر ورسوم دخول المعابد والمزارات',
+        'معبد الكرنك العظيم ووادي الملوك',
+        'معبد الملكة حتشبسوت وتمثالا ممنون',
+        'غداء مصري طازج في مطعم مطل على النيل',
+        'جولة عبور النيل باللانش النهري',
+        'انتقالات ذهاب وإياب من فندقك',
+      ],
+    },
+    fr: {
+      title: 'Excursion à Louxor en Minibus VIP (Max 8 Personnes)',
+      description:
+        'Découvrez les merveilles antiques de Thèbes lors d\'une excursion VIP exclusive en petit groupe de Hurghada à Louxor en minibus grand confort (limité à 8 personnes). Visitez le temple de Karnak, la Vallée des Rois, le temple d\'Hatchepsout, les Colosses de Memnon, traversée du Nil en bateau et déjeuner au bord du Nil avec égyptologue francophone certifié.',
+      inclusions: [
+        'Transport en Minibus VIP climatisé (max 8 personnes)',
+        'Guide égyptologue officiel francophone',
+        'Tous les billets d\'entrée des monuments',
+        'Temple de Karnak & Vallée des Rois',
+        'Temple d\'Hatchepsout & Colosses de Memnon',
+        'Déjeuner au bord du Nil',
+        'Traversée du Nil en bateau à moteur',
+        'Transferts hôtel aller-retour',
+      ],
+    },
+    pl: {
+      title: 'Wycieczka do Luksoru minibusem VIP (Maks. 8 osób)',
+      description:
+        'Poznaj starożytne cuda Teb podczas ekskluzywnej wycieczki w małej grupie z Hurghady do Luksoru komfortowym klimatyzowanym minibusem (maksymalnie 8 osób). Świątynia w Karnaku, Dolina Królów, świątynia Hatszepsut, Kolosy Memnona, rejs motorówką po Nilu i obiad z przewodnikiem egiptologiem.',
+      inclusions: [
+        'Transport minibusem VIP z klimatyzacją (maks. 8 osób)',
+        'Licencjonowany przewodnik egiptolog',
+        'Wszystkie bilety wstępu do zabytków',
+        'Świątynia Karnak i Dolina Królów',
+        'Świątynia Hatszepsut i Kolosy Memnona',
+        'Obiad w restauracji nad Nilem',
+        'Przeprawa motorówką przez Nil',
+        'Transfer z i do hotelu',
+      ],
+    },
+    it: {
+      title: 'Escursione a Luxor in Minibus VIP (Max 8 Persone)',
+      description:
+        'Esplorate le antiche meraviglie di Tebe con un\'esclusiva gita di un giorno in piccolo gruppo da Hurghada a Luxor in minibus VIP climatizzato (massimo 8 persone). Tempio di Karnak, Valle dei Re, Tempio di Hatshepsut, Colossi di Memnon, traversata del Nilo in barca e pranzo tipico con guida egittologa.',
+      inclusions: [
+        'Minibus VIP climatizzato (max 8 partecipanti)',
+        'Guida egittologa ufficiale certificata',
+        'Tutti i biglietti d\'ingresso inclusi',
+        'Tempio di Karnak e Valle dei Re',
+        'Tempio di Hatshepsut e Colossi di Memnone',
+        'Pranzo sulle rive del Nilo',
+        'Traversata del Nilo in motoscafo',
+        'Transfer hotel a/r',
+      ],
+    },
+    cs: {
+      title: 'Výlet do Luxoru VIP minibusem (Max. 8 osob)',
+      description:
+        'Objevte starověké divy Théb na exkluzivním výletě v malé skupině z Hurghady do Luxoru klimatizovaným VIP minibusem (pouze pro 8 osob). Chrám v Karnaku, Údolí králů, chrám Hatšepsut, Memnonovy kolosy, plavba po Nilu s licencovaným egyptologem a oběd na břehu Nilu.',
+      inclusions: [
+        'Klimatizovaný VIP minibus (max. 8 osob)',
+        'Licencovaný průvodce egyptolog',
+        'Všechny vstupenky do chrámů v ceně',
+        'Chrám Karnak a Údolí králů',
+        'Chrám královny Hatšepsut a Memnonovy kolosy',
+        'Oběd v restauraci u Nilu',
+        'Přejezd Nilu motorovým člunem',
+        'Transfery z/do hotelu',
+      ],
+    },
+    nl: {
+      title: 'Dagexcursie Luxor per VIP Minibus (Max. 8 Personen)',
+      description:
+        'Ontdek de eeuwenoude schatten van Thebe tijdens een exclusieve kleinschalige dagexcursie van Hurghada naar Luxor per luxe VIP minibus (maximaal 8 personen). Bezoek de Karnak-tempel, Vallei der Koningen, Hatsjepsoet-tempel, Kolossen van Memnon, Nijlovertocht en lunch met gecertificeerde egyptoloog.',
+      inclusions: [
+        'VIP Minibus met airco (maximaal 8 personen)',
+        'Gecertificeerde egyptoloog-gids',
+        'Alle officiële toegangskaarten voor tempels',
+        'Karnak-tempel & Vallei der Koningen',
+        'Hatsjepsoet-tempel & Kolossen van Memnon',
+        'Traditionele lunch aan de Nijl',
+        'Boottocht over de Nijl',
+        'Retourtransfer vanaf uw hotel',
+      ],
+    },
+  },
 };
 
 export function getServiceTranslation(serviceId: string, lang: LanguageCode): ServiceTranslation | null {
