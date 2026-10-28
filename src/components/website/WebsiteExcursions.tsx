@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   Clock,
   Users,
@@ -15,6 +15,13 @@ import {
   Check,
   Link2,
   Mail,
+  X,
+  Star,
+  Shield,
+  Info,
+  CalendarDays,
+  BadgeCheck,
+  Anchor,
 } from 'lucide-react';
 import { AppState } from '../../services/store';
 import { ServiceItem } from '../../types';
@@ -23,6 +30,7 @@ import padiLogo from '../../assets/padi_logo.jpg';
 import cmasLogo from '../../assets/CMAS.jpg';
 import bsacLogo from '../../assets/BSAC_Logo_2017.jpeg';
 import defaultHeroImg from '../../assets/images/hero_red_sea_diving_1790535752456.jpg';
+import orangeBayFeatured from '../../assets/images/imported/speedboat_orange_bay.jpg';
 
 // Import photos for the Hurghada Quad Desert Safari slideshow
 import susaf1 from '../../assets/images/SUSAF (1).avif';
@@ -239,6 +247,341 @@ const padiCertificationSlideshowImages: string[] = [
   padiJpg15,
 ];
 
+// Giftun Island — reuse dolphin house + speed images (same sea environment)
+const giftunIslandSlideshowImages: string[] = [
+  dolphineJpg1,
+  speedJpg3,
+  dolphineJpg3,
+  speedJpg5,
+  dolphineJpg5,
+  speedJpg6,
+  dolphineJpg7,
+  speedJpg8,
+  dolphineJpg9,
+  speedJpg10,
+  dolphineJpg10,
+  speedJpg12,
+];
+
+// Glass Bottom Boat — reuse underwater/sea images
+const glassBoatSlideshowImages: string[] = [
+  speedJpg1,
+  dolphineJpg2,
+  speedJpg2,
+  dolphineJpg4,
+  speedJpg4,
+  dolphineJpg6,
+  speedJpg7,
+  dolphineJpg8,
+  speedJpg9,
+  dolphineJpg11,
+  speedJpg11,
+  dolphineJpg12,
+];
+
+// Orange Bay Island — classic island day trip with white sand beaches, swings & coral reefs
+const orangeBaySlideshowImages: string[] = [
+  orangeBayFeatured,
+  speedJpg2,
+  speedJpg3,
+  speedJpg4,
+  speedJpg5,
+  speedJpg6,
+  speedJpg7,
+  speedJpg8,
+  speedJpg10,
+  speedJpg12,
+  speedJpg14,
+  speedJpg16,
+  speedJpg18,
+];
+
+// ==========================================
+// TRIP DETAIL MODAL
+// ==========================================
+interface TripDetailModalProps {
+  service: ServiceItem;
+  localizedTitle: string;
+  localizedDescription: string;
+  localizedInclusions: string[];
+  images: string[];
+  onClose: () => void;
+  onOpenBooking: (serviceId?: string) => void;
+  onOpenAiChat: (query?: string) => void;
+  whatsappNumber: string;
+  isAskPrice: boolean;
+}
+
+const TripDetailModal: React.FC<TripDetailModalProps> = ({
+  service,
+  localizedTitle,
+  localizedDescription,
+  localizedInclusions,
+  images,
+  onClose,
+  onOpenBooking,
+  onOpenAiChat,
+  whatsappNumber,
+  isAskPrice,
+}) => {
+  const [galleryIndex, setGalleryIndex] = useState(0);
+  const [thumbOffset, setThumbOffset] = useState(0);
+
+  // Close on ESC
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+    };
+  }, [onClose]);
+
+  const prevImg = useCallback(() => {
+    setGalleryIndex((p) => (p - 1 + images.length) % images.length);
+  }, [images.length]);
+
+  const nextImg = useCallback(() => {
+    setGalleryIndex((p) => (p + 1) % images.length);
+  }, [images.length]);
+
+  const cleanWa = whatsappNumber.replace(/[^0-9]/g, '');
+  const isSafari = service.id === 'srv-dgh-tauchsafari';
+
+  return (
+    <div
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
+      onClick={onClose}
+    >
+      {/* Backdrop */}
+      <div className="absolute inset-0 bg-slate-950/90 backdrop-blur-md" />
+
+      {/* Modal Panel */}
+      <div
+        className="relative z-10 w-full max-w-5xl max-h-[92vh] overflow-y-auto bg-slate-900 border border-slate-700/80 rounded-3xl shadow-2xl shadow-cyan-950/60 flex flex-col lg:flex-row"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 z-30 p-2 rounded-full bg-slate-950/90 border border-slate-700 text-slate-400 hover:text-white hover:border-cyan-500/60 hover:bg-slate-800 transition-all cursor-pointer shadow-lg"
+        >
+          <X className="h-5 w-5" />
+        </button>
+
+        {/* LEFT — Photo Gallery */}
+        <div className="lg:w-1/2 flex-shrink-0 flex flex-col bg-slate-950 rounded-t-3xl lg:rounded-l-3xl lg:rounded-tr-none overflow-hidden">
+          {/* Main Image */}
+          <div className="relative h-72 lg:h-80 bg-slate-800 overflow-hidden group">
+            {images.map((src, i) => (
+              <img
+                key={src + i}
+                src={src}
+                alt={`${localizedTitle} ${i + 1}`}
+                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${i === galleryIndex ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+              />
+            ))}
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent pointer-events-none" />
+
+            {/* Nav arrows */}
+            <button onClick={prevImg} className="absolute left-3 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-slate-950/80 hover:bg-cyan-600 text-white border border-slate-700 transition-all cursor-pointer shadow">
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <button onClick={nextImg} className="absolute right-3 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-slate-950/80 hover:bg-cyan-600 text-white border border-slate-700 transition-all cursor-pointer shadow">
+              <ChevronRight className="h-5 w-5" />
+            </button>
+
+            {/* Counter */}
+            <div className="absolute bottom-3 left-3 z-20 flex items-center space-x-1.5 bg-slate-950/90 backdrop-blur-md px-2.5 py-1 rounded-full border border-cyan-500/40 text-[10px] font-bold text-cyan-300">
+              <Images className="h-3 w-3 text-cyan-400" />
+              <span>{galleryIndex + 1} / {images.length}</span>
+            </div>
+          </div>
+
+          {/* Thumbnails */}
+          <div className="p-3 flex gap-2 overflow-x-auto scrollbar-hide bg-slate-950/70">
+            {images.slice(0, 12).map((src, i) => (
+              <button
+                key={src + i}
+                onClick={() => setGalleryIndex(i)}
+                className={`flex-shrink-0 w-14 h-14 rounded-xl overflow-hidden border-2 transition-all cursor-pointer ${i === galleryIndex ? 'border-cyan-400 scale-105 shadow-lg shadow-cyan-500/30' : 'border-slate-700 hover:border-slate-500 opacity-60 hover:opacity-100'}`}
+              >
+                <img src={src} alt="" className="w-full h-full object-cover" />
+              </button>
+            ))}
+          </div>
+
+          {/* Dot strip */}
+          <div className="pb-3 flex justify-center gap-1">
+            {images.slice(0, 12).map((_, i) => (
+              <button key={i} onClick={() => setGalleryIndex(i)}
+                className={`rounded-full transition-all cursor-pointer ${i === galleryIndex ? 'w-4 h-1.5 bg-cyan-400' : 'w-1.5 h-1.5 bg-slate-600 hover:bg-slate-400'}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* RIGHT — Trip Details */}
+        <div className="flex-1 p-6 lg:p-8 space-y-5 overflow-y-auto">
+          {/* Badge + Title */}
+          <div className="space-y-2">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="px-3 py-1 rounded-full text-[11px] font-extrabold bg-cyan-950 border border-cyan-700 text-cyan-300 capitalize">
+                {service.category.replace('_', ' ')}
+              </span>
+              <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-950 border border-emerald-700/60 text-emerald-300 flex items-center gap-1">
+                <BadgeCheck className="h-3 w-3" /> Owner Verified
+              </span>
+            </div>
+            <h2 className="text-2xl lg:text-3xl font-black text-white leading-tight">
+              {localizedTitle}
+            </h2>
+          </div>
+
+          {/* Price */}
+          <div className="flex items-baseline gap-3 bg-slate-950/60 px-5 py-3 rounded-2xl border border-cyan-500/30">
+            <span className="text-3xl font-black text-cyan-400">
+              {isAskPrice ? 'Ask' : `€${service.priceAdult}`}
+            </span>
+            <span className="text-sm text-slate-400">
+              {isAskPrice ? 'Price on Request' : 'per adult · from'}
+            </span>
+            {service.childPriceLabel && (
+              <span className="ml-auto text-xs text-slate-400">Child: {service.childPriceLabel}</span>
+            )}
+          </div>
+
+          {/* Quick Specs */}
+          <div className="grid grid-cols-2 gap-3 text-xs">
+            <div className="flex items-center gap-2.5 bg-slate-950/50 px-4 py-3 rounded-xl border border-slate-800">
+              <Clock className="h-4 w-4 text-cyan-400 shrink-0" />
+              <div>
+                <div className="text-slate-400 text-[10px] uppercase tracking-wide">Duration</div>
+                <div className="text-white font-bold">{isSafari ? '7 Days' : `${service.durationHours}h`}</div>
+              </div>
+            </div>
+            <div className="flex items-center gap-2.5 bg-slate-950/50 px-4 py-3 rounded-xl border border-slate-800">
+              <Users className="h-4 w-4 text-blue-400 shrink-0" />
+              <div>
+                <div className="text-slate-400 text-[10px] uppercase tracking-wide">Group Size</div>
+                <div className="text-white font-bold">Max {service.maxCapacity}</div>
+              </div>
+            </div>
+            <div className="flex items-center gap-2.5 bg-slate-950/50 px-4 py-3 rounded-xl border border-slate-800">
+              <Anchor className="h-4 w-4 text-violet-400 shrink-0" />
+              <div>
+                <div className="text-slate-400 text-[10px] uppercase tracking-wide">Meeting Point</div>
+                <div className="text-white font-bold text-[11px] leading-tight">{service.meetingPoint}</div>
+              </div>
+            </div>
+            <div className="flex items-center gap-2.5 bg-slate-950/50 px-4 py-3 rounded-xl border border-slate-800">
+              <CalendarDays className="h-4 w-4 text-emerald-400 shrink-0" />
+              <div>
+                <div className="text-slate-400 text-[10px] uppercase tracking-wide">Departures</div>
+                <div className="text-white font-bold text-[11px]">{service.departureTimes?.join(', ')}</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Description */}
+          <div className="space-y-1.5">
+            <h3 className="text-xs font-black uppercase tracking-wider text-cyan-400">About This Trip</h3>
+            <p className="text-sm text-slate-300 leading-relaxed">{localizedDescription}</p>
+          </div>
+
+          {/* Inclusions */}
+          <div className="space-y-2">
+            <h3 className="text-xs font-black uppercase tracking-wider text-emerald-400">What's Included</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+              {localizedInclusions.map((inc, i) => (
+                <div key={i} className="flex items-start gap-2 text-xs text-slate-300">
+                  <Check className="h-3.5 w-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                  <span>{inc}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Exclusions */}
+          {service.exclusions && service.exclusions.length > 0 && (
+            <div className="space-y-2">
+              <h3 className="text-xs font-black uppercase tracking-wider text-rose-400">Not Included</h3>
+              <div className="flex flex-wrap gap-1.5">
+                {service.exclusions.map((ex, i) => (
+                  <span key={i} className="px-2.5 py-1 rounded-lg text-[11px] bg-rose-950/40 border border-rose-800/50 text-rose-300">
+                    ✗ {ex}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Policies */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px]">
+            <div className="flex items-start gap-2 bg-slate-950/50 p-3 rounded-xl border border-slate-800">
+              <Shield className="h-3.5 w-3.5 text-cyan-400 shrink-0 mt-0.5" />
+              <div>
+                <div className="text-cyan-300 font-bold mb-0.5">Cancellation</div>
+                <div className="text-slate-400">{service.cancellationPolicy}</div>
+              </div>
+            </div>
+            <div className="flex items-start gap-2 bg-slate-950/50 p-3 rounded-xl border border-slate-800">
+              <Users className="h-3.5 w-3.5 text-blue-400 shrink-0 mt-0.5" />
+              <div>
+                <div className="text-blue-300 font-bold mb-0.5">Children Policy</div>
+                <div className="text-slate-400">{service.childPolicy}</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Safari Destinations */}
+          {service.destinations && service.destinations.length > 0 && (
+            <div className="space-y-2">
+              <h3 className="text-xs font-black uppercase tracking-wider text-cyan-400 flex items-center gap-1.5">
+                <Compass className="h-3.5 w-3.5" /> Safari Routes
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {service.destinations.map((dest) => (
+                  <span key={dest} className="px-3 py-1.5 rounded-xl text-[11px] font-bold bg-cyan-950/80 border border-cyan-700/60 text-cyan-200 flex items-center gap-1">
+                    <MapPin className="h-2.5 w-2.5 text-cyan-400" /> {dest}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* CTA Buttons */}
+          <div className="flex gap-3 pt-2">
+            <button
+              onClick={() => { onClose(); onOpenBooking(service.id); }}
+              className="flex-1 py-3.5 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white rounded-xl font-bold text-sm shadow-lg shadow-cyan-600/30 hover:scale-[1.02] transition-all flex items-center justify-center gap-2 cursor-pointer"
+            >
+              Book Online <ArrowRight className="h-4 w-4" />
+            </button>
+            <a
+              href={`https://wa.me/${cleanWa}?text=${encodeURIComponent(`Hello DiveGo Hurghada! I am interested in "${localizedTitle}". Please send details.`)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-3.5 bg-[#25D366]/10 hover:bg-[#25D366]/20 border border-[#25D366]/40 hover:border-[#25D366]/70 text-[#25D366] rounded-xl font-bold text-sm transition-all flex items-center gap-2 hover:scale-[1.02]"
+            >
+              <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.65 3.742-.983zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+              WhatsApp
+            </a>
+            <button
+              onClick={() => { onClose(); onOpenAiChat(`Tell me more about ${localizedTitle}`); }}
+              className="p-3.5 bg-slate-800 hover:bg-slate-700 border border-slate-700 hover:border-cyan-500/40 text-cyan-400 rounded-xl transition-all cursor-pointer hover:scale-105"
+              title="Ask AI"
+            >
+              <MessageSquare className="h-5 w-5" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const CardImageSlideshow: React.FC<{
   images: string[];
   alt: string;
@@ -339,6 +682,7 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
 }) => {
   const [activeFilter, setActiveFilter] = useState<string>('all');
   const [copiedServiceId, setCopiedServiceId] = useState<string | null>(null);
+  const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
   const { t, language, getLocalizedService } = useLanguage();
 
   const cleanWhatsappNumber = (state.profile.whatsappNumber || '+2 0103 94 64 284').replace(/[^0-9]/g, '');
@@ -414,11 +758,20 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
     if (service.id === 'srv-dgh-private-padi' || titleLower.includes('padi') || titleLower.includes('private diving')) {
       return padiJpg1;
     }
-    if (service.id === 'srv-dgh-private-speedboat' || titleLower.includes('speedboat') || titleLower.includes('orange bay')) {
+    if (service.id === 'srv-dgh-orange-bay' || (titleLower.includes('orange bay') && !titleLower.includes('speedboat'))) {
+      return orangeBayFeatured;
+    }
+    if (service.id === 'srv-dgh-private-speedboat' || titleLower.includes('speedboat')) {
       return speedJpg1;
     }
-    if (service.id === 'srv-dgh-dolphin-house' || titleLower.includes('dolphin')) {
+    if (service.id === 'srv-dgh-dolphin-house' || titleLower.includes('dolphin house')) {
       return dolphineJpg1;
+    }
+    if (service.id === 'srv-dgh-giftun-island' || titleLower.includes('giftun')) {
+      return dolphineJpg3;
+    }
+    if (service.id === 'srv-dgh-glass-boat' || titleLower.includes('glass')) {
+      return speedJpg4;
     }
     if (service.id === 'srv-dgh-daily-dive' || titleLower.includes('intro') || titleLower.includes('daily')) {
       return dailyJpg1;
@@ -444,6 +797,7 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
   });
 
   return (
+    <>
     <section id="excursions" className="py-24 bg-slate-950 text-white border-t border-slate-900 relative overflow-hidden">
       {/* Ambient background glow */}
       <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-cyan-500/5 blur-[150px] rounded-full pointer-events-none" />
@@ -503,6 +857,9 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
               service.id === 'srv-dgh-private-padi' ||
               service.title.toLowerCase().includes('padi') ||
               service.title.toLowerCase().includes('private diving');
+            const isGiftun = service.id === 'srv-dgh-giftun-island';
+            const isGlassBoat = service.id === 'srv-dgh-glass-boat';
+            const isOrangeBay = service.id === 'srv-dgh-orange-bay';
             const isAskPrice =
               service.id === 'srv-dgh-private-padi' ||
               service.id === 'srv-dgh-tauchsafari' ||
@@ -518,6 +875,20 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
               : service.destinations;
 
             const hasLogos = service.id === 'srv-dgh-private-padi' || service.title.toLowerCase().includes('padi');
+
+            // Build the slideshow images array for this service's detail modal
+            const getSlideshowImages = () => {
+              if (isSafari) return safariSlideshowImages;
+              if (isDesertSafari) return quadSafariSlideshowImages;
+              if (isDolphinHouse) return dolphinHouseSlideshowImages;
+              if (isDailyDive) return dailyDivingSlideshowImages;
+              if (isSpeedboat) return speedboatSlideshowImages;
+              if (isPrivatePadi) return padiCertificationSlideshowImages;
+              if (isGiftun) return giftunIslandSlideshowImages;
+              if (isGlassBoat) return glassBoatSlideshowImages;
+              if (isOrangeBay) return orangeBaySlideshowImages;
+              return [getImageForService(service)];
+            };
 
             return (
               <div
@@ -542,6 +913,12 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
                       alt={loc.title}
                       counterPosition={hasLogos ? 'bottom-left' : 'top-right'}
                     />
+                  ) : isGiftun && giftunIslandSlideshowImages.length > 0 ? (
+                    <CardImageSlideshow images={giftunIslandSlideshowImages} alt={loc.title} />
+                  ) : isGlassBoat && glassBoatSlideshowImages.length > 0 ? (
+                    <CardImageSlideshow images={glassBoatSlideshowImages} alt={loc.title} />
+                  ) : isOrangeBay && orangeBaySlideshowImages.length > 0 ? (
+                    <CardImageSlideshow images={orangeBaySlideshowImages} alt={loc.title} />
                   ) : (
                     <img
                       src={imgSrc}
@@ -551,6 +928,17 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
                     />
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-black/30 group-hover:opacity-80 transition-opacity pointer-events-none" />
+
+                  {/* View Details overlay on hover */}
+                  <button
+                    onClick={() => setSelectedService(service)}
+                    className="absolute inset-0 z-10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer"
+                    aria-label="View trip details"
+                  >
+                    <span className="px-5 py-2.5 bg-cyan-600/90 backdrop-blur-md rounded-2xl text-white text-sm font-bold shadow-xl border border-cyan-400/40 flex items-center gap-2 hover:bg-cyan-500 transition-colors">
+                      <Images className="h-4 w-4" /> View Details & Photos
+                    </span>
+                  </button>
 
                   {/* Category Chip */}
                   <div className="absolute top-4 left-4 rtl:left-auto rtl:right-4 z-20">
@@ -683,6 +1071,15 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
                     >
                       <span>{t.excursions.bookOnline}</span>
                       <ArrowRight className="h-4 w-4 group-hover/btn:translate-x-1 rtl:group-hover/btn:-translate-x-1 transition-transform" />
+                    </button>
+
+                    {/* Details button */}
+                    <button
+                      onClick={() => setSelectedService(service)}
+                      className="p-3 bg-slate-800 hover:bg-cyan-950 text-slate-400 hover:text-cyan-300 border border-slate-700 hover:border-cyan-500/40 rounded-xl transition-all duration-200 cursor-pointer hover:scale-105"
+                      title="View full details & photos"
+                    >
+                      <Images className="h-4 w-4" />
                     </button>
 
                     <button
@@ -830,5 +1227,44 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
         </div>
       </div>
     </section>
+
+    {/* Trip Detail Modal */}
+    {selectedService && (() => {
+      const modalLoc = getLocalizedService(selectedService);
+      const isAskPriceModal =
+        selectedService.id === 'srv-dgh-private-padi' ||
+        selectedService.id === 'srv-dgh-tauchsafari' ||
+        selectedService.adultPriceLabel === 'Ask' ||
+        selectedService.priceAdult === 0;
+
+      const getModalImages = () => {
+        if (selectedService.id === 'srv-dgh-tauchsafari') return safariSlideshowImages;
+        if (selectedService.id === 'srv-dgh-desert-safari') return quadSafariSlideshowImages;
+        if (selectedService.id === 'srv-dgh-dolphin-house') return dolphinHouseSlideshowImages;
+        if (selectedService.id === 'srv-dgh-daily-dive') return dailyDivingSlideshowImages;
+        if (selectedService.id === 'srv-dgh-private-speedboat') return speedboatSlideshowImages;
+        if (selectedService.id === 'srv-dgh-private-padi') return padiCertificationSlideshowImages;
+        if (selectedService.id === 'srv-dgh-giftun-island') return giftunIslandSlideshowImages;
+        if (selectedService.id === 'srv-dgh-glass-boat') return glassBoatSlideshowImages;
+        if (selectedService.id === 'srv-dgh-orange-bay') return orangeBaySlideshowImages;
+        return [getImageForService(selectedService)];
+      };
+
+      return (
+        <TripDetailModal
+          service={selectedService}
+          localizedTitle={modalLoc.title}
+          localizedDescription={modalLoc.description}
+          localizedInclusions={modalLoc.inclusions}
+          images={getModalImages()}
+          onClose={() => setSelectedService(null)}
+          onOpenBooking={onOpenBooking}
+          onOpenAiChat={onOpenAiChat}
+          whatsappNumber={state.profile.whatsappNumber || '+2 0103 94 64 284'}
+          isAskPrice={isAskPriceModal}
+        />
+      );
+    })()}
+  </>
   );
 };

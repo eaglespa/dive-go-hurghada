@@ -337,6 +337,246 @@ export const SERVICES_TRANSLATIONS: Record<string, Record<LanguageCode, ServiceT
       inclusions: ['Snorkeluitrusting (masker, snorkel, vinnen)', 'Zwemvesten voor jong en oud', 'Vers lunchbuffet van de chef & drankjes', 'Bananenboot waterpret', 'Hoteltransfers inbegrepen'],
     },
   },
+  'srv-dgh-giftun-island': {
+    en: {
+      title: 'Giftun Island Big Boat Trip',
+      description:
+        'Full-day luxury big boat excursion to the breathtaking Giftun Island — Hurghada\'s most iconic marine reserve. Snorkel crystal-clear turquoise waters with vibrant coral gardens, enjoy white sandy beaches, a fresh buffet lunch on board, and unlimited soft drinks. Perfect for families and all swimming levels.',
+      inclusions: ['Snorkeling Equipment (Mask, Snorkel, Fins)', 'Life Jackets', 'Chef Buffet Lunch on Board', 'Unlimited Soft Drinks & Water', 'Banana Boat Fun Ride', 'Hotel Transfers'],
+    },
+    de: {
+      title: 'Giftun Insel Großboot-Ausflug',
+      description:
+        'Ganztägiger Luxus-Bootsausflug zur atemberaubenden Giftun Insel — Hurghadas bekanntestes Meeresschutzgebiet. Schnorcheln in kristallklarem türkisfarbenem Wasser mit lebhaften Korallengärten, genießen Sie weiße Sandstrände, ein frisches Mittagsbuffet an Bord und unbegrenzte Softdrinks.',
+      inclusions: ['Schnorchelausrüstung (Maske, Schnorchel, Flossen)', 'Schwimmwesten', 'Mittagsbuffet an Bord', 'Unbegrenzte Getränke & Wasser', 'Banana Boat Spaß', 'Hoteltransfer'],
+    },
+    ru: {
+      title: 'Поездка на большой лодке к острову Гифтун',
+      description:
+        'Однодневная экскурсия на роскошном большом катере к живописному острову Гифтун — самому знаменитому морскому заповеднику Хургады. Снорклинг в кристально чистых бирюзовых водах с яркими коралловыми садами, белые песчаные пляжи, буфет на борту.',
+      inclusions: ['Снаряжение для снорклинга (маска, трубка, ласты)', 'Спасательные жилеты', 'Обед-буфет на борту', 'Безлимитные напитки и вода', 'Банан', 'Трансфер из отеля'],
+    },
+    ar: {
+      title: 'رحلة القارب الكبير لجزيرة جفتون',
+      description:
+        'رحلة يوم كامل على متن قارب كبير فاخر إلى الجزيرة الخلابة جفتون — أشهر محمية بحرية في الغردقة. سنوركلينج في المياه الفيروزية الصافية مع حدائق مرجانية نابضة، شواطئ رملية بيضاء، بوفيه غداء طازج على المتن، ومشروبات لا محدودة.',
+      inclusions: ['معدات سنوركل كاملة', 'سترات نجاة', 'بوفيه غداء على المتن', 'مشروبات ومياه غير محدودة', 'بنانا بوت', 'انتقالات الفندق'],
+    },
+    fr: {
+      title: 'Excursion en grand bateau à l\'île Giftun',
+      description:
+        'Excursion d\'une journée en grand bateau luxueux vers la magnifique île Giftun — la plus célèbre réserve marine d\'Hurghada. Snorkeling dans des eaux turquoise cristallines avec des jardins de coraux, plages de sable blanc, buffet déjeuner frais à bord et boissons à volonté.',
+      inclusions: ['Matériel de snorkeling complet', 'Gilets de sauvetage', 'Buffet déjeuner à bord', 'Boissons & eau à volonté', 'Banane nautique', 'Transferts hôtel inclus'],
+    },
+    pl: {
+      title: 'Wycieczka dużą łodzią na wyspę Giftun',
+      description:
+        'Całodniowa luksusowa wycieczka dużą łodzią na przepiękną wyspę Giftun — najsłynniejszy rezerwat morski Hurghady. Snorkeling w krystalicznie czystych turkusowych wodach z tętniącymi życiem ogrodami koralowymi, białe piaszczyste plaże, świeży bufet obiadowy na pokładzie.',
+      inclusions: ['Sprzęt do snorkelingu (maska, rurka, płetwy)', 'Kamizelki asekuracyjne', 'Bufet obiadowy na pokładzie', 'Napoje i woda bez ograniczeń', 'Banana boat', 'Transfer z hotelu'],
+    },
+    it: {
+      title: 'Gita in Grande Barca all\'Isola di Giftun',
+      description:
+        'Escursione di un giorno intero su un lussuoso grande barca alla meravigliosa Isola di Giftun — la riserva marina più iconica di Hurghada. Snorkeling in acque turchesi cristalline con giardini di coralli vibranti, spiagge di sabbia bianca, pranzo a buffet fresco a bordo e bevande illimitate.',
+      inclusions: ['Attrezzatura snorkeling completa', 'Giubbotti salvagente', 'Pranzo a buffet a bordo', 'Bevande illimitate e acqua', 'Banana boat', 'Transfer hotel incluso'],
+    },
+    cs: {
+      title: 'Výlet velkou lodí na ostrov Giftun',
+      description:
+        'Celodenní luxusní výlet velkou lodí na nádherný ostrov Giftun — nejznámější mořskou rezervaci Hurghady. Šnorchlování v křišťálově čistých tyrkysových vodách s živými korálovými zahradami, bílé písčité pláže, čerstvý obědový bufet na palubě.',
+      inclusions: ['Šnorchlovací výstroj (maska, šnorchl, ploutve)', 'Záchranné vesty', 'Obědový bufet na palubě', 'Neomezené nápoje a voda', 'Banánový člun', 'Transfery z hotelu'],
+    },
+    nl: {
+      title: 'Groot bootje uitstapje naar Giftun Eiland',
+      description:
+        'Dagexcursie op een luxe grote boot naar het prachtige Giftun Eiland — Hurghada\'s meest iconische zeereservaat. Snorkel in kristalhelder turquoise water met levendige koraaltuinen, geniet van witte zandstranden, vers lunchbuffet aan boord en onbeperkt frisdrank.',
+      inclusions: ['Snorkeluitrusting (masker, snorkel, vinnen)', 'Zwemvesten', 'Vers lunchbuffet aan boord', 'Onbeperkt drankjes & water', 'Bananenboot', 'Hoteltransfers inbegrepen'],
+    },
+  },
+  'srv-dgh-glass-boat': {
+    en: {
+      title: 'Glass Bottom Boat & Snorkeling for Non-Swimmers',
+      description:
+        'The perfect sea adventure for non-swimmers, families with young children, and those who prefer to stay dry! Glide over stunning Red Sea coral reefs through our transparent glass-bottom boat, watch colorful fish and corals without getting wet, followed by guided shallow snorkeling for those who wish to try.',
+      inclusions: ['Glass Bottom Boat Tour', 'Snorkeling Gear (Optional)', 'Life Jackets', 'Fresh Fruits & Soft Drinks', 'Hotel Transfers'],
+    },
+    de: {
+      title: 'Glasboden-Boot & Schnorcheln für Nichtschwimmer',
+      description:
+        'Das perfekte Meeresabenteuer für Nichtschwimmer, Familien mit kleinen Kindern und alle, die lieber trocken bleiben! Gleiten Sie über atemberaubende Korallenriffe durch unser transparentes Glasbodenboot und beobachten Sie bunte Fische und Korallen ohne ins Wasser zu gehen.',
+      inclusions: ['Glasbodenboot-Tour', 'Schnorchelausrüstung (optional)', 'Schwimmwesten', 'Frische Früchte & Getränke', 'Hoteltransfer'],
+    },
+    ru: {
+      title: 'Стеклянное дно и снорклинг для не умеющих плавать',
+      description:
+        'Идеальное морское приключение для тех, кто не умеет плавать, семей с маленькими детьми! Прогулка над коралловыми рифами на лодке со стеклянным дном — наблюдайте за рыбами и кораллами, не намокнув, затем — снорклинг на мелководье.',
+      inclusions: ['Тур на лодке со стеклянным дном', 'Снаряжение для снорклинга (по желанию)', 'Спасательные жилеты', 'Фрукты и напитки', 'Трансфер из отеля'],
+    },
+    ar: {
+      title: 'قارب القاع الزجاجي وسنوركلينج لغير السباحين',
+      description:
+        'المغامرة البحرية المثالية لغير السباحين والعائلات مع الأطفال الصغار وكل من يفضل البقاء جافاً! انزلق فوق شعاب البحر الأحمر الرائعة من خلال قارب ذو قاع زجاجي شفاف، شاهد الأسماك الملونة والمرجان دون أن تبلل.',
+      inclusions: ['جولة بالقارب الزجاجي', 'معدات سنوركل (اختياري)', 'سترات نجاة', 'فواكه طازجة ومشروبات', 'انتقالات الفندق'],
+    },
+    fr: {
+      title: 'Bateau à fond de verre & Snorkeling pour non-nageurs',
+      description:
+        'L\'aventure marine parfaite pour les non-nageurs, les familles avec de jeunes enfants et ceux qui préfèrent rester au sec! Glissez sur de superbes récifs coralliens à bord de notre bateau à fond transparent et observez poissons et coraux sans vous mouiller.',
+      inclusions: ['Tour en bateau à fond de verre', 'Matériel de snorkeling (optionnel)', 'Gilets de sauvetage', 'Fruits frais & boissons', 'Transferts hôtel inclus'],
+    },
+    pl: {
+      title: 'Łódź ze szklanym dnem & snorkeling dla nieumiejących pływać',
+      description:
+        'Idealna morska przygoda dla osób nieumiejących pływać, rodzin z małymi dziećmi i tych, którzy wolą pozostać suchymi! Płyń nad wspaniałymi rafami koralowymi przez naszą przezroczystą łódź ze szklanym dnem i obserwuj kolorowe ryby bez moczenia się.',
+      inclusions: ['Rejs łodzią ze szklanym dnem', 'Sprzęt do snorkelingu (opcjonalnie)', 'Kamizelki asekuracyjne', 'Świeże owoce i napoje', 'Transfer z hotelu'],
+    },
+    it: {
+      title: 'Barca con fondo di vetro & Snorkeling per chi non sa nuotare',
+      description:
+        'L\'avventura marina perfetta per chi non sa nuotare, famiglie con bambini piccoli e chi preferisce restare asciutto! Scivolate sulle splendide barriere coralline del Mar Rosso attraverso la nostra barca con fondo trasparente.',
+      inclusions: ['Tour barca con fondo di vetro', 'Attrezzatura snorkeling (opzionale)', 'Giubbotti salvagente', 'Frutta fresca e bibite', 'Transfer hotel incluso'],
+    },
+    cs: {
+      title: 'Loď se skleněným dnem & šnorchlování pro neplavce',
+      description:
+        'Dokonalé mořské dobrodružství pro neplavce, rodiny s malými dětmi a ty, kdo raději zůstanou suchí! Klouzejte nad úchvatnými korálovými útesy v naší průhledné lodi se skleněným dnem a pozorujte barevné ryby bez namočení.',
+      inclusions: ['Prohlídka lodí se skleněným dnem', 'Šnorchlovací výstroj (volitelně)', 'Záchranné vesty', 'Čerstvé ovoce a nápoje', 'Transfery z hotelu'],
+    },
+    nl: {
+      title: 'Glasbodemboot & snorkelen voor niet-zwemmers',
+      description:
+        'Het perfecte zee-avontuur voor niet-zwemmers, gezinnen met jonge kinderen en mensen die droog willen blijven! Glijd over prachtige koraalriffen in onze transparante glasbodemboot en bekijk kleurrijke vissen en koralen zonder nat te worden.',
+      inclusions: ['Glasbodemboottour', 'Snorkeluitrusting (optioneel)', 'Zwemvesten', 'Vers fruit en frisdrank', 'Hoteltransfers inbegrepen'],
+    },
+  },
+  'srv-dgh-orange-bay': {
+    en: {
+      title: 'Orange Bay Island & Snorkeling Sea Trip',
+      description:
+        'Experience the Egyptian Maldives at Orange Bay on Giftun Island! Relax for 2 hours on powdery white sand beaches, wooden sunbeds, overwater swings, and hammock photo spots. Includes 2 guided coral reef snorkeling stops, chef-prepared open buffet lunch on board, unlimited soft drinks, mineral water, fruits, banana boat & sofa water sports rides, and round-trip hotel transfers.',
+      inclusions: [
+        '2 Hours on Orange Bay Island Beach',
+        '2 Guided Coral Reef Snorkeling Stops',
+        'Snorkeling Equipment (Mask, Snorkel, Fins) & Life Jackets',
+        'Chef Buffet Lunch on Yacht',
+        'Unlimited Soft Drinks & Mineral Water',
+        'Banana Boat & Water Sports Fun',
+        'Round-Trip Hotel Transfers',
+      ],
+    },
+    de: {
+      title: 'Orange Bay Insel & Schnorchelausflug (Ägyptische Malediven)',
+      description:
+        'Erleben Sie die Malediven Ägyptens auf Orange Bay (Giftun Insel)! 2 Stunden Aufenthalt am Traumstrand mit Holzschaukeln im seichten Meer und Sonnenliegen. Inklusive 2 Schnorchelstopps an bunten Korallenriffen, Mittagsbuffet an Bord, Softdrinks, Bananaboot und Hoteltransfer.',
+      inclusions: [
+        '2 Stunden Aufenthalt auf Orange Bay',
+        '2 geführte Schnorchelstopps',
+        'Komplette Schnorchelausrüstung & Westen',
+        'Frisches Mittagsbuffet auf der Yacht',
+        'Unbegrenzte Softdrinks & Wasser',
+        'Bananaboot-Wasserspaß',
+        'Hoteltransfers Hin & Zurück',
+      ],
+    },
+    ru: {
+      title: 'Морская прогулка на остров Оранж Бэй и снорклинг',
+      description:
+        'Откройте для себя Египетские Мальдивы на острове Оранж Бэй (остров Гифтун)! 2 часа отдыха на белоснежном пляже с качелями прямо в воде и шезлонгами. Включены 2 остановки на коралловых рифах, горячий обед-буфет на яхте, напитки, катание на банане и трансфер.',
+      inclusions: [
+        '2 часа на острове Orange Bay',
+        '2 остановки для снорклинга на рифах',
+        'Снаряжение для плавания и жилеты',
+        'Обед шведский стол на яхте',
+        'Безалкогольные напитки и вода',
+        'Катание на банане',
+        'Трансфер из отеля и обратно',
+      ],
+    },
+    ar: {
+      title: 'رحلة جزيرة أورانج باي (مالديف مصر) والسنوركلينج',
+      description:
+        'عش تجربة مالديف مصر في جزيرة أورانج باي بمحمية جفتون! ساعتان من الاسترخاء على الرمال البيضاء الناعمة والمراجيح المائية وأماكن التصوير الخلابة. تشمل وقفتين سنوركلينج على أجمل الشعاب المرجانية، بوفيه غداء مفتوح على اليخت، مشروبات وفواكه، وألعاب مائية وانتقالات فندقية.',
+      inclusions: [
+        'ساعتان كاملتان على شاطئ جزيرة أورانج باي',
+        'وقفتان سنوركلينج على الشعاب المرجانية',
+        'معدات سنوركلينج كاملة وسترات نجاة',
+        'بوفيه غداء طازج على اليخت',
+        'مشروبات غازية ومياه معدنية غير محدودة',
+        'ألعاب مائية (بنانا بوت وتيوب)',
+        'توصيل ذهاب وإياب من الفندق',
+      ],
+    },
+    fr: {
+      title: 'Excursion sur l\'île d\'Orange Bay & Snorkeling',
+      description:
+        'Découvrez les Maldives égyptiennes à Orange Bay sur l\'île de Giftun ! 2 heures de détente sur une plage de sable blanc avec balançoires dans l\'eau, 2 arrêts snorkeling sur des récifs coralliens, buffet déjeuner à bord, boissons à volonté, banane nautique et transferts hôtel.',
+      inclusions: [
+        '2 heures sur la plage d\'Orange Bay',
+        '2 arrêts snorkeling guidés',
+        'Équipement complet & gilets de sauvetage',
+        'Déjeuner buffet du chef à bord',
+        'Boissons fraîches & eau minérale',
+        'Jeux nautiques banane',
+        'Transferts hôtel aller-retour',
+      ],
+    },
+    pl: {
+      title: 'Rejs na wyspę Orange Bay i snorkeling',
+      description:
+        'Odkryj egipskie Malediwy na wyspie Orange Bay (wyspa Giftun)! 2 godziny relaksu na białym piasku z huśtawkami w wodzie i leżakami. W cenie 2 postoje na rafach koralowych ze snorkelingiem, obiad w formie bufetu na jachcie, napoje, banan wodny oraz transfer.',
+      inclusions: [
+        '2 godziny na rajskiej plaży Orange Bay',
+        '2 postoje na snorkeling z przewodnikiem',
+        'Sprzęt do snorkelingu i kamizelki',
+        'Obiad w formie bufetu na jachcie',
+        'Nielimitowane napoje i woda',
+        'Przejażdżka bananem wodnym',
+        'Transfery z i do hotelu',
+      ],
+    },
+    it: {
+      title: 'Escursione all\'Isola di Orange Bay & Snorkeling',
+      description:
+        'Scoprite le Maldive d\'Egitto a Orange Bay sull\'Isola di Giftun ! 2 ore di relax sulla spiaggia bianca con altalene sull\'acqua e lettini. Include 2 soste snorkeling sulla barriera corallina, pranzo a buffet a bordo dello yacht, bevande illimitate, banana boat e transfer hotel.',
+      inclusions: [
+        '2 ore sulla spiaggia di Orange Bay',
+        '2 soste snorkeling con guida',
+        'Attrezzatura da snorkeling e giubbotti',
+        'Pranzo a buffet sullo yacht',
+        'Bibite fresche e acqua minerale',
+        'Giro sulla banana boat',
+        'Transfer a/r dal vostro hotel',
+      ],
+    },
+    cs: {
+      title: 'Výlet na ostrov Orange Bay & šnorchlování',
+      description:
+        'Zažijte egyptské Maledivy na ostrově Orange Bay (ostrov Giftun)! 2 hodiny odpočinku na bílém písku s dřevěnými houpačkami ve vodě. Zahrnuje 2 zastávky na šnorchlování u korálových útesů, oběd formou bufetu na lodi, nealko nápoje, jízdu na banánu a transfery.',
+      inclusions: [
+        '2 hodiny na pláži ostrova Orange Bay',
+        '2 šnorchlovací zastávky s průvodcem',
+        'Šnorchlovací výstroj a vesty',
+        'Čerstvý obědový bufet na lodi',
+        'Neomezené nealko nápoje a voda',
+        'Jízda na nafukovacím banánu',
+        'Transfery z/do hotelu',
+      ],
+    },
+    nl: {
+      title: 'Orange Bay Eiland & Snorkeltrip (Egyptische Malediven)',
+      description:
+        'Ervaar de Malediven van Egypte op Orange Bay (Giftun Eiland)! 2 uur ontspannen op een wit zandstrand met houten schommels in het water. Inclusief 2 snorkelstops bij koraalriffen, lunchbuffet op het jacht, frisdrank, bananenboot en hoteltransfer.',
+      inclusions: [
+        '2 uur op het strand van Orange Bay',
+        '2 begeleide snorkelstops',
+        'Snorkeluitrusting & zwemvesten',
+        'Vers lunchbuffet op het jacht',
+        'Onbeperkt frisdrank en mineraalwater',
+        'Bananenboot waterpret',
+        'Retourtransfer vanaf hotel',
+      ],
+    },
+  },
 };
 
 export function getServiceTranslation(serviceId: string, lang: LanguageCode): ServiceTranslation | null {

@@ -13,7 +13,7 @@ import {
   KnowledgeSourceType,
 } from '../types';
 
-const STORAGE_KEY = 'TRAVEL_AI_COMMAND_CENTER_STATE_V5';
+const STORAGE_KEY = 'TRAVEL_AI_COMMAND_CENTER_STATE_V9';
 
 export const KNOWLEDGE_PRECEDENCE: Record<KnowledgeSourceType, number> = {
   OWNER_VERIFIED: 100,
@@ -221,8 +221,11 @@ export class AppStore {
             if (s.id === 'srv-dgh-desert-safari') {
               s.priceAdult = 40;
             }
+            if (s.id === 'srv-dgh-orange-bay') {
+              s.priceAdult = 40;
+            }
             if (s.id === 'srv-dgh-private-speedboat') {
-              s.priceAdult = 180;
+              s.priceAdult = 200;
             }
             if (s.id === 'srv-dgh-private-padi') {
               s.priceAdult = 0;
@@ -237,6 +240,79 @@ export class AppStore {
               s.destinations = ['North', 'South', 'Sharm El Sheikh', 'Dahab'];
             }
           });
+          // Inject new services if they don't exist yet
+          const existingIds = parsed.services.map((s: any) => s.id);
+          if (!existingIds.includes('srv-dgh-giftun-island')) {
+            parsed.services.push({
+              id: 'srv-dgh-giftun-island',
+              title: 'Giftun Island Big Boat Trip',
+              category: 'sea_trip',
+              description: 'Full-day luxury big boat excursion to the breathtaking Giftun Island — Hurghada\'s most iconic marine reserve. Snorkel crystal-clear turquoise waters with vibrant coral gardens, enjoy white sandy beaches, a fresh buffet lunch on board, and unlimited soft drinks.',
+              priceAdult: 35, priceChild: 0, childPriceLabel: '(Ask)', currency: 'EUR (€)', durationHours: 8,
+              departureTimes: ['08:00 AM'], meetingPoint: 'Hotel Lobby pickup',
+              pickupAreasIncluded: ['All Hurghada Hotels', 'El Mamsha', 'Sahl Hasheesh', 'Dahar'],
+              inclusions: ['Snorkeling Equipment (Mask, Snorkel, Fins)', 'Life Jackets', 'Chef Buffet Lunch on Board', 'Unlimited Soft Drinks & Water', 'Banana Boat Fun Ride', 'Hotel Transfers'],
+              exclusions: ['National Park Entry Fee (€5)', 'Alcoholic Drinks'],
+              minParticipants: 2, maxCapacity: 50,
+              cancellationPolicy: 'Free cancellation up to 24 hours prior.',
+              childPolicy: 'Children under 4 free. Ages 4–11 child price applies.',
+              languagesOffered: ['English', 'German', 'Arabic', 'Russian', 'French', 'Polish'],
+              verificationSource: 'OWNER_VERIFIED', updatedAt: new Date().toISOString(), isAvailable: true,
+            });
+          }
+          if (!existingIds.includes('srv-dgh-glass-boat')) {
+            parsed.services.push({
+              id: 'srv-dgh-glass-boat',
+              title: 'Glass Bottom Boat & Snorkeling for Non-Swimmers',
+              category: 'sea_trip',
+              description: 'The perfect sea adventure for non-swimmers, families with young children, and those who prefer to stay dry! Glide over stunning Red Sea coral reefs through our transparent glass-bottom boat.',
+              priceAdult: 25, priceChild: 0, childPriceLabel: '(Ask)', currency: 'EUR (€)', durationHours: 4,
+              departureTimes: ['09:00 AM', '02:00 PM'], meetingPoint: 'Hotel Lobby pickup',
+              pickupAreasIncluded: ['All Hurghada Hotels'],
+              inclusions: ['Glass Bottom Boat Tour', 'Snorkeling Gear (Optional)', 'Life Jackets', 'Fresh Fruits & Soft Drinks', 'Hotel Transfers'],
+              exclusions: ['Lunch (not included on half-day)', 'National Park Fee (€5)'],
+              minParticipants: 2, maxCapacity: 30,
+              cancellationPolicy: 'Free cancellation up to 24 hours prior.',
+              childPolicy: 'All ages welcome. Infants free of charge.',
+              languagesOffered: ['English', 'German', 'Arabic', 'Russian', 'French', 'Polish'],
+              verificationSource: 'OWNER_VERIFIED', updatedAt: new Date().toISOString(), isAvailable: true,
+            });
+          }
+          if (!existingIds.includes('srv-dgh-orange-bay')) {
+            parsed.services.push({
+              id: 'srv-dgh-orange-bay',
+              title: 'Orange Bay Island & Snorkeling Sea Trip',
+              category: 'sea_trip',
+              description:
+                'Spend a dream day on the Egyptian Maldives at Orange Bay on Giftun Island! Relax for 2 hours on pristine white sand beaches with wooden swings and hammocks, enjoy 2 guided snorkeling stops on vibrant coral reefs, an open buffet lunch on board, soft drinks, and fun water sports rides.',
+              priceAdult: 40,
+              priceChild: 0,
+              childPriceLabel: '(Ask)',
+              currency: 'EUR (€)',
+              durationHours: 8,
+              departureTimes: ['08:00 AM'],
+              meetingPoint: 'Hotel Lobby pickup',
+              pickupAreasIncluded: ['All Hurghada Hotels', 'El Mamsha', 'Sahl Hasheesh', 'Dahar', 'Makadi Bay (+€5)'],
+              inclusions: [
+                '2 Hours on Orange Bay Island Beach',
+                '2 Guided Snorkeling Reef Stops',
+                'Snorkeling Equipment (Mask, Snorkel, Fins)',
+                'Chef-Prepared Lunch Buffet on the Yacht',
+                'Unlimited Soft Drinks & Mineral Water',
+                'Banana Boat & Sofa Water Sports Ride',
+                'Round-Trip Hotel Transfers',
+              ],
+              exclusions: ['National Park Nature Reserve Fee (€5)', 'Professional Photo/Video Services'],
+              minParticipants: 2,
+              maxCapacity: 45,
+              cancellationPolicy: 'Free cancellation up to 24 hours prior.',
+              childPolicy: 'Children under 4 free. Ages 4-11 child price applies.',
+              languagesOffered: ['English', 'German', 'Arabic', 'Russian', 'French', 'Polish'],
+              verificationSource: 'OWNER_VERIFIED',
+              updatedAt: new Date().toISOString(),
+              isAvailable: true,
+            });
+          }
           return parsed;
         }
       }
@@ -381,7 +457,7 @@ export class AppStore {
         category: 'sea_trip',
         description:
           'Experience the Red Sea at its finest – fast, exclusive, and full of adventure! Explore the coast of Hurghada aboard our modern speedboat, enjoy wild dolphin encounters in their natural habitat, snorkeling on pristine coral reefs, and private island stops at stunning Orange Bay.',
-        priceAdult: 180,
+        priceAdult: 200,
         priceChild: 0,
         childPriceLabel: '(Ask)',
         currency: 'EUR (€)',
@@ -499,6 +575,89 @@ export class AppStore {
         maxCapacity: 35,
         cancellationPolicy: 'Free cancellation up to 24 hours prior.',
         childPolicy: 'Children under 4 free. Ages 4-11 child price.',
+        languagesOffered: ['English', 'German', 'Arabic', 'Russian', 'French', 'Polish'],
+        verificationSource: 'OWNER_VERIFIED',
+        updatedAt: new Date().toISOString(),
+        isAvailable: true,
+      },
+      {
+        id: 'srv-dgh-giftun-island',
+        title: 'Giftun Island Big Boat Trip',
+        category: 'sea_trip',
+        description:
+          'Full-day luxury big boat excursion to the breathtaking Giftun Island — Hurghada\'s most iconic marine reserve. Snorkel crystal-clear turquoise waters with vibrant coral gardens, enjoy white sandy beaches, a fresh buffet lunch on board, and unlimited soft drinks. Perfect for families and all swimming levels.',
+        priceAdult: 35,
+        priceChild: 0,
+        childPriceLabel: '(Ask)',
+        currency: 'EUR (€)',
+        durationHours: 8,
+        departureTimes: ['08:00 AM'],
+        meetingPoint: 'Hotel Lobby pickup',
+        pickupAreasIncluded: ['All Hurghada Hotels', 'El Mamsha', 'Sahl Hasheesh', 'Dahar'],
+        inclusions: ['Snorkeling Equipment (Mask, Snorkel, Fins)', 'Life Jackets', 'Chef Buffet Lunch on Board', 'Unlimited Soft Drinks & Water', 'Banana Boat Fun Ride', 'Hotel Transfers'],
+        exclusions: ['National Park Entry Fee (€5)', 'Alcoholic Drinks', 'Underwater Photo Package'],
+        minParticipants: 2,
+        maxCapacity: 50,
+        cancellationPolicy: 'Free cancellation up to 24 hours prior.',
+        childPolicy: 'Children under 4 free. Ages 4–11 child price applies.',
+        languagesOffered: ['English', 'German', 'Arabic', 'Russian', 'French', 'Polish'],
+        verificationSource: 'OWNER_VERIFIED',
+        updatedAt: new Date().toISOString(),
+        isAvailable: true,
+      },
+      {
+        id: 'srv-dgh-glass-boat',
+        title: 'Glass Bottom Boat & Snorkeling for Non-Swimmers',
+        category: 'sea_trip',
+        description:
+          'The perfect sea adventure for non-swimmers, families with young children, and those who prefer to stay dry! Glide over stunning Red Sea coral reefs through our transparent glass-bottom boat, watch colorful fish and corals without getting wet, followed by guided shallow snorkeling for those who wish to try.',
+        priceAdult: 25,
+        priceChild: 0,
+        childPriceLabel: '(Ask)',
+        currency: 'EUR (€)',
+        durationHours: 4,
+        departureTimes: ['09:00 AM', '02:00 PM'],
+        meetingPoint: 'Hotel Lobby pickup',
+        pickupAreasIncluded: ['All Hurghada Hotels'],
+        inclusions: ['Glass Bottom Boat Tour', 'Snorkeling Gear (Optional)', 'Life Jackets', 'Fresh Fruits & Soft Drinks', 'Hotel Transfers'],
+        exclusions: ['Lunch (not included on half-day)', 'National Park Fee (€5)'],
+        minParticipants: 2,
+        maxCapacity: 30,
+        cancellationPolicy: 'Free cancellation up to 24 hours prior.',
+        childPolicy: 'All ages welcome. Infants free of charge.',
+        languagesOffered: ['English', 'German', 'Arabic', 'Russian', 'French', 'Polish'],
+        verificationSource: 'OWNER_VERIFIED',
+        updatedAt: new Date().toISOString(),
+        isAvailable: true,
+      },
+      {
+        id: 'srv-dgh-orange-bay',
+        title: 'Orange Bay Island & Snorkeling Sea Trip',
+        category: 'sea_trip',
+        description:
+          'Spend a dream day on the Egyptian Maldives at Orange Bay on Giftun Island! Relax for 2 hours on pristine white sand beaches with wooden swings and hammocks, enjoy 2 guided snorkeling stops on vibrant coral reefs, an open buffet lunch on board, soft drinks, and fun water sports rides.',
+        priceAdult: 40,
+        priceChild: 0,
+        childPriceLabel: '(Ask)',
+        currency: 'EUR (€)',
+        durationHours: 8,
+        departureTimes: ['08:00 AM'],
+        meetingPoint: 'Hotel Lobby pickup',
+        pickupAreasIncluded: ['All Hurghada Hotels', 'El Mamsha', 'Sahl Hasheesh', 'Dahar', 'Makadi Bay (+€5)'],
+        inclusions: [
+          '2 Hours on Orange Bay Island Beach',
+          '2 Guided Snorkeling Reef Stops',
+          'Snorkeling Equipment (Mask, Snorkel, Fins)',
+          'Chef-Prepared Lunch Buffet on the Yacht',
+          'Unlimited Soft Drinks & Mineral Water',
+          'Banana Boat & Sofa Water Sports Ride',
+          'Round-Trip Hotel Transfers',
+        ],
+        exclusions: ['National Park Nature Reserve Fee (€5)', 'Professional Photo/Video Services'],
+        minParticipants: 2,
+        maxCapacity: 45,
+        cancellationPolicy: 'Free cancellation up to 24 hours prior.',
+        childPolicy: 'Children under 4 free. Ages 4-11 child price applies.',
         languagesOffered: ['English', 'German', 'Arabic', 'Russian', 'French', 'Polish'],
         verificationSource: 'OWNER_VERIFIED',
         updatedAt: new Date().toISOString(),
