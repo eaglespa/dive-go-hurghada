@@ -31,11 +31,6 @@ import cmasLogo from '../../assets/CMAS.jpg';
 import bsacLogo from '../../assets/BSAC_Logo_2017.jpeg';
 import defaultHeroImg from '../../assets/images/hero_red_sea_diving_1790535752456.jpg';
 import orangeBayFeatured from '../../assets/images/imported/speedboat_orange_bay.jpg';
-import luxorKarnak from '../../assets/images/imported/luxor_karnak.jpg';
-import luxorHatshepsut from '../../assets/images/imported/luxor_hatshepsut.jpg';
-import luxorTemple from '../../assets/images/imported/luxor_temple.jpg';
-import luxorSunset from '../../assets/images/imported/luxor_sunset.jpg';
-import luxorNile from '../../assets/images/imported/luxor_nile.jpg';
 
 // Import photos for the Hurghada Quad Desert Safari slideshow
 import susaf1 from '../../assets/images/SUSAF (1).avif';
@@ -299,15 +294,6 @@ const orangeBaySlideshowImages: string[] = [
   speedJpg14,
   speedJpg16,
   speedJpg18,
-];
-
-// Luxor Day Trip — Karnak Temple, Valley of the Kings, Hatshepsut & Nile
-const luxorSlideshowImages: string[] = [
-  luxorKarnak,
-  luxorHatshepsut,
-  luxorTemple,
-  luxorSunset,
-  luxorNile,
 ];
 
 // ==========================================
@@ -739,8 +725,6 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
         return t.excursions.filterSeaTrip.replace(/🤿|🌊|🐬|🏜️/g, '').trim();
       case 'desert_safari':
         return t.excursions.filterSafari.replace(/🤿|🌊|🐬|🏜️/g, '').trim();
-      case 'city_tour':
-        return language === 'ar' ? 'معالم وآثار' : language === 'de' ? 'Kulturtour' : language === 'ru' ? 'Экскурсии' : 'Culture & History';
       default:
         return cat.replace('_', ' ').toUpperCase();
     }
@@ -771,9 +755,6 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
 
   const getImageForService = (service: ServiceItem) => {
     const titleLower = service.title.toLowerCase();
-    if (service.id === 'srv-dgh-luxor-vip' || titleLower.includes('luxor')) {
-      return luxorKarnak;
-    }
     if (service.id === 'srv-dgh-private-padi' || titleLower.includes('padi') || titleLower.includes('private diving')) {
       return padiJpg1;
     }
@@ -812,7 +793,6 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
     if (activeFilter === 'diving') return s.category === 'diving';
     if (activeFilter === 'sea_trip') return s.category === 'sea_trip';
     if (activeFilter === 'desert_safari') return s.category === 'desert_safari';
-    if (activeFilter === 'city_tour') return s.category === 'city_tour';
     return true;
   });
 
@@ -838,29 +818,70 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
           </p>
 
           {/* Interactive Filter Control */}
-          <div className="inline-flex p-1.5 bg-slate-900/90 backdrop-blur-md border border-slate-800 rounded-2xl mt-8 gap-1.5 text-xs shadow-xl flex-wrap justify-center">
-            {[
-              { id: 'all', label: t.excursions.filterAll },
-              { id: 'diving', label: t.excursions.filterDiving },
-              { id: 'sea_trip', label: t.excursions.filterSeaTrip },
-              { id: 'desert_safari', label: t.excursions.filterSafari },
-              { id: 'city_tour', label: language === 'ar' ? '🏛️ الأقصر' : language === 'de' ? '🏛️ Luxor & Kultur' : language === 'ru' ? '🏛️ Луксор' : '🏛️ Luxor & History' },
-            ].map((f) => {
-              const isActive = activeFilter === f.id;
-              return (
-                <button
-                  key={f.id}
-                  onClick={() => setActiveFilter(f.id)}
-                  className={`px-4 py-2.5 rounded-xl font-bold transition-all duration-300 cursor-pointer ${
-                    isActive
-                      ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white shadow-lg shadow-cyan-600/40 scale-102'
-                      : 'text-slate-400 hover:text-white hover:bg-slate-800/70'
-                  }`}
-                >
-                  {f.label}
-                </button>
-              );
-            })}
+          <div className="flex justify-center mt-8 px-2 max-w-full">
+            <div className="inline-flex items-center p-1.5 bg-slate-900/95 backdrop-blur-xl border border-slate-800/90 rounded-2xl gap-1 sm:gap-1.5 text-xs shadow-2xl max-w-full overflow-x-auto scrollbar-none">
+              {[
+                {
+                  id: 'all',
+                  label:
+                    language === 'ar'
+                      ? 'جميع الرحلات 🌊'
+                      : language === 'de'
+                      ? 'Alle Ausflüge 🌊'
+                      : language === 'ru'
+                      ? 'Все туры 🌊'
+                      : 'All Trips 🌊',
+                },
+                {
+                  id: 'diving',
+                  label:
+                    language === 'ar'
+                      ? 'غوص وكورسات 🤿'
+                      : language === 'de'
+                      ? 'Tauchen & PADI 🤿'
+                      : language === 'ru'
+                      ? 'Дайвинг 🤿'
+                      : 'Scuba Diving 🤿',
+                },
+                {
+                  id: 'sea_trip',
+                  label:
+                    language === 'ar'
+                      ? 'رحلات بحرية ودلافين 🐬'
+                      : language === 'de'
+                      ? 'Meer & Delfine 🐬'
+                      : language === 'ru'
+                      ? 'Морские прогулки 🐬'
+                      : 'Sea & Dolphins 🐬',
+                },
+                {
+                  id: 'desert_safari',
+                  label:
+                    language === 'ar'
+                      ? 'سفاري صحراوي 🏜️'
+                      : language === 'de'
+                      ? 'Wüstensafari 🏜️'
+                      : language === 'ru'
+                      ? 'Квадро-сафари 🏜️'
+                      : 'Desert Safari 🏜️',
+                },
+              ].map((f) => {
+                const isActive = activeFilter === f.id;
+                return (
+                  <button
+                    key={f.id}
+                    onClick={() => setActiveFilter(f.id)}
+                    className={`px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl font-bold transition-all duration-300 cursor-pointer whitespace-nowrap text-xs flex items-center justify-center shrink-0 ${
+                      isActive
+                        ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white shadow-lg shadow-cyan-600/40 scale-[1.02]'
+                        : 'text-slate-400 hover:text-white hover:bg-slate-800/70'
+                    }`}
+                  >
+                    {f.label}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
 
@@ -881,7 +902,6 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
             const isGiftun = service.id === 'srv-dgh-giftun-island';
             const isGlassBoat = service.id === 'srv-dgh-glass-boat';
             const isOrangeBay = service.id === 'srv-dgh-orange-bay';
-            const isLuxor = service.id === 'srv-dgh-luxor-vip' || service.title.toLowerCase().includes('luxor');
             const isAskPrice =
               service.id === 'srv-dgh-private-padi' ||
               service.id === 'srv-dgh-tauchsafari' ||
@@ -890,8 +910,6 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
 
             const durationDisplay = isSafari
               ? '7 Days'
-              : isLuxor
-              ? '16 Hours (Full Day)'
               : `${(service.id === 'srv-dgh-private-padi' || service.durationHours === 24) ? 8 : service.durationHours} ${t.excursions.hoursDuration}`;
 
             const destinations = isSafari
@@ -911,7 +929,6 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
               if (isGiftun) return giftunIslandSlideshowImages;
               if (isGlassBoat) return glassBoatSlideshowImages;
               if (isOrangeBay) return orangeBaySlideshowImages;
-              if (isLuxor) return luxorSlideshowImages;
               return [getImageForService(service)];
             };
 
@@ -944,8 +961,6 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
                     <CardImageSlideshow images={glassBoatSlideshowImages} alt={loc.title} />
                   ) : isOrangeBay && orangeBaySlideshowImages.length > 0 ? (
                     <CardImageSlideshow images={orangeBaySlideshowImages} alt={loc.title} />
-                  ) : isLuxor && luxorSlideshowImages.length > 0 ? (
-                    <CardImageSlideshow images={luxorSlideshowImages} alt={loc.title} />
                   ) : (
                     <img
                       src={imgSrc}
@@ -1021,7 +1036,7 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
                     <div className="flex items-center space-x-2 rtl:space-x-reverse">
                       <Users className="h-3.5 w-3.5 text-blue-400 shrink-0" />
                       <span className="font-medium">
-                        {isLuxor ? 'VIP Mini Bus (Max 8)' : `${t.excursions.child}: ${service.childPriceLabel || '(Ask)'}`}
+                        {t.excursions.child}: {service.childPriceLabel || '(Ask)'}
                       </span>
                     </div>
                   </div>
@@ -1274,7 +1289,6 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
         if (selectedService.id === 'srv-dgh-giftun-island') return giftunIslandSlideshowImages;
         if (selectedService.id === 'srv-dgh-glass-boat') return glassBoatSlideshowImages;
         if (selectedService.id === 'srv-dgh-orange-bay') return orangeBaySlideshowImages;
-        if (selectedService.id === 'srv-dgh-luxor-vip') return luxorSlideshowImages;
         return [getImageForService(selectedService)];
       };
 

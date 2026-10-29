@@ -13,7 +13,7 @@ import {
   KnowledgeSourceType,
 } from '../types';
 
-const STORAGE_KEY = 'TRAVEL_AI_COMMAND_CENTER_STATE_V10';
+const STORAGE_KEY = 'TRAVEL_AI_COMMAND_CENTER_STATE_V11';
 
 export const KNOWLEDGE_PRECEDENCE: Record<KnowledgeSourceType, number> = {
   OWNER_VERIFIED: 100,
@@ -216,6 +216,7 @@ export class AppStore {
           parsed.profile.yearsExperience = 15;
 
           // Always enforce childPriceLabel: '(Ask)' and updated excursion pricing
+          parsed.services = parsed.services.filter((s: any) => s.id !== 'srv-dgh-luxor-vip');
           parsed.services.forEach((s: any) => {
             s.childPriceLabel = '(Ask)';
             if (s.id === 'srv-dgh-desert-safari') {
@@ -223,10 +224,6 @@ export class AppStore {
             }
             if (s.id === 'srv-dgh-orange-bay') {
               s.priceAdult = 40;
-            }
-            if (s.id === 'srv-dgh-luxor-vip') {
-              s.priceAdult = 90;
-              s.maxCapacity = 8;
             }
             if (s.id === 'srv-dgh-private-speedboat') {
               s.priceAdult = 200;
@@ -311,47 +308,6 @@ export class AppStore {
               maxCapacity: 45,
               cancellationPolicy: 'Free cancellation up to 24 hours prior.',
               childPolicy: 'Children under 4 free. Ages 4-11 child price applies.',
-              languagesOffered: ['English', 'German', 'Arabic', 'Russian', 'French', 'Polish'],
-              verificationSource: 'OWNER_VERIFIED',
-              updatedAt: new Date().toISOString(),
-              isAvailable: true,
-            });
-          }
-          if (!existingIds.includes('srv-dgh-luxor-vip')) {
-            parsed.services.push({
-              id: 'srv-dgh-luxor-vip',
-              title: 'Luxor Day Trip by VIP Mini Bus (Max 8 Persons)',
-              category: 'city_tour',
-              description:
-                'Explore the ancient wonders of Thebes on an exclusive VIP small-group day trip from Hurghada to Luxor by comfortable air-conditioned mini bus (strictly limited to 8 persons). Discover Karnak Temple, Valley of the Kings, Queen Hatshepsut Temple, Colossi of Memnon, and enjoy a traditional Nile boat crossing with a certified Egyptologist guide and lunch on the Nile.',
-              priceAdult: 90,
-              priceChild: 45,
-              childPriceLabel: '€45 / (Ask)',
-              currency: 'EUR (€)',
-              durationHours: 16,
-              departureTimes: ['04:30 AM'],
-              meetingPoint: 'Hotel Lobby pickup',
-              pickupAreasIncluded: ['All Hurghada Hotels', 'El Mamsha', 'Sahl Hasheesh', 'Makadi Bay', 'El Gouna'],
-              inclusions: [
-                'VIP AC Mini Bus Transportation (Max 8 Persons)',
-                'Professional Egyptologist Tour Guide',
-                'All Monument & Temple Entrance Tickets',
-                'Karnak Temple & Valley of the Kings Entry',
-                'Hatshepsut Temple & Colossi of Memnon',
-                'Traditional Lunch Restaurant on the Nile',
-                'Motorboat Nile River Crossing',
-                'Bottled Mineral Water on Board',
-                'Round-Trip Hotel Transfers',
-              ],
-              exclusions: [
-                'Drinks during lunch at restaurant',
-                'King Tutankhamun Tomb special ticket (optional)',
-                'Personal souvenirs and tipping',
-              ],
-              minParticipants: 2,
-              maxCapacity: 8,
-              cancellationPolicy: 'Free cancellation up to 24 hours prior.',
-              childPolicy: 'Children under 5 free. Ages 5–11 child rate €45.',
               languagesOffered: ['English', 'German', 'Arabic', 'Russian', 'French', 'Polish'],
               verificationSource: 'OWNER_VERIFIED',
               updatedAt: new Date().toISOString(),
@@ -703,45 +659,6 @@ export class AppStore {
         maxCapacity: 45,
         cancellationPolicy: 'Free cancellation up to 24 hours prior.',
         childPolicy: 'Children under 4 free. Ages 4-11 child price applies.',
-        languagesOffered: ['English', 'German', 'Arabic', 'Russian', 'French', 'Polish'],
-        verificationSource: 'OWNER_VERIFIED',
-        updatedAt: new Date().toISOString(),
-        isAvailable: true,
-      },
-      {
-        id: 'srv-dgh-luxor-vip',
-        title: 'Luxor Day Trip by VIP Mini Bus (Max 8 Persons)',
-        category: 'city_tour',
-        description:
-          'Explore the ancient wonders of Thebes on an exclusive VIP small-group day trip from Hurghada to Luxor by comfortable air-conditioned mini bus (strictly limited to 8 persons). Discover Karnak Temple, Valley of the Kings, Queen Hatshepsut Temple, Colossi of Memnon, and enjoy a traditional Nile boat crossing with a certified Egyptologist guide and lunch on the Nile.',
-        priceAdult: 90,
-        priceChild: 45,
-        childPriceLabel: '€45 / (Ask)',
-        currency: 'EUR (€)',
-        durationHours: 16,
-        departureTimes: ['04:30 AM'],
-        meetingPoint: 'Hotel Lobby pickup',
-        pickupAreasIncluded: ['All Hurghada Hotels', 'El Mamsha', 'Sahl Hasheesh', 'Makadi Bay', 'El Gouna'],
-        inclusions: [
-          'VIP AC Mini Bus Transportation (Max 8 Persons)',
-          'Professional Egyptologist Tour Guide',
-          'All Monument & Temple Entrance Tickets',
-          'Karnak Temple & Valley of the Kings Entry',
-          'Hatshepsut Temple & Colossi of Memnon',
-          'Traditional Lunch Restaurant on the Nile',
-          'Motorboat Nile River Crossing',
-          'Bottled Mineral Water on Board',
-          'Round-Trip Hotel Transfers',
-        ],
-        exclusions: [
-          'Drinks during lunch at restaurant',
-          'King Tutankhamun Tomb special ticket (optional)',
-          'Personal souvenirs and tipping',
-        ],
-        minParticipants: 2,
-        maxCapacity: 8,
-        cancellationPolicy: 'Free cancellation up to 24 hours prior.',
-        childPolicy: 'Children under 5 free. Ages 5–11 child rate €45.',
         languagesOffered: ['English', 'German', 'Arabic', 'Russian', 'French', 'Polish'],
         verificationSource: 'OWNER_VERIFIED',
         updatedAt: new Date().toISOString(),
