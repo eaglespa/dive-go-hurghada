@@ -225,62 +225,6 @@ export const SERVICES_TRANSLATIONS: Record<string, Record<LanguageCode, ServiceT
       inclusions: ['7 Dagen / 6 nachten op luxe liveaboard', 'Tot 3-4 duiken per dag & nachtduiken', 'Flessen en lood inbegrepen', 'Volpension buffet & drankjes', 'Hoteltransfers inbegrepen'],
     },
   },
-  'srv-dgh-desert-safari': {
-    en: {
-      title: 'Hurghada Quad Desert Safari & Bedouin Adventure',
-      description:
-        'Ride your own ATV quad bike through the breathtaking desert landscapes of Hurghada. Guided by certified instructors with full safety gear, Bedouin village cultural tour, herbal tea, camel riding, and a barbecue dinner under starlit skies.',
-      inclusions: ['Quad Bike ATV Ride (approx. 45km)', 'Spider Buggy & Camel Ride', 'Bedouin Village Tour & Tea', 'BBQ Dinner & Oriental Show', 'Hotel Transfers'],
-    },
-    de: {
-      title: 'Quad-Safari in Hurghada – Abenteuer in der Wüste',
-      description:
-        'Fahrt mit dem Quad durch die faszinierende Wüstenlandschaft Hurghadas. Begleitung durch qualifiziertes Personal, gründliche Sicherheitseinweisung, Beduinendorf, traditioneller Beduinentee, Kamelreiten und BBQ unter dem Sternenhimmel.',
-      inclusions: ['Quad-Fahrt (ca. 45 km)', 'Spider-Buggy & Kamelreiten', 'Beduinendorf & traditioneller Tee', 'BBQ-Abendessen & Show', 'Hoteltransfer Hin- & Rückfahrt'],
-    },
-    ru: {
-      title: 'Сафари на квадроциклах в Хургаде и бедуинская деревня',
-      description:
-        'Гонка на мощных квадроциклах по песчаным каньонам египетской пустыни. Сопровождение опытных инструкторов, катание на багги и верблюдах, посещение аутентичной деревни бедуинов, бедуинский чай и барбекю-ужин под звездами.',
-      inclusions: ['Заезд на квадроциклах (около 45 км)', 'Катание на спайдер-багги и верблюдах', 'Бедуинская деревня и травяной чай', 'Ужин-барбекю и восточное шоу', 'Трансфер из отеля'],
-    },
-    ar: {
-      title: 'سفاري البيتش باجي في صحراء الغردقة وسهرة بدوية',
-      description:
-        'قيادة ممتعة للموتوسيكلات الصحراوية (البيتش باجي) بين جبال ووديان صحراء الغردقة الساحرة بصحبة مرشدين محترفين. تشمل زيارة قرية بدوية، شاي الأعشاب البدوي، ركوب الجمال، عشاء باربكيو مشوي وعروضاً شرقية.',
-      inclusions: ['جولة بيتش باجي رباعي (حوالي 45 كم)', 'سبايدر باجي وركوب الجمال', 'زيارة القرية البدوية والشاي البدوي', 'عشاء مشويات وحفل فلكلوري', 'انتقالات الفندق ذهاباً وعودة'],
-    },
-    fr: {
-      title: 'Safari Quad dans le Désert de Hurghada & Soirée Bédouine',
-      description:
-        'Pilotez votre propre quad à travers les paysages désertiques de Hurghada. Encadrement professionnel, visite d’un village bédouin traditionnel, dégustation de thé, balade à dos de chameau et dîner barbecue sous les étoiles.',
-      inclusions: ['Circuit en quad (environ 45 km)', 'Buggy spider & balade en chameau', 'Village bédouin & thé traditionnel', 'Dîner barbecue & spectacle oriental', 'Transferts hôtel inclus'],
-    },
-    pl: {
-      title: 'Safari na quadach w Hurghadzie i wioska beduińska',
-      description:
-        'Przejażdżka quadem przez malownicze pustynne krajobrazy Hurghady. Opieka instruktorów, jazda buggy i na wielbłądach, wizyta w tradycyjnej wiosce beduińskiej, herbata ziołowa oraz kolacja z grilla pod gwiazdami.',
-      inclusions: ['Jazda na quadzie (ok. 45 km)', 'Spider buggy i jazda na wielbłądzie', 'Zwiedzanie wioski beduińskiej i herbata', 'Kolacja BBQ i pokaz orientalny', 'Transfer z hotelu'],
-    },
-    it: {
-      title: 'Safari in Quad nel Deserto di Hurghada e Villaggio Beduino',
-      description:
-        'Guidate il vostro quad attraverso i suggestivi paesaggi desertici di Hurghada. Istruttori certificati, sosta in un autentico villaggio beduino, tè tradizionale, giro sul cammello e cena barbecue sotto le stelle.',
-      inclusions: ['Guida su quad ATV (circa 45 km)', 'Spider buggy e cavalcata su cammello', 'Visita villaggio beduino e tè', 'Cena barbecue e spettacolo serale', 'Transfer da/per hotel'],
-    },
-    cs: {
-      title: 'Safari na čtyřkolkách v poušti Hurghady a beduínská vesnice',
-      description:
-        'Jízda na čtyřkolkách úchvatnou pouštní krajinou Hurghady pod dohledem instruktorů. Zahrnuje jízdu buginou, svezení na velbloudu, návštěvu beduínské vesnice s tradičním čajem a grilovanou večeři pod hvězdami.',
-      inclusions: ['Jízda na čtyřkolce (cca 45 km)', 'Spider bugina a jízda na velbloudu', 'Beduínská vesnice a čaj', 'Grilovaná večeře a orientální show', 'Transfery z hotelu'],
-    },
-    nl: {
-      title: 'Quadsafari in de woestijn van Hurghada & Bedoeïenendorp',
-      description:
-        'Rijd op je eigen quad door de adembenemende woestijn van Hurghada. Begeleid door gecertificeerde instructeurs, bezoek aan een bedoeïenendorp, kameelrijden, kruidenthee en een barbecuediner onder de sterrenhemel.',
-      inclusions: ['Quadrit (ong. 45 km)', 'Spider buggy & kameelrit', 'Bedoeïenendorp & traditionele thee', 'BBQ-diner & oosterse show', 'Hoteltransfers inbegrepen'],
-    },
-  },
   'srv-dgh-dolphin-house': {
     en: {
       title: 'Dolphin House Snorkeling Safari (Shaab El Erg)',

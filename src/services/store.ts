@@ -13,7 +13,7 @@ import {
   KnowledgeSourceType,
 } from '../types';
 
-const STORAGE_KEY = 'TRAVEL_AI_COMMAND_CENTER_STATE_V11';
+const STORAGE_KEY = 'TRAVEL_AI_COMMAND_CENTER_STATE_V12';
 
 export const KNOWLEDGE_PRECEDENCE: Record<KnowledgeSourceType, number> = {
   OWNER_VERIFIED: 100,
@@ -216,12 +216,9 @@ export class AppStore {
           parsed.profile.yearsExperience = 15;
 
           // Always enforce childPriceLabel: '(Ask)' and updated excursion pricing
-          parsed.services = parsed.services.filter((s: any) => s.id !== 'srv-dgh-luxor-vip');
+          parsed.services = parsed.services.filter((s: any) => s.id !== 'srv-dgh-luxor-vip' && s.id !== 'srv-dgh-desert-safari');
           parsed.services.forEach((s: any) => {
             s.childPriceLabel = '(Ask)';
-            if (s.id === 'srv-dgh-desert-safari') {
-              s.priceAdult = 40;
-            }
             if (s.id === 'srv-dgh-orange-bay') {
               s.priceAdult = 40;
             }
@@ -532,31 +529,6 @@ export class AppStore {
         isAvailable: true,
       },
       {
-        id: 'srv-dgh-desert-safari',
-        title: 'Hurghada Quad Desert Safari & Bedouin Adventure',
-        category: 'desert_safari',
-        description:
-          'Ride your own ATV quad bike through the breathtaking desert landscapes of Hurghada. Guided by certified instructors with full safety gear, Bedouin village cultural tour, herbal tea, camel riding, and a barbecue dinner under starlit skies.',
-        priceAdult: 40,
-        priceChild: 0,
-        childPriceLabel: '(Ask)',
-        currency: 'EUR (€)',
-        durationHours: 5,
-        departureTimes: ['01:30 PM', '08:00 AM'],
-        meetingPoint: 'Hotel Lobby pickup',
-        pickupAreasIncluded: ['All Hurghada Hotels'],
-        inclusions: ['Quad Bike ATV Ride (approx. 45km)', 'Spider Buggy & Camel Ride', 'Bedouin Village Tour & Tea', 'BBQ Dinner & Oriental Show', 'Hotel Transfers'],
-        exclusions: ['Arafat Scarf & Dust Goggles (€5 purchase)', 'Tipping'],
-        minParticipants: 1,
-        maxCapacity: 40,
-        cancellationPolicy: 'Free cancellation up to 12 hours prior.',
-        childPolicy: 'Drivers min 16 years. Children ride tandem with parent.',
-        languagesOffered: ['English', 'German', 'Arabic', 'Russian', 'French', 'Polish'],
-        verificationSource: 'OWNER_VERIFIED',
-        updatedAt: new Date().toISOString(),
-        isAvailable: true,
-      },
-      {
         id: 'srv-dgh-dolphin-house',
         title: 'Dolphin House Snorkeling Safari (Shaab El Erg)',
         category: 'sea_trip',
@@ -772,9 +744,9 @@ export class AppStore {
     this.state.gaps = [
       {
         id: 'gap-1',
-        question: 'Can a 4-year-old child join the Super Desert Safari quad biking on the same quad bike?',
-        category: 'Child Policy / Desert Safari',
-        serviceId: 'srv-dgh-desert-safari',
+        question: 'Can non-swimmers participate in the Dolphin House Snorkeling trip?',
+        category: 'Child Policy / Snorkeling',
+        serviceId: 'srv-dgh-dolphin-house',
         customerLanguage: 'English',
         frequency: 3,
         status: 'PENDING_OWNER_ANSWER',

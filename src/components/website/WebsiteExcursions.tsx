@@ -32,35 +32,6 @@ import bsacLogo from '../../assets/BSAC_Logo_2017.jpeg';
 import defaultHeroImg from '../../assets/images/hero_red_sea_diving_1790535752456.jpg';
 import orangeBayFeatured from '../../assets/images/imported/speedboat_orange_bay.jpg';
 
-// Import photos for the Hurghada Quad Desert Safari slideshow
-import susaf1 from '../../assets/images/SUSAF (1).avif';
-import susaf2 from '../../assets/images/SUSAF (1).jpeg';
-import susaf3 from '../../assets/images/SUSAF (1).jpg';
-import susaf4 from '../../assets/images/SUSAF (1).webp';
-import susaf5 from '../../assets/images/SUSAF (2).jpg';
-import susaf6 from '../../assets/images/SUSAF (2).webp';
-import susaf7 from '../../assets/images/SUSAF (3).jpg';
-import susaf8 from '../../assets/images/SUSAF (4).jpg';
-import susaf9 from '../../assets/images/SUSAF (5).jpg';
-import susaf10 from '../../assets/images/SUSAF (6).jpg';
-import susaf11 from '../../assets/images/SUSAF (7).jpg';
-import susaf12 from '../../assets/images/SUSAF (8).jpg';
-
-const quadSafariSlideshowImages: string[] = [
-  susaf1,
-  susaf2,
-  susaf3,
-  susaf4,
-  susaf5,
-  susaf6,
-  susaf7,
-  susaf8,
-  susaf9,
-  susaf10,
-  susaf11,
-  susaf12,
-];
-
 // Import photos for Dolphin House Snorkeling Safari slideshow
 import dolphineJpg1 from '../../assets/images/DOLPHINE (1).jpg';
 import dolphineWebp1 from '../../assets/images/DOLPHINE (1).webp';
@@ -776,9 +747,6 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
     if (service.id === 'srv-dgh-daily-dive' || titleLower.includes('intro') || titleLower.includes('daily')) {
       return dailyJpg1;
     }
-    if (service.id === 'srv-dgh-desert-safari' || service.category === 'desert_safari' || titleLower.includes('quad')) {
-      return susaf3;
-    }
     if (service.category === 'sea_trip') {
       return dolphineJpg1;
     }
@@ -792,7 +760,6 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
     if (activeFilter === 'all') return true;
     if (activeFilter === 'diving') return s.category === 'diving';
     if (activeFilter === 'sea_trip') return s.category === 'sea_trip';
-    if (activeFilter === 'desert_safari') return s.category === 'desert_safari';
     return true;
   });
 
@@ -854,17 +821,6 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
                       ? 'Морские прогулки 🐬'
                       : 'Sea & Dolphins 🐬',
                 },
-                {
-                  id: 'desert_safari',
-                  label:
-                    language === 'ar'
-                      ? 'سفاري صحراوي 🏜️'
-                      : language === 'de'
-                      ? 'Wüstensafari 🏜️'
-                      : language === 'ru'
-                      ? 'Квадро-сафари 🏜️'
-                      : 'Desert Safari 🏜️',
-                },
               ].map((f) => {
                 const isActive = activeFilter === f.id;
                 return (
@@ -891,7 +847,6 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
             const loc = getLocalizedService(service);
             const imgSrc = getImageForService(service);
             const isSafari = service.id === 'srv-dgh-tauchsafari';
-            const isDesertSafari = service.id === 'srv-dgh-desert-safari';
             const isDolphinHouse = service.id === 'srv-dgh-dolphin-house';
             const isDailyDive = service.id === 'srv-dgh-daily-dive';
             const isSpeedboat = service.id === 'srv-dgh-private-speedboat';
@@ -921,7 +876,6 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
             // Build the slideshow images array for this service's detail modal
             const getSlideshowImages = () => {
               if (isSafari) return safariSlideshowImages;
-              if (isDesertSafari) return quadSafariSlideshowImages;
               if (isDolphinHouse) return dolphinHouseSlideshowImages;
               if (isDailyDive) return dailyDivingSlideshowImages;
               if (isSpeedboat) return speedboatSlideshowImages;
@@ -941,8 +895,6 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
                 <div className="relative h-60 w-full overflow-hidden bg-slate-800">
                   {isSafari && safariSlideshowImages.length > 0 ? (
                     <CardImageSlideshow images={safariSlideshowImages} alt={loc.title} />
-                  ) : isDesertSafari && quadSafariSlideshowImages.length > 0 ? (
-                    <CardImageSlideshow images={quadSafariSlideshowImages} alt={loc.title} />
                   ) : isDolphinHouse && dolphinHouseSlideshowImages.length > 0 ? (
                     <CardImageSlideshow images={dolphinHouseSlideshowImages} alt={loc.title} />
                   ) : isDailyDive && dailyDivingSlideshowImages.length > 0 ? (
@@ -1281,7 +1233,6 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
 
       const getModalImages = () => {
         if (selectedService.id === 'srv-dgh-tauchsafari') return safariSlideshowImages;
-        if (selectedService.id === 'srv-dgh-desert-safari') return quadSafariSlideshowImages;
         if (selectedService.id === 'srv-dgh-dolphin-house') return dolphinHouseSlideshowImages;
         if (selectedService.id === 'srv-dgh-daily-dive') return dailyDivingSlideshowImages;
         if (selectedService.id === 'srv-dgh-private-speedboat') return speedboatSlideshowImages;
