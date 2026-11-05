@@ -15,7 +15,7 @@ export const SocialMediaBar: React.FC<SocialMediaBarProps> = ({
   const socialLinks = [
     {
       name: 'Facebook',
-      url: 'https://www.facebook.com/people/DiveGo-Hurghada/61593699815956/',
+      url: 'https://www.facebook.com/profile.php?id=61595036095389',
       ariaLabel: 'Dive Go Hurghada Facebook Page',
       hoverColor: 'hover:text-[#1877F2] hover:border-[#1877F2]/50 hover:bg-[#1877F2]/10',
       icon: (sizeClass: string) => (
@@ -26,7 +26,7 @@ export const SocialMediaBar: React.FC<SocialMediaBarProps> = ({
     },
     {
       name: 'Instagram',
-      url: 'https://www.instagram.com/dive_go.hurghada',
+      url: 'https://www.instagram.com/divegohurghada',
       ariaLabel: 'Dive Go Hurghada Instagram Profile',
       hoverColor: 'hover:text-pink-500 hover:border-pink-500/50 hover:bg-pink-500/10',
       icon: (sizeClass: string) => (
@@ -37,7 +37,7 @@ export const SocialMediaBar: React.FC<SocialMediaBarProps> = ({
     },
     {
       name: 'TikTok',
-      url: 'https://www.tiktok.com/@dive_go_hurghada',
+      url: 'https://www.tiktok.com/@dive.go.hurghada',
       ariaLabel: 'Dive Go Hurghada TikTok',
       hoverColor: 'hover:text-cyan-400 hover:border-cyan-400/50 hover:bg-cyan-400/10',
       icon: (sizeClass: string) => (

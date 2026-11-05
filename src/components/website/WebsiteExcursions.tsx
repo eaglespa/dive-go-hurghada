@@ -700,9 +700,9 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
   const { t, language, getLocalizedService } = useLanguage();
 
   const cleanWhatsappNumber = (state.profile.whatsappNumber || '+2 0103 94 64 284').replace(/[^0-9]/g, '');
-  const facebookUrl = state.profile.facebookUrl || 'https://www.facebook.com/people/DiveGo-Hurghada/61593699815956/';
-  const instagramUrl = state.profile.instagramUrl || 'https://www.instagram.com/dive_go.hurghada';
-  const tiktokUrl = state.profile.tiktokUrl || 'https://www.tiktok.com/@dive_go_hurghada';
+  const facebookUrl = state.profile.facebookUrl || 'https://www.facebook.com/profile.php?id=61595036095389';
+  const instagramUrl = state.profile.instagramUrl || 'https://www.instagram.com/divegohurghada';
+  const tiktokUrl = state.profile.tiktokUrl || 'https://www.tiktok.com/@dive.go.hurghada';
   const emailAddress = state.profile.email || 'divegohurghada@gmail.com';
 
   const handleShareTrip = async (service: ServiceItem, title: string) => {

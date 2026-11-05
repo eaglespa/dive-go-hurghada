@@ -88,9 +88,9 @@ export const DIVE_GO_HURGHADA_PROFILE: BusinessProfile = {
   whatsappNumber: '+2 0103 94 64 284',
   ownerAlertWhatsapp: '+2 0103 94 64 284',
   location: 'Saqala Square، Hurghada First, Red Sea Governorate 84511',
-  facebookUrl: 'https://www.facebook.com/people/DiveGo-Hurghada/61593699815956/',
-  instagramUrl: 'https://www.instagram.com/dive_go.hurghada',
-  tiktokUrl: 'https://www.tiktok.com/@dive_go_hurghada',
+  facebookUrl: 'https://www.facebook.com/profile.php?id=61595036095389',
+  instagramUrl: 'https://www.instagram.com/divegohurghada',
+  tiktokUrl: 'https://www.tiktok.com/@dive.go.hurghada',
   destinations: ['Giftun Island', 'Abu Ramada', 'Dolphin House', 'Shaab El Erg', 'Umm Gamar', 'Abu Nuhas Wrecks'],
   yearsExperience: 14,
   story:
@@ -210,9 +210,9 @@ export class AppStore {
           parsed.profile.ownerAlertWhatsapp = '+2 0103 94 64 284';
           parsed.profile.email = 'divegohurghada@gmail.com';
           parsed.profile.location = 'Saqala Square، Hurghada First, Red Sea Governorate 84511';
-          parsed.profile.facebookUrl = 'https://www.facebook.com/people/DiveGo-Hurghada/61593699815956/';
-          parsed.profile.instagramUrl = 'https://www.instagram.com/dive_go.hurghada';
-          parsed.profile.tiktokUrl = 'https://www.tiktok.com/@dive_go_hurghada';
+          parsed.profile.facebookUrl = 'https://www.facebook.com/profile.php?id=61595036095389';
+          parsed.profile.instagramUrl = 'https://www.instagram.com/divegohurghada';
+          parsed.profile.tiktokUrl = 'https://www.tiktok.com/@dive.go.hurghada';
           parsed.profile.yearsExperience = 15;
 
           // Always enforce childPriceLabel: '(Ask)' and updated excursion pricing
