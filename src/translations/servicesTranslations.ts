@@ -521,6 +521,289 @@ export const SERVICES_TRANSLATIONS: Record<string, Record<LanguageCode, ServiceT
       ],
     },
   },
+  'srv-dgh-luxor-vip': {
+    en: {
+      title: 'Luxor Day Trip by VIP Mini Bus (Max 8 Persons)',
+      description:
+        'Experience the magic of ancient Egypt on an exclusive VIP small-group day trip to Luxor with max 8 persons. Travel comfortably in a modern A/C mini bus with a certified Egyptologist guide. Explore Karnak Temple, Valley of the Kings (3 royal tombs), Temple of Hatshepsut, Colossi of Memnon, sail the Nile by boat, and enjoy an authentic buffet lunch on the riverbank.',
+      inclusions: [
+        'VIP A/C Mini Bus (Max 8 Guests)',
+        'Certified Egyptologist Guide',
+        'Karnak Temple Entrance & Tour',
+        'Valley of the Kings (3 Royal Tombs)',
+        'Mortuary Temple of Hatshepsut',
+        'Colossi of Memnon Photo Stop',
+        'Traditional Nile River Boat Crossing',
+        'Fresh Lunch Buffet on the Nile',
+        'Hotel Pickup & Drop-off Included',
+      ],
+    },
+    de: {
+      title: 'Luxor Tagesausflug im VIP Mini-Bus (Max. 8 Personen)',
+      description:
+        'Erleben Sie das antike Theben auf einer exklusiven VIP-Kleingruppentour nach Luxor mit maximal 8 Gästen. Komfortable Fahrt im modernen klimatisierten Kleinbus mit lizenziertem Ägyptologen. Entdecken Sie den Karnak-Tempel, das Tal der Könige (3 Gräber), den Hatschepsut-Tempel, die Memnonkolosse, Nil-Bootsfahrt und Mittagsbuffet am Nil.',
+      inclusions: [
+        'VIP-Kleinbus mit Klimaanlage (Max. 8 Gäste)',
+        'Lizenzierter deutschsprachiger Ägyptologe',
+        'Eintritt & Führung Karnak-Tempel',
+        'Tal der Könige (3 Königsgräber)',
+        'Terrassentempel der Königin Hatschepsut',
+        'Fotostopp an den Memnonkolossen',
+        'Traditionelle Bootsfahrt auf dem Nil',
+        'Frisches Mittagsbuffet im Nil-Restaurant',
+        'Hin- und Rücktransfer ab Hurghada Hotel',
+      ],
+    },
+    ru: {
+      title: 'Экскурсия в Луксор на VIP микроавтобусе (Макс. 8 человек)',
+      description:
+        'Эксклюзивная VIP экскурсия в Луксор в мини-группе до 8 человек! Комфортабельный трансфер на современном микроавтобусе с кондиционером и русскоязычным гидом-египтологом. Карнакский храм, Долина Царей (3 гробницы), храм царицы Хатшепсут, Колоссы Мемнона, прогулка по Нилу на лодке и обед в ресторане на берегу реки.',
+      inclusions: [
+        'VIP микроавтобус с кондиционером (до 8 чел.)',
+        'Лицензированный гид-египтолог',
+        'Входные билеты в Карнакский храм',
+        'Долина Царей (3 царские гробницы)',
+        'Заупокойный храм царицы Хатшепсут',
+        'Остановка у Колоссов Мемнона',
+        'Прогулка на традиционной лодке по Нилу',
+        'Обед шведский стол с видом на Нил',
+        'Трансфер из отеля Хургады и обратно',
+      ],
+    },
+    ar: {
+      title: 'رحلة الأقصر بالباص الصغير VIP (حد أقصى 8 أفراد)',
+      description:
+        'رحلة يوم كامل فاخرة إلى مدينة الأقصر الساحرة بميني باص سياحي حديث ومكيف لمجموعة VIP لا تتجاوز 8 أفراد مع مرشد سياحي متخصص في علم المصريات. زيارة معبد الكرنك العظيم، وادي الملوك ومقابر الفراعنة، معبد حتشبسوت، تمثالي ممنون، جولة نيلية بالفلوكة، وبوفيه غداء فاخر على ضفاف النيل مع التوصيل من الفندق.',
+      inclusions: [
+        'انتقالات بميني باص سياحي حديث مكيف (VIP حد أقصى 8)',
+        'مرشد سياحي مرخص متخصص في الآثار الفرعونية',
+        'تذاكر ودخول مجمع معابد الكرنك',
+        'دخول وادي الملوك (3 مقابر ملكية)',
+        'زيارة معبد الملكة حتشبسوت بالدير البحري',
+        'وقفة تصوير عند تمثالي ممنون العملاقين',
+        'جولة شراعية بالقارب في نهر النيل',
+        'بوفيه غداء شهي في مطعم مطل على النيل',
+        'توصيل ذهاب وعودة من باب الفندق',
+      ],
+    },
+    fr: {
+      title: 'Excursion d\'une journée à Louxor en Minibus VIP (Max 8 Personnes)',
+      description:
+        'Découvrez la magie de l\'Égypte antique lors d\'une excursion VIP en petit groupe à Louxor (max 8 personnes). Voyagez confortablement en minibus climatisé avec guide égyptologue agréé. Visitez le temple de Karnak, la Vallée des Rois (3 tombes), le temple d\'Hatchepsout, les Colosses de Memnon, croisière sur le Nil et déjeuner buffet au bord du fleuve.',
+      inclusions: [
+        'Minibus VIP climatisé (Max 8 participants)',
+        'Guide égyptologue agréé francophone',
+        'Entrée et visite guidée du temple de Karnak',
+        'Vallée des Rois (3 tombes royales incluses)',
+        'Temple funéraire d\'Hatchepsout',
+        'Arrêt photo aux Colosses de Memnon',
+        'Traversée traditionnelle du Nil en felouque',
+        'Déjeuner buffet dans un restaurant sur le Nil',
+        'Transfert aller-retour depuis votre hôtel',
+      ],
+    },
+    it: {
+      title: 'Tour di Luxor in Minibus VIP (Max 8 Persone)',
+      description:
+        'Esplora le meraviglie dell\'antico Egitto con un tour VIP per piccoli gruppi a Luxor (max 8 persone). Viaggio in comodo minibus con aria condizionata e guida egittologa certificata. Tempio di Karnak, Valle dei Re (3 tombe reali), Tempio di Hatshepsut, Colossi di Memnone, giro in barca sul Nilo e pranzo a buffet sul fiume.',
+      inclusions: [
+        'Minibus VIP con aria condizionata (Max 8 persone)',
+        'Guida egittologa certificata',
+        'Ingresso e tour del Tempio di Karnak',
+        'Valle dei Re (3 tombe reali incluse)',
+        'Tempio funerario di Hatshepsut',
+        'Sosta fotografica ai Colossi di Memnone',
+        'Gita tradizionale in barca sul Nilo',
+        'Pranzo a buffet in ristorante sul Nilo',
+        'Trasferimento andata e ritorno dall\'hotel',
+      ],
+    },
+    pl: {
+      title: 'Jednodniowa wycieczka do Luksoru minibusem VIP (Maks. 8 osób)',
+      description:
+        'Ekskluzywna wycieczka w małej grupie do Luksoru z maksymalnie 8 osobami. Podróżuj nowoczesnym klimatyzowanym minibusem z licencjonowanym przewodnikiem egiptologiem. Odwiedź świątynię w Karnaku, Dolinę Królów (3 grobowce), świątynię Hatszepsut, Kolosy Memnona, rejs po Nilu i obiad w restauracji nad brzegiem Nilu.',
+      inclusions: [
+        'Minibus VIP z klimatyzacją (Maks. 8 osób)',
+        'Licencjonowany przewodnik egiptolog',
+        'Wstęp i zwiedzanie świątyni w Karnaku',
+        'Dolina Królów (3 grobowce królewskie)',
+        'Świątynia królowej Hatszepsut',
+        'Postój na zdjęcia przy Kolosach Memnona',
+        'Tradycyjny rejs łodzią po Nilu',
+        'Obiad w formie bufetu nad Nilem',
+        'Transfer z i do hotelu w Hurghadzie',
+      ],
+    },
+    cs: {
+      title: 'Celodenní výlet do Luxoru VIP minibusem (Max. 8 osob)',
+      description:
+        'Exkluzivní VIP výlet do Luxoru v malé skupině maximálně 8 osob. Pohodlná jízda moderním klimatizovaným minibusem s licencovaným egyptologem. Objevte chrám v Karnaku, Údolí králů (3 hrobky), chrám královny Hatšepsut, Memnonovy kolosy, plavbu po Nilu a oběd v restauraci u Nilu.',
+      inclusions: [
+        'VIP minibus s klimatizací (Max. 8 osob)',
+        'Licencovaný průvodce egyptolog',
+        'Vstup a prohlídka chrámu v Karnaku',
+        'Údolí králů (3 královské hrobky)',
+        'Zádušní chrám královny Hatšepsut',
+        'Foto zastávka u Memnonových kolosů',
+        'Tradiční plavba lodí po řece Nil',
+        'Oběd formou bufetu u Nilu',
+        'Vyzvednutí a návrat do hotelu',
+      ],
+    },
+    nl: {
+      title: 'Luxor Dagtrip per VIP Minibus (Max. 8 Personen)',
+      description:
+        'Ervaar de magie van het oude Egypte tijdens een exclusieve VIP-kleine-groepstrip naar Luxor met maximaal 8 personen. Reis comfortabel in een moderne minibus met airco en een gediplomeerde egyptoloog. Bezoek de Karnak-tempel, Vallei der Koningen (3 graven), Hatsjepsoet-tempel, Kolossen van Memnon, Nijlcruise en lunchbuffet aan de rivier.',
+      inclusions: [
+        'VIP Minibus met airco (Max. 8 personen)',
+        'Gediplomeerde gids egyptoloog',
+        'Toegang en rondleiding Karnak-tempel',
+        'Vallei der Koningen (3 koninklijke graven)',
+        'Dodentempel van Hatsjepsoet',
+        'Fotostop bij de Kolossen van Memnon',
+        'Traditionele boottocht over de Nijl',
+        'Lunchbuffet in restaurant aan de Nijl',
+        'Retourtransfer vanaf hotel in Hurghada',
+      ],
+    },
+  },
+  'srv-dgh-desert-safari': {
+    en: {
+      title: 'Hurghada Quad Desert Safari & Bedouin Adventure',
+      description:
+        'Venture into the Egyptian Eastern Desert on an action-packed quad bike (ATV) safari! Ride across dramatic sand dunes, visit an authentic Bedouin village, ride camels, enjoy herbal Bedouin tea and fresh bread, and feast on a traditional open-air BBQ dinner under the stars with live Oriental folklore and Tanoura dance.',
+      inclusions: [
+        'Single / Double Quad Bike (ATV) Safari',
+        'Traditional Bedouin Village Visit',
+        'Authentic Bedouin Herbal Tea & Fresh Bread',
+        'Camel Ride across Sand Dunes',
+        'Open-Air BBQ Dinner & Folklore Show',
+        'Desert Sunset Panorama & Stargazing',
+        'Round-Trip Hotel Transfers in 4WD / Van',
+        'Safety Helmet & Professional Briefing',
+      ],
+    },
+    de: {
+      title: 'Hurghada Quad-Wüstensafari & Beduinen-Abenteuer',
+      description:
+        'Erleben Sie ein actionreiches Abenteuer in der ägyptischen Wüste auf einer Quad-Bikesafari! Fahren Sie über dramatische Sanddünen, besuchen Sie ein traditionelles Beduinendorf, reiten Sie auf Kamelen, trinken Sie echten Beduinentee und genießen Sie ein offenes BBQ-Abendessen mit orientalischer Folklore und Tanoura-Show unter dem Sternenhimmel.',
+      inclusions: [
+        'Quad-Bike (ATV) Safari Einzelfahrt / Doppelsitzer',
+        'Besuch eines traditionellen Beduinendorfs',
+        'Frischer Beduinentee & traditionelles Fladenbrot',
+        'Kamelritt durch die Wüstendünen',
+        'Open-Air BBQ-Abendessen & Folkloreshow',
+        'Wüsten-Sonnenuntergang & Sternenbeobachtung',
+        'Hin- und Rücktransfer ab Hotel im 4WD / Van',
+        'Schutzhelm & professionelle Sicherheitseinweisung',
+      ],
+    },
+    ru: {
+      title: 'Сафари на квадроциклах в Хургаде и бедуинская деревня',
+      description:
+        'Захватывающее сафари на квадроциклах по песчаным дюнам Восточной пустыни Египта! Посещение аутентичной деревни бедуинов, катание на верблюдах, ароматный бедуинский чай и свежие лепешки, а также ужин барбекю под звездами с восточным фольклорным шоу и танцем Танура.',
+      inclusions: [
+        'Катание на квадроциклах (одинарные/двойные)',
+        'Посещение традиционной деревни бедуинов',
+        'Бедуинский травяной чай и свежий хлеб',
+        'Катание на верблюдах по барханам',
+        'Ужин барбекю и восточное шоу Танура',
+        'Панорама заката в пустыне и звездное небо',
+        'Трансфер из отеля на джипе / микроавтобусе',
+        'Защитный шлем и инструктаж по безопасности',
+      ],
+    },
+    ar: {
+      title: 'سفاري البيتش باجي (كواد) بالصحراء وقرية البدو',
+      description:
+        'مغامرة لا تُنسى في قلب صحراء الغردقة على متن دراجات الدفع الرباعي (بيتش باجي)! انطلق عبر الكثبان الرملية الذهبية، زُر قرية البدو الحقيقية، استمتع بركوب الجمال، وتذوق الشاي البدوي بالمرمرية مع الخبز الطازج، ثم اختتم يومك بحفل عشاء بدوي فاخر مشاوي على الفحم مع عروض الفلكلور والتنورة تحت أضواء النجوم.',
+      inclusions: [
+        'جولة سفاري كواد بايك (بيتش باجي مفرد أو مزدوج)',
+        'زيارة قرية البدو والتعرف على عاداتهم وتقاليدهم',
+        'شاي بدوي أصيل بالأعشاب وخبز طازج من الصاج',
+        'ركوب الجمال وسط الرمال الذهبية',
+        'بوفيه عشاء مشاوي مفتوح وعروض التنورة والفلكلور',
+        'مشاهدة غروب الشمس الساحر والنجوم بالصحراء',
+        'انتقالات ذهاب وعودة من الفندق بسيارات دفع رباعي أو فان',
+        'خوذة أمان وإرشادات السلامة مع مرشد محترف',
+      ],
+    },
+    fr: {
+      title: 'Safari Quad dans le désert d\'Hurghada & Village Bédouin',
+      description:
+        'Une aventure palpitante en quad dans le désert égyptien ! Parcourez les dunes de sable, visitez un authentique village bédouin, montez à dos de chameau, dégustez le thé bédouin et terminez par un dîner barbecue sous les étoiles avec spectacle folklorique oriental.',
+      inclusions: [
+        'Safari en quad (ATV) simple ou double',
+        'Visite d\'un village bédouin traditionnel',
+        'Thé bédouin authentique & pain traditionnel',
+        'Balade à dos de chameau dans les dunes',
+        'Dîner barbecue sous les étoiles & spectacle oriental',
+        'Coucher de soleil dans le désert & étoiles',
+        'Transferts aller-retour depuis votre hôtel',
+        'Casque de sécurité & briefing complet',
+      ],
+    },
+    it: {
+      title: 'Safari in Quad nel deserto di Hurghada e villaggio beduino',
+      description:
+        'Un\'avventura adrenalinica in quad attraverso le spettacolari dune del deserto egiziano! Visita di un autentico villaggio beduino, passeggiata a dorso di cammello, tè beduino e cena barbecue sotto le stelle con spettacolo di danza del ventre e Tanoura.',
+      inclusions: [
+        'Guida del quad bike (ATV) singolo o doppio',
+        'Visita a un villaggio beduino tradizionale',
+        'Tè beduino alle erbe & pane fresco artigianale',
+        'Giro in cammello sulle dune sabbiose',
+        'Cena barbecue all\'aperto & show orientale',
+        'Tramonto nel deserto & osservazione delle stelle',
+        'Trasferimenti andata e ritorno in 4x4 o van',
+        'Casco protettivo e briefing di sicurezza',
+      ],
+    },
+    pl: {
+      title: 'Safari na quadach w Hurghadzie i wioska Beduinów',
+      description:
+        'Ekscytujące safari na quadach przez pustynne wydmy Hurghady! Odwiedź tradycyjną wioskę beduińską, przejedź się na wielbłądzie, spróbuj ziołowej herbaty beduińskiej i ciesz się kolacją z grilla pod gwiazdami z pokazem tańca brzucha i Tanoura.',
+      inclusions: [
+        'Safari na quadach (pojedyncze lub podwójne)',
+        'Wizyta w tradycyjnej wiosce beduińskiej',
+        'Oryginalna herbata beduińska i świeży chleb',
+        'Przejażdżka na wielbłądach po wydmach',
+        'Kolacja z grilla na świeżym powietrzu i pokaz orientalny',
+        'Zachód słońca na pustyni i obserwacja gwiazd',
+        'Transfery z/do hotelu pojazdem 4x4 lub vanem',
+        'Kask ochronny i instruktaż bezpieczeństwa',
+      ],
+    },
+    cs: {
+      title: 'Výlet na čtyřkolkách do pouště v Hurghadě a beduínská vesnice',
+      description:
+        'Nezapomenutelné pouštní safari na čtyřkolkách po písečných dunách! Návštěva autentické beduínské vesnice, jízda na velbloudech, pravý beduínský čaj a čerstvý chléb, zakončené grilovanou večeří pod hvězdami s folklórní orientální show.',
+      inclusions: [
+        'Jízda na čtyřkolce (ATV) jednomístná / dvoumístná',
+        'Návštěva tradiční beduínské vesnice',
+        'Pravý bylinkový beduínský čaj a čerstvý chléb',
+        'Jízda na velbloudu v poušti',
+        'Grilovaná večeře pod širým nebem a folklórní show',
+        'Západ slunce v poušti a pozorování hvězd',
+        'Transfery z/do hotelu',
+        'Ochranná přilba a bezpečnostní instruktáž',
+      ],
+    },
+    nl: {
+      title: 'Quad Woestijnsafari in Hurghada & Bedoeïenendorp',
+      description:
+        'Een actievol avontuur op een quad door de Egyptische woestijn! Rijd over de zandduinen, bezoek een traditioneel bedoeïenendorp, maak een rit op een kameel, geniet van bedoeïenenthee en sluit af met een heerlijk barbecue-diner onder de sterren met folklore show.',
+      inclusions: [
+        'Quadsafari (ATV) enkel of dubbel',
+        'Bezoek aan traditioneel bedoeïenendorp',
+        'Kruidige bedoeïenenthee en vers brood',
+        'Kameelrit over de zandduinen',
+        'BBQ-diner in de open lucht met oosterse show',
+        'Woestijnzonsondergang en sterrenkijken',
+        'Retourtransfer vanaf hotel',
+        'Veiligheidshelm en professionele instructie',
+      ],
+    },
+  },
 };
 
 export function getServiceTranslation(serviceId: string, lang: LanguageCode): ServiceTranslation | null {

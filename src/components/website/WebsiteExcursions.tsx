@@ -31,6 +31,49 @@ import cmasLogo from '../../assets/CMAS.jpg';
 import bsacLogo from '../../assets/BSAC_Logo_2017.jpeg';
 import defaultHeroImg from '../../assets/images/hero_red_sea_diving_1790535752456.jpg';
 import orangeBayFeatured from '../../assets/images/imported/speedboat_orange_bay.jpg';
+import luxorKarnak from '../../assets/images/imported/luxor_karnak.jpg';
+import luxorHatshepsut from '../../assets/images/imported/luxor_hatshepsut.jpg';
+import luxorTemple from '../../assets/images/imported/luxor_temple.jpg';
+import luxorSunset from '../../assets/images/imported/luxor_sunset.jpg';
+import luxorNile from '../../assets/images/imported/luxor_nile.jpg';
+
+// Import photos for the Hurghada Quad Desert Safari slideshow
+import susaf1 from '../../assets/images/SUSAF (1).avif';
+import susaf2 from '../../assets/images/SUSAF (1).jpeg';
+import susaf3 from '../../assets/images/SUSAF (1).jpg';
+import susaf4 from '../../assets/images/SUSAF (1).webp';
+import susaf5 from '../../assets/images/SUSAF (2).jpg';
+import susaf6 from '../../assets/images/SUSAF (2).webp';
+import susaf7 from '../../assets/images/SUSAF (3).jpg';
+import susaf8 from '../../assets/images/SUSAF (4).jpg';
+import susaf9 from '../../assets/images/SUSAF (5).jpg';
+import susaf10 from '../../assets/images/SUSAF (6).jpg';
+import susaf11 from '../../assets/images/SUSAF (7).jpg';
+import susaf12 from '../../assets/images/SUSAF (8).jpg';
+
+const quadSafariSlideshowImages: string[] = [
+  susaf1,
+  susaf2,
+  susaf3,
+  susaf4,
+  susaf5,
+  susaf6,
+  susaf7,
+  susaf8,
+  susaf9,
+  susaf10,
+  susaf11,
+  susaf12,
+];
+
+// Luxor Day Trip — Karnak Temple, Valley of the Kings, Hatshepsut & Nile
+const luxorSlideshowImages: string[] = [
+  luxorKarnak,
+  luxorHatshepsut,
+  luxorTemple,
+  luxorSunset,
+  luxorNile,
+];
 
 // Import photos for Dolphin House Snorkeling Safari slideshow
 import dolphineJpg1 from '../../assets/images/DOLPHINE (1).jpg';
@@ -691,9 +734,13 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
   const getCategoryBadge = (cat: string) => {
     switch (cat) {
       case 'diving':
-        return t.excursions.filterDiving.replace(/🤿|🌊|🐬|🏜️/g, '').trim();
+        return t.excursions.filterDiving.replace(/🤿|🌊|🐬|🏜️|🏛️/g, '').trim();
       case 'sea_trip':
-        return t.excursions.filterSeaTrip.replace(/🤿|🌊|🐬|🏜️/g, '').trim();
+        return t.excursions.filterSeaTrip.replace(/🤿|🌊|🐬|🏜️|🏛️/g, '').trim();
+      case 'desert_safari':
+        return language === 'ar' ? 'سفاري وصحراء' : language === 'de' ? 'Wüstensafari' : language === 'ru' ? 'Сафари' : 'Desert Safari';
+      case 'city_tour':
+        return language === 'ar' ? 'معالم وآثار' : language === 'de' ? 'Kulturtour' : language === 'ru' ? 'Экскурсии' : 'Culture & History';
       default:
         return cat.replace('_', ' ').toUpperCase();
     }
@@ -701,6 +748,10 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
 
   const getTripHighlightRibbon = (id: string) => {
     switch (id) {
+      case 'srv-dgh-luxor-vip':
+        return { label: 'VIP Mini Bus (Max 8) 🏛️', gradient: 'from-amber-400 via-yellow-400 to-orange-500 text-slate-950 shadow-amber-500/40' };
+      case 'srv-dgh-desert-safari':
+        return { label: 'Quad Adventure 🏜️', gradient: 'from-orange-500 via-amber-400 to-yellow-500 text-slate-950 shadow-orange-500/40' };
       case 'srv-dgh-daily-dive':
         return { label: 'Top Choice ⭐', gradient: 'from-amber-400 to-amber-500 text-slate-950 shadow-amber-500/40' };
       case 'srv-dgh-private-speedboat':
@@ -743,6 +794,12 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
 
   const getImageForService = (service: ServiceItem) => {
     const titleLower = service.title.toLowerCase();
+    if (service.id === 'srv-dgh-luxor-vip' || titleLower.includes('luxor')) {
+      return luxorKarnak;
+    }
+    if (service.id === 'srv-dgh-desert-safari' || titleLower.includes('safari') || titleLower.includes('quad')) {
+      return susaf1;
+    }
     if (service.id === 'srv-dgh-private-padi' || titleLower.includes('padi') || titleLower.includes('private diving')) {
       return padiJpg1;
     }
@@ -770,6 +827,12 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
     if (service.category === 'diving') {
       return dailyJpg1;
     }
+    if (service.category === 'desert_safari') {
+      return susaf1;
+    }
+    if (service.category === 'city_tour') {
+      return luxorKarnak;
+    }
     return defaultHeroImg;
   };
 
@@ -777,6 +840,8 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
     if (activeFilter === 'all') return true;
     if (activeFilter === 'diving') return s.category === 'diving';
     if (activeFilter === 'sea_trip') return s.category === 'sea_trip';
+    if (activeFilter === 'desert_safari') return s.category === 'desert_safari';
+    if (activeFilter === 'city_tour') return s.category === 'city_tour';
     return true;
   });
 
@@ -803,41 +868,123 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
           </p>
 
           {/* Interactive Filter Control */}
-          <div className="flex justify-center mt-8 px-2 max-w-full">
-            <div className="inline-flex items-center p-1.5 bg-slate-900/90 backdrop-blur-xl border border-slate-800/90 rounded-2xl gap-1 sm:gap-2 text-xs shadow-2xl max-w-full overflow-x-auto scrollbar-none shadow-black/80">
+          <div className="flex justify-center mt-10 px-2 max-w-full">
+            <div className="flex sm:flex-wrap items-center justify-start sm:justify-center gap-2 sm:gap-2.5 p-2 bg-slate-900/85 backdrop-blur-2xl border border-slate-800/90 rounded-3xl shadow-2xl shadow-black/80 max-w-4xl overflow-x-auto sm:overflow-x-visible no-scrollbar">
               {[
                 {
                   id: 'all',
+                  icon: '🌊',
                   label:
                     language === 'ar'
-                      ? 'جميع الرحلات 🌊'
+                      ? 'جميع الرحلات'
                       : language === 'de'
-                      ? 'Alle Ausflüge 🌊'
+                      ? 'Alle Touren'
                       : language === 'ru'
-                      ? 'Все туры 🌊'
-                      : 'All Trips 🌊',
+                      ? 'Все туры'
+                      : language === 'fr'
+                      ? 'Toutes les excursions'
+                      : language === 'it'
+                      ? 'Tutte le escursioni'
+                      : language === 'pl'
+                      ? 'Wszystkie wycieczki'
+                      : language === 'nl'
+                      ? 'Alle uitstapjes'
+                      : language === 'cs'
+                      ? 'Všechny výlety'
+                      : 'All Trips',
+                  count: state.services.length,
                 },
                 {
                   id: 'diving',
+                  icon: '🤿',
                   label:
                     language === 'ar'
-                      ? 'غوص وكورسات 🤿'
+                      ? 'غوص وكورسات'
                       : language === 'de'
-                      ? 'Tauchen & PADI 🤿'
+                      ? 'Tauchen & PADI'
                       : language === 'ru'
-                      ? 'Дайвинг 🤿'
-                      : 'Scuba Diving 🤿',
+                      ? 'Дайвинг и курсы'
+                      : language === 'fr'
+                      ? 'Plongée & Cours'
+                      : language === 'it'
+                      ? 'Immersioni & Corsi'
+                      : language === 'pl'
+                      ? 'Nurkowanie & Kursy'
+                      : language === 'nl'
+                      ? 'Duiken & Cursussen'
+                      : language === 'cs'
+                      ? 'Potápění & Kurzy'
+                      : 'Scuba Diving',
+                  count: state.services.filter((s) => s.category === 'diving').length,
                 },
                 {
                   id: 'sea_trip',
+                  icon: '🐬',
                   label:
                     language === 'ar'
-                      ? 'رحلات بحرية ودلافين 🐬'
+                      ? 'دلافين وجزر'
                       : language === 'de'
-                      ? 'Meer & Delfine 🐬'
+                      ? 'Delfine & Inseln'
                       : language === 'ru'
-                      ? 'Морские прогулки 🐬'
-                      : 'Sea & Dolphins 🐬',
+                      ? 'Дельфины и острова'
+                      : language === 'fr'
+                      ? 'Dauphins & Îles'
+                      : language === 'it'
+                      ? 'Delfini & Isole'
+                      : language === 'pl'
+                      ? 'Delfiny & Wyspy'
+                      : language === 'nl'
+                      ? 'Dolfijnen & Eilanden'
+                      : language === 'cs'
+                      ? 'Delfíni & Ostrovy'
+                      : 'Sea & Dolphins',
+                  count: state.services.filter((s) => s.category === 'sea_trip').length,
+                },
+                {
+                  id: 'desert_safari',
+                  icon: '🏜️',
+                  label:
+                    language === 'ar'
+                      ? 'سفاري وصحراء'
+                      : language === 'de'
+                      ? 'Wüstensafari'
+                      : language === 'ru'
+                      ? 'Сафари на квадроциклах'
+                      : language === 'fr'
+                      ? 'Safari dans le désert'
+                      : language === 'it'
+                      ? 'Safari nel deserto'
+                      : language === 'pl'
+                      ? 'Safari na pustyni'
+                      : language === 'nl'
+                      ? 'Woestijnsafari'
+                      : language === 'cs'
+                      ? 'Pouštní safari'
+                      : 'Desert Quad Safari',
+                  count: state.services.filter((s) => s.category === 'desert_safari').length,
+                },
+                {
+                  id: 'city_tour',
+                  icon: '🏛️',
+                  label:
+                    language === 'ar'
+                      ? 'الأقصر VIP'
+                      : language === 'de'
+                      ? 'Luxor VIP'
+                      : language === 'ru'
+                      ? 'Луксор VIP'
+                      : language === 'fr'
+                      ? 'Louxor VIP'
+                      : language === 'it'
+                      ? 'Luxor VIP'
+                      : language === 'pl'
+                      ? 'Luksor VIP'
+                      : language === 'nl'
+                      ? 'Luxor VIP'
+                      : language === 'cs'
+                      ? 'Luxor VIP'
+                      : 'Luxor Day Trip',
+                  count: state.services.filter((s) => s.category === 'city_tour').length,
                 },
               ].map((f) => {
                 const isActive = activeFilter === f.id;
@@ -845,13 +992,25 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
                   <button
                     key={f.id}
                     onClick={() => setActiveFilter(f.id)}
-                    className={`px-4 sm:px-5 py-2.5 rounded-xl font-black transition-all duration-300 cursor-pointer whitespace-nowrap text-xs flex items-center justify-center shrink-0 ${
+                    className={`group relative px-4 sm:px-5 py-2.5 rounded-2xl font-black transition-all duration-300 cursor-pointer whitespace-nowrap text-xs sm:text-sm flex items-center space-x-2 rtl:space-x-reverse shrink-0 ${
                       isActive
-                        ? 'bg-gradient-to-r from-cyan-500 via-teal-400 to-blue-600 text-white shadow-lg shadow-cyan-500/40 scale-[1.03] ring-1 ring-cyan-300/40'
-                        : 'text-slate-400 hover:text-white hover:bg-slate-800/80 hover:scale-[1.01]'
+                        ? 'bg-gradient-to-r from-cyan-500 via-teal-400 to-blue-600 text-white shadow-lg shadow-cyan-500/40 ring-1 ring-cyan-300/50 scale-[1.02]'
+                        : 'text-slate-300 hover:text-white bg-slate-800/60 hover:bg-slate-800/90 border border-slate-700/50 hover:border-cyan-500/40 hover:scale-[1.01]'
                     }`}
                   >
-                    {f.label}
+                    <span className="text-sm leading-none drop-shadow">{f.icon}</span>
+                    <span>{f.label}</span>
+                    {f.count > 0 && (
+                      <span
+                        className={`text-[10px] font-black px-1.5 py-0.5 rounded-full transition-colors ${
+                          isActive
+                            ? 'bg-white/25 text-white'
+                            : 'bg-slate-700/80 text-cyan-300 group-hover:bg-cyan-950 group-hover:text-cyan-200'
+                        }`}
+                      >
+                        {f.count}
+                      </span>
+                    )}
                   </button>
                 );
               })}
@@ -875,6 +1034,8 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
             const isGiftun = service.id === 'srv-dgh-giftun-island';
             const isGlassBoat = service.id === 'srv-dgh-glass-boat';
             const isOrangeBay = service.id === 'srv-dgh-orange-bay';
+            const isLuxor = service.id === 'srv-dgh-luxor-vip' || service.title.toLowerCase().includes('luxor');
+            const isQuadSafari = service.id === 'srv-dgh-desert-safari' || service.category === 'desert_safari';
             const isAskPrice =
               service.id === 'srv-dgh-private-padi' ||
               service.id === 'srv-dgh-tauchsafari' ||
@@ -883,10 +1044,18 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
 
             const durationDisplay = isSafari
               ? '7 Days'
+              : isLuxor
+              ? '16 Hours (Full Day VIP)'
+              : isQuadSafari
+              ? '5 Hours (Sunset & BBQ)'
               : `${(service.id === 'srv-dgh-private-padi' || service.durationHours === 24) ? 8 : service.durationHours} ${t.excursions.hoursDuration}`;
 
             const destinations = isSafari
               ? ['North', 'South', 'Sharm El Sheikh', 'Dahab']
+              : isLuxor
+              ? ['Valley of the Kings', 'Karnak Temple', 'Hatshepsut', 'Nile Cruise']
+              : isQuadSafari
+              ? ['Desert Dunes', 'Bedouin Village', 'Camel Trek', 'Stargazing']
               : service.destinations;
 
             const hasLogos = service.id === 'srv-dgh-private-padi' || service.title.toLowerCase().includes('padi');
@@ -901,6 +1070,8 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
               if (isGiftun) return giftunIslandSlideshowImages;
               if (isGlassBoat) return glassBoatSlideshowImages;
               if (isOrangeBay) return orangeBaySlideshowImages;
+              if (isLuxor) return luxorSlideshowImages;
+              if (isQuadSafari) return quadSafariSlideshowImages;
               return [getImageForService(service)];
             };
 
@@ -933,6 +1104,10 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
                     <CardImageSlideshow images={glassBoatSlideshowImages} alt={loc.title} />
                   ) : isOrangeBay && orangeBaySlideshowImages.length > 0 ? (
                     <CardImageSlideshow images={orangeBaySlideshowImages} alt={loc.title} />
+                  ) : isLuxor && luxorSlideshowImages.length > 0 ? (
+                    <CardImageSlideshow images={luxorSlideshowImages} alt={loc.title} />
+                  ) : isQuadSafari && quadSafariSlideshowImages.length > 0 ? (
+                    <CardImageSlideshow images={quadSafariSlideshowImages} alt={loc.title} />
                   ) : (
                     <img
                       src={imgSrc}
@@ -1018,20 +1193,30 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
                         <Users className="h-3.5 w-3.5" />
                       </div>
                       <span className="font-semibold text-slate-200">
-                        {t.excursions.child}: {service.childPriceLabel || '(Ask)'}
+                        {isLuxor ? 'VIP Mini Bus (Max 8)' : isQuadSafari ? 'ATV Quad + Camels' : `${t.excursions.child}: ${service.childPriceLabel || '(Ask)'}`}
                       </span>
                     </div>
                   </div>
 
-                  {/* Safari Destinations Strip */}
+                  {/* Safari / Destinations Highlights Strip */}
                   {destinations && destinations.length > 0 && (
                     <div className="bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 p-3 rounded-2xl border border-cyan-500/30 space-y-2 shadow-inner">
                       <div className="flex items-center justify-between text-cyan-300 text-[10px] font-black uppercase tracking-wider">
                         <div className="flex items-center space-x-1.5 rtl:space-x-reverse">
                           <Compass className="h-3.5 w-3.5 text-cyan-400" />
-                          <span>Safari Destinations & Routes</span>
+                          <span>
+                            {isSafari
+                              ? 'Safari Destinations & Routes'
+                              : isLuxor
+                              ? 'VIP Ancient Wonders Itinerary'
+                              : isQuadSafari
+                              ? 'Desert Safari Highlights'
+                              : 'Excursion Highlights'}
+                          </span>
                         </div>
-                        <span className="text-[9px] text-slate-400 font-normal">7 Days Liveaboard</span>
+                        <span className="text-[9px] text-slate-400 font-normal">
+                          {isSafari ? '7 Days Liveaboard' : isLuxor ? 'VIP Mini Bus · Max 8' : isQuadSafari ? 'Afternoon & Sunset' : 'Featured Stops'}
+                        </span>
                       </div>
                       <div className="flex flex-wrap gap-1.5">
                         {destinations.map((dest) => (
@@ -1259,6 +1444,8 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
         if (selectedService.id === 'srv-dgh-giftun-island') return giftunIslandSlideshowImages;
         if (selectedService.id === 'srv-dgh-glass-boat') return glassBoatSlideshowImages;
         if (selectedService.id === 'srv-dgh-orange-bay') return orangeBaySlideshowImages;
+        if (selectedService.id === 'srv-dgh-luxor-vip') return luxorSlideshowImages;
+        if (selectedService.id === 'srv-dgh-desert-safari') return quadSafariSlideshowImages;
         return [getImageForService(selectedService)];
       };
 
