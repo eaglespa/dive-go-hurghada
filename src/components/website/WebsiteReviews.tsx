@@ -162,29 +162,33 @@ export const WebsiteReviews: React.FC = () => {
           </div>
 
           {/* Social Proof Score Card */}
-          <div className="flex items-center gap-4 bg-slate-950/80 border border-slate-800 p-4 rounded-2xl shrink-0 backdrop-blur-sm shadow-xl">
+          <div className="flex items-center gap-4 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 border border-cyan-500/30 p-4.5 rounded-3xl shrink-0 backdrop-blur-xl shadow-2xl shadow-cyan-950/40 hover:border-cyan-400/60 hover:scale-[1.02] transition-all duration-300">
             <div className="text-center border-r border-slate-800 pr-4 rtl:border-r-0 rtl:border-l rtl:pr-0 rtl:pl-4">
-              <span className="text-3xl font-black text-white block">4.9</span>
-              <div className="flex text-amber-400 text-xs">
+              <span className="text-3xl font-black bg-gradient-to-r from-white via-cyan-100 to-cyan-300 bg-clip-text text-transparent block">4.9</span>
+              <div className="flex text-amber-400 text-xs gap-0.5 justify-center mt-1">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-3.5 w-3.5 fill-amber-400" />
+                  <Star key={i} className="h-3.5 w-3.5 fill-amber-400 filter drop-shadow(0 0 3px rgba(245,158,11,0.5))" />
                 ))}
               </div>
-              <span className="text-[10px] text-slate-400 mt-0.5 block">{t.reviews.reviewsCount}</span>
+              <span className="text-[10px] text-slate-400 mt-1 block font-medium">{t.reviews.reviewsCount}</span>
             </div>
 
-            <div className="space-y-1 text-xs">
+            <div className="space-y-1.5 text-xs">
               <div className="flex items-center space-x-1.5 rtl:space-x-reverse text-emerald-400 font-bold text-[11px]">
-                <CheckCircle2 className="h-3.5 w-3.5" />
+                <div className="p-0.5 rounded-full bg-emerald-950/80 border border-emerald-500/40">
+                  <CheckCircle2 className="h-3.5 w-3.5" />
+                </div>
                 <span>{t.reviews.verifiedGuests}</span>
               </div>
-              <div className="flex items-center space-x-1.5 rtl:space-x-reverse text-cyan-400 text-[11px]">
-                <Award className="h-3.5 w-3.5" />
+              <div className="flex items-center space-x-1.5 rtl:space-x-reverse text-cyan-400 text-[11px] font-semibold">
+                <div className="p-0.5 rounded-full bg-cyan-950/80 border border-cyan-500/40">
+                  <Award className="h-3.5 w-3.5" />
+                </div>
                 <span>{t.reviews.award}</span>
               </div>
               <button
                 onClick={() => setShowReviewModal(true)}
-                className="text-[11px] text-white hover:text-cyan-300 font-semibold underline flex items-center space-x-1 rtl:space-x-reverse cursor-pointer pt-0.5"
+                className="text-[11px] text-cyan-300 hover:text-white font-bold underline flex items-center space-x-1 rtl:space-x-reverse cursor-pointer pt-0.5 transition-colors"
               >
                 <PlusCircle className="h-3 w-3" />
                 <span>{t.reviews.leaveReview}</span>
@@ -203,10 +207,10 @@ export const WebsiteReviews: React.FC = () => {
                 <button
                   key={cat.id}
                   onClick={() => setActiveCategory(cat.id)}
-                  className={`px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition cursor-pointer ${
+                  className={`px-4 py-2 rounded-xl text-xs font-black whitespace-nowrap transition-all duration-300 cursor-pointer ${
                     isActive
-                      ? 'bg-cyan-600 text-white shadow-md shadow-cyan-600/30'
-                      : 'bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800'
+                      ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-600/40 scale-[1.03] ring-1 ring-cyan-300/40'
+                      : 'bg-slate-900/90 hover:bg-slate-800 text-slate-300 border border-slate-800 hover:border-slate-700 hover:scale-[1.01]'
                   }`}
                 >
                   {cat.label}
@@ -217,20 +221,20 @@ export const WebsiteReviews: React.FC = () => {
 
           {/* Carousel Arrow Controls */}
           <div className="flex items-center space-x-2 rtl:space-x-reverse self-end sm:self-auto">
-            <span className="text-[11px] text-slate-400 mr-2 rtl:mr-0 rtl:ml-2 hidden sm:inline">
+            <span className="text-[11px] text-slate-400 mr-2 rtl:mr-0 rtl:ml-2 hidden sm:inline font-mono">
               {t.reviews.showing} {currentIndex + 1} {t.reviews.of} {filteredReviews.length}
             </span>
             <button
               onClick={handlePrev}
               aria-label="Previous Review"
-              className="p-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-800 hover:border-slate-700 transition cursor-pointer"
+              className="p-2.5 rounded-xl bg-slate-900/90 hover:bg-cyan-950 text-slate-300 hover:text-cyan-300 border border-slate-800 hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-950/40 transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95"
             >
               <ChevronLeft className="h-4 w-4" />
             </button>
             <button
               onClick={handleNext}
               aria-label="Next Review"
-              className="p-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-800 hover:border-slate-700 transition cursor-pointer"
+              className="p-2.5 rounded-xl bg-slate-900/90 hover:bg-cyan-950 text-slate-300 hover:text-cyan-300 border border-slate-800 hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-950/40 transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95"
             >
               <ChevronRight className="h-4 w-4" />
             </button>
@@ -246,50 +250,47 @@ export const WebsiteReviews: React.FC = () => {
           {visibleReviews.map((rev) => (
             <div
               key={rev.id}
-              className="bg-slate-900/90 border border-slate-800 hover:border-cyan-500/40 rounded-3xl p-6 shadow-xl space-y-4 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 relative group"
+              className="bg-gradient-to-b from-slate-900/95 via-slate-900/90 to-slate-950/95 border border-slate-800/80 hover:border-cyan-400/80 rounded-3xl p-6 shadow-xl hover:shadow-2xl hover:shadow-cyan-950/50 space-y-4 flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 relative group card-sheen"
             >
               {/* Highlight Tag & Source */}
               <div className="flex items-center justify-between text-[11px]">
-                <span className="px-2.5 py-0.5 rounded-full font-bold bg-cyan-950 text-cyan-300 border border-cyan-800">
+                <span className="px-3 py-1 rounded-full font-bold bg-cyan-950/90 text-cyan-300 border border-cyan-500/40 shadow-sm">
                   {rev.highlightTag}
                 </span>
-                <span className="text-slate-400 text-[10px] flex items-center space-x-1">
-                  <CheckCircle2 className="h-3 w-3 text-emerald-400" />
+                <span className="text-slate-400 text-[10px] flex items-center space-x-1 font-medium">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400" />
                   <span>{rev.source}</span>
                 </span>
               </div>
 
               {/* Stars & Testimonial Quote */}
-              <div className="space-y-2.5">
+              <div className="space-y-3">
                 <div className="flex items-center space-x-1 text-amber-400">
                   {[...Array(rev.rating)].map((_, idx) => (
-                    <Star key={idx} className="h-3.5 w-3.5 fill-amber-400" />
+                    <Star key={idx} className="h-3.5 w-3.5 fill-amber-400 filter drop-shadow(0 0 2px rgba(245,158,11,0.4))" />
                   ))}
                 </div>
 
-                <p className="text-xs text-slate-300 leading-relaxed italic relative pl-4 border-l-2 border-cyan-500/30">
+                <p className="text-xs text-slate-200 leading-relaxed italic relative pl-4 border-l-2 border-cyan-400/50">
                   "{rev.comment}"
                 </p>
               </div>
 
               {/* Author & Trip Details */}
-              <div className="pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
-                <div className="flex items-center space-x-3">
-                  <div className="h-9 w-9 rounded-full bg-gradient-to-tr from-cyan-600 to-blue-600 flex items-center justify-center font-bold text-white text-xs shrink-0 shadow-sm">
+              <div className="pt-4 border-t border-slate-800/90 flex items-center justify-between text-xs">
+                <div className="flex items-center space-x-3 rtl:space-x-reverse">
+                  <div className="h-10 w-10 rounded-full bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center font-black text-white text-xs shrink-0 shadow-md shadow-cyan-600/30 ring-2 ring-cyan-400/30">
                     {rev.avatarText}
                   </div>
                   <div>
-                    <h4 className="font-bold text-white text-sm leading-tight">{rev.author}</h4>
-                    <p className="text-slate-400 text-[11px]">{rev.cityCountry}</p>
+                    <span className="font-bold text-white block group-hover:text-cyan-300 transition-colors">{rev.author}</span>
+                    <span className="text-[10px] text-slate-400 block">{rev.cityCountry}</span>
                   </div>
                 </div>
 
-                <div className="text-right">
-                  <span className="text-[10px] text-cyan-400 block font-medium max-w-[130px] truncate">
-                    {rev.tripTitle}
-                  </span>
-                  <span className="text-[10px] text-slate-400">{rev.date}</span>
-                </div>
+                <span className="text-[10px] font-semibold text-cyan-400/90 bg-cyan-950/60 px-2 py-1 rounded-lg border border-cyan-800/50 max-w-[130px] truncate text-right rtl:text-left">
+                  {rev.tripTitle}
+                </span>
               </div>
             </div>
           ))}

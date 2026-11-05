@@ -53,12 +53,12 @@ export const WebsiteAbout: React.FC = () => {
               {stats.map((s, idx) => (
                 <div
                   key={idx}
-                  className="bg-slate-900/80 p-3 rounded-2xl border border-slate-800 text-center hover:border-cyan-500/40 hover:-translate-y-1 transition-all duration-300"
+                  className="bg-gradient-to-b from-slate-900/95 to-slate-950/95 p-3.5 rounded-2xl border border-slate-800 hover:border-cyan-500/50 hover:shadow-xl hover:shadow-cyan-950/50 hover:-translate-y-1.5 transition-all duration-300 text-center group"
                 >
-                  <span className="text-xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-400 block">
+                  <span className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-teal-200 to-sky-400 block group-hover:scale-105 transition-transform duration-300">
                     {s.value}
                   </span>
-                  <span className="text-[10px] text-slate-400 mt-0.5 block font-medium leading-tight">
+                  <span className="text-[10px] text-slate-400 mt-1 block font-semibold leading-tight">
                     {s.label}
                   </span>
                 </div>
@@ -67,8 +67,8 @@ export const WebsiteAbout: React.FC = () => {
 
             {/* Core Pillars */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-              <div className="flex items-start space-x-3.5 rtl:space-x-reverse p-4 bg-slate-900/80 hover:bg-slate-900 rounded-2xl border border-slate-800 hover:border-cyan-500/50 hover:-translate-y-1 transition-all duration-300 group shadow-lg">
-                <div className="p-2 rounded-xl bg-cyan-950 text-cyan-400 border border-cyan-800/80 group-hover:scale-110 transition-transform shrink-0">
+              <div className="flex items-start space-x-3.5 rtl:space-x-reverse p-4 bg-slate-900/80 hover:bg-slate-900 rounded-2xl border border-slate-800 hover:border-cyan-400/70 hover:shadow-xl hover:shadow-cyan-950/60 hover:-translate-y-1.5 transition-all duration-300 group shadow-lg">
+                <div className="p-2.5 rounded-xl bg-cyan-950/90 text-cyan-400 border border-cyan-500/40 group-hover:scale-110 group-hover:border-cyan-300 transition-all shrink-0 shadow-sm shadow-cyan-950/60">
                   <ShieldCheck className="h-5 w-5" />
                 </div>
                 <div className="text-xs">
@@ -79,8 +79,8 @@ export const WebsiteAbout: React.FC = () => {
                 </div>
               </div>
 
-              <div className="flex items-start space-x-3.5 rtl:space-x-reverse p-4 bg-slate-900/80 hover:bg-slate-900 rounded-2xl border border-slate-800 hover:border-emerald-500/50 hover:-translate-y-1 transition-all duration-300 group shadow-lg">
-                <div className="p-2 rounded-xl bg-emerald-950 text-emerald-400 border border-emerald-800/80 group-hover:scale-110 transition-transform shrink-0">
+              <div className="flex items-start space-x-3.5 rtl:space-x-reverse p-4 bg-slate-900/80 hover:bg-slate-900 rounded-2xl border border-slate-800 hover:border-emerald-400/70 hover:shadow-xl hover:shadow-emerald-950/60 hover:-translate-y-1.5 transition-all duration-300 group shadow-lg">
+                <div className="p-2.5 rounded-xl bg-emerald-950/90 text-emerald-400 border border-emerald-500/40 group-hover:scale-110 group-hover:border-emerald-300 transition-all shrink-0 shadow-sm shadow-emerald-950/60">
                   <HeartHandshake className="h-5 w-5" />
                 </div>
                 <div className="text-xs">
@@ -91,8 +91,8 @@ export const WebsiteAbout: React.FC = () => {
                 </div>
               </div>
 
-              <div className="flex items-start space-x-3.5 rtl:space-x-reverse p-4 bg-slate-900/80 hover:bg-slate-900 rounded-2xl border border-slate-800 hover:border-blue-500/50 hover:-translate-y-1 transition-all duration-300 group shadow-lg">
-                <div className="p-2 rounded-xl bg-blue-950 text-blue-400 border border-blue-800/80 group-hover:scale-110 transition-transform shrink-0">
+              <div className="flex items-start space-x-3.5 rtl:space-x-reverse p-4 bg-slate-900/80 hover:bg-slate-900 rounded-2xl border border-slate-800 hover:border-blue-400/70 hover:shadow-xl hover:shadow-blue-950/60 hover:-translate-y-1.5 transition-all duration-300 group shadow-lg">
+                <div className="p-2.5 rounded-xl bg-blue-950/90 text-blue-400 border border-blue-500/40 group-hover:scale-110 group-hover:border-blue-300 transition-all shrink-0 shadow-sm shadow-blue-950/60">
                   <Users className="h-5 w-5" />
                 </div>
                 <div className="text-xs">
@@ -103,8 +103,8 @@ export const WebsiteAbout: React.FC = () => {
                 </div>
               </div>
 
-              <div className="flex items-start space-x-3.5 rtl:space-x-reverse p-4 bg-slate-900/80 hover:bg-slate-900 rounded-2xl border border-slate-800 hover:border-amber-500/50 hover:-translate-y-1 transition-all duration-300 group shadow-lg">
-                <div className="p-2 rounded-xl bg-amber-950 text-amber-400 border border-amber-800/80 group-hover:scale-110 transition-transform shrink-0">
+              <div className="flex items-start space-x-3.5 rtl:space-x-reverse p-4 bg-slate-900/80 hover:bg-slate-900 rounded-2xl border border-slate-800 hover:border-amber-400/70 hover:shadow-xl hover:shadow-amber-950/60 hover:-translate-y-1.5 transition-all duration-300 group shadow-lg">
+                <div className="p-2.5 rounded-xl bg-amber-950/90 text-amber-400 border border-amber-500/40 group-hover:scale-110 group-hover:border-amber-300 transition-all shrink-0 shadow-sm shadow-amber-950/60">
                   <Anchor className="h-5 w-5" />
                 </div>
                 <div className="text-xs">
@@ -124,21 +124,27 @@ export const WebsiteAbout: React.FC = () => {
 
           {/* Right Image / Showcase */}
           <div className="relative">
-            <div className="rounded-3xl overflow-hidden shadow-2xl border border-slate-800 relative aspect-4/3 bg-slate-800 card-sheen group">
+            <div className="rounded-3xl overflow-hidden shadow-2xl border border-slate-800/90 relative aspect-4/3 bg-slate-800 card-sheen group hover:border-cyan-500/50 hover:shadow-[0_20px_50px_rgba(6,182,212,0.2)] transition-all duration-500">
               <img
                 src={aboutFleetImg}
                 alt="Certified divers exploring coral wall in Red Sea"
                 className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/25 to-transparent" />
 
-              <div className="absolute bottom-6 left-6 right-6 p-5 rounded-2xl bg-slate-900/90 backdrop-blur-md border border-slate-700/80 text-xs text-slate-200 shadow-xl group-hover:border-cyan-500/50 transition-colors">
+              {/* Floating Verified Badge */}
+              <div className="absolute top-5 right-5 rtl:right-auto rtl:left-5 z-20 flex items-center space-x-2 rtl:space-x-reverse bg-slate-950/90 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-cyan-500/50 shadow-xl text-xs font-bold text-cyan-300">
+                <span className="h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
+                <span>PADI 5-Star Standards</span>
+              </div>
+
+              <div className="absolute bottom-6 left-6 right-6 p-5 rounded-2xl bg-slate-900/90 backdrop-blur-xl border border-slate-700/80 text-xs text-slate-200 shadow-2xl group-hover:border-cyan-400/60 transition-colors">
                 <div className="flex items-center space-x-2 rtl:space-x-reverse text-cyan-400 font-bold text-sm mb-1.5">
                   <MapPin className="h-4 w-4" />
                   <span>{t.about.fleetTitle}</span>
                 </div>
-                <p className="text-slate-400 leading-relaxed text-[11px]">
+                <p className="text-slate-300 leading-relaxed text-[11px]">
                   {t.about.fleetDesc}
                 </p>
               </div>

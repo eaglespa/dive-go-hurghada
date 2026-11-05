@@ -694,10 +694,27 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
         return t.excursions.filterDiving.replace(/🤿|🌊|🐬|🏜️/g, '').trim();
       case 'sea_trip':
         return t.excursions.filterSeaTrip.replace(/🤿|🌊|🐬|🏜️/g, '').trim();
-      case 'desert_safari':
-        return t.excursions.filterSafari.replace(/🤿|🌊|🐬|🏜️/g, '').trim();
       default:
         return cat.replace('_', ' ').toUpperCase();
+    }
+  };
+
+  const getTripHighlightRibbon = (id: string) => {
+    switch (id) {
+      case 'srv-dgh-daily-dive':
+        return { label: 'Top Choice ⭐', gradient: 'from-amber-400 to-amber-500 text-slate-950 shadow-amber-500/40' };
+      case 'srv-dgh-private-speedboat':
+        return { label: 'VIP Speedboat ⚡', gradient: 'from-cyan-400 to-blue-500 text-slate-950 shadow-cyan-500/40' };
+      case 'srv-dgh-orange-bay':
+        return { label: 'Best Seller 🔥', gradient: 'from-rose-500 to-orange-400 text-white shadow-rose-500/40' };
+      case 'srv-dgh-dolphin-house':
+        return { label: 'Most Popular 🐬', gradient: 'from-emerald-400 to-teal-500 text-slate-950 shadow-emerald-500/40' };
+      case 'srv-dgh-tauchsafari':
+        return { label: '7-Day Safari 🚢', gradient: 'from-sky-400 to-blue-500 text-slate-950 shadow-blue-500/40' };
+      case 'srv-dgh-private-padi':
+        return { label: 'PADI Master 🤿', gradient: 'from-blue-400 to-cyan-300 text-slate-950 shadow-cyan-500/40' };
+      default:
+        return null;
     }
   };
 
@@ -766,27 +783,28 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
   return (
     <>
     <section id="excursions" className="py-24 bg-slate-950 text-white border-t border-slate-900 relative overflow-hidden">
-      {/* Ambient background glow */}
-      <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-cyan-500/5 blur-[150px] rounded-full pointer-events-none" />
+      {/* Ambient background glows */}
+      <div className="absolute top-1/4 left-10 w-[550px] h-[550px] bg-cyan-500/10 blur-[160px] rounded-full pointer-events-none animate-aura-drift" />
+      <div className="absolute bottom-1/4 right-10 w-[550px] h-[550px] bg-blue-600/10 blur-[160px] rounded-full pointer-events-none animate-aura-drift" style={{ animationDelay: '-8s' }} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center space-x-1.5 rtl:space-x-reverse px-3 py-1 rounded-full bg-cyan-950/80 border border-cyan-800/80 text-cyan-300 text-xs font-semibold mb-3">
-            <Sparkles className="h-3.5 w-3.5 text-cyan-400" />
+          <div className="inline-flex items-center space-x-1.5 rtl:space-x-reverse px-4 py-1.5 rounded-full bg-slate-900/90 backdrop-blur-md border border-cyan-500/40 text-cyan-300 text-xs font-semibold mb-4 shadow-xl shadow-cyan-950/60 hover:border-cyan-400 hover:scale-105 transition-all duration-300">
+            <Sparkles className="h-3.5 w-3.5 text-cyan-400 animate-pulse" />
             <span>{t.excursions.kicker}</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight mb-4 text-balance">
             {t.excursions.title}
           </h2>
-          <p className="text-sm text-slate-400 leading-relaxed text-balance">
+          <p className="text-sm text-slate-300 leading-relaxed text-balance">
             {t.excursions.description}
           </p>
 
           {/* Interactive Filter Control */}
           <div className="flex justify-center mt-8 px-2 max-w-full">
-            <div className="inline-flex items-center p-1.5 bg-slate-900/95 backdrop-blur-xl border border-slate-800/90 rounded-2xl gap-1 sm:gap-1.5 text-xs shadow-2xl max-w-full overflow-x-auto scrollbar-none">
+            <div className="inline-flex items-center p-1.5 bg-slate-900/90 backdrop-blur-xl border border-slate-800/90 rounded-2xl gap-1 sm:gap-2 text-xs shadow-2xl max-w-full overflow-x-auto scrollbar-none shadow-black/80">
               {[
                 {
                   id: 'all',
@@ -827,10 +845,10 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
                   <button
                     key={f.id}
                     onClick={() => setActiveFilter(f.id)}
-                    className={`px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl font-bold transition-all duration-300 cursor-pointer whitespace-nowrap text-xs flex items-center justify-center shrink-0 ${
+                    className={`px-4 sm:px-5 py-2.5 rounded-xl font-black transition-all duration-300 cursor-pointer whitespace-nowrap text-xs flex items-center justify-center shrink-0 ${
                       isActive
-                        ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white shadow-lg shadow-cyan-600/40 scale-[1.02]'
-                        : 'text-slate-400 hover:text-white hover:bg-slate-800/70'
+                        ? 'bg-gradient-to-r from-cyan-500 via-teal-400 to-blue-600 text-white shadow-lg shadow-cyan-500/40 scale-[1.03] ring-1 ring-cyan-300/40'
+                        : 'text-slate-400 hover:text-white hover:bg-slate-800/80 hover:scale-[1.01]'
                     }`}
                   >
                     {f.label}
@@ -886,10 +904,12 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
               return [getImageForService(service)];
             };
 
+            const ribbon = getTripHighlightRibbon(service.id);
+
             return (
               <div
                 key={service.id}
-                className="bg-slate-900/90 border border-slate-800 hover:border-cyan-500/50 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-cyan-950/50 transition-all duration-500 flex flex-col group card-sheen hover:-translate-y-2"
+                className="bg-gradient-to-b from-slate-900/95 via-slate-900/90 to-slate-950/95 border border-slate-800/80 hover:border-cyan-400/80 rounded-3xl overflow-hidden shadow-2xl hover:shadow-[0_20px_50px_rgba(6,182,212,0.22)] hover:-translate-y-2.5 transition-all duration-500 flex flex-col group card-sheen relative"
               >
                 {/* Visual Header with Image Zoom or Slideshow */}
                 <div className="relative h-60 w-full overflow-hidden bg-slate-800">
@@ -921,7 +941,7 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
                       referrerPolicy="no-referrer"
                     />
                   )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-black/30 group-hover:opacity-80 transition-opacity pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-black/40 group-hover:opacity-80 transition-opacity pointer-events-none" />
 
                   {/* View Details overlay on hover */}
                   <button
@@ -929,17 +949,23 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
                     className="absolute inset-0 z-10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer"
                     aria-label="View trip details"
                   >
-                    <span className="px-5 py-2.5 bg-cyan-600/90 backdrop-blur-md rounded-2xl text-white text-sm font-bold shadow-xl border border-cyan-400/40 flex items-center gap-2 hover:bg-cyan-500 transition-colors">
+                    <span className="px-5 py-2.5 bg-gradient-to-r from-cyan-600/95 to-blue-600/95 backdrop-blur-xl rounded-2xl text-white text-sm font-black shadow-2xl border border-cyan-300/50 flex items-center gap-2 hover:scale-105 transition-all">
                       <Images className="h-4 w-4" /> View Details & Photos
                     </span>
                   </button>
 
-                  {/* Category Chip */}
-                  <div className="absolute top-4 left-4 rtl:left-auto rtl:right-4 z-20">
-                    <span className="px-3.5 py-1.5 rounded-full text-[11px] font-extrabold bg-slate-950/90 backdrop-blur-md text-cyan-300 border border-slate-700/80 shadow-md flex items-center space-x-1 rtl:space-x-reverse">
+                  {/* Category Chip & Standout Ribbon */}
+                  <div className="absolute top-4 left-4 rtl:left-auto rtl:right-4 z-20 flex flex-col gap-1.5 items-start">
+                    <span className="px-3.5 py-1.5 rounded-full text-[11px] font-black bg-slate-950/90 backdrop-blur-md text-cyan-300 border border-cyan-500/40 shadow-lg flex items-center space-x-1.5 rtl:space-x-reverse">
                       <Zap className="h-3 w-3 text-cyan-400" />
                       <span>{getCategoryBadge(service.category)}</span>
                     </span>
+
+                    {ribbon && (
+                      <span className={`px-3 py-1 rounded-full text-[10px] tracking-wide bg-gradient-to-r ${ribbon.gradient} shadow-lg backdrop-blur-sm animate-pulse-glow flex items-center gap-1`}>
+                        {ribbon.label}
+                      </span>
+                    )}
                   </div>
 
                   {/* Floating Certifications Badge on Image */}
@@ -958,11 +984,11 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
                   )}
 
                   {/* Price Tag with Glowing Gradient */}
-                  <div className="absolute bottom-4 right-4 rtl:right-auto rtl:left-4 z-20 bg-slate-950/95 backdrop-blur-md px-4 py-2 rounded-2xl border border-cyan-500/40 group-hover:border-cyan-400 group-hover:scale-105 transition-all text-right rtl:text-left shadow-xl">
-                    <span className="text-xl font-black text-white group-hover:text-cyan-300 transition-colors">
+                  <div className="absolute bottom-4 right-4 rtl:right-auto rtl:left-4 z-20 bg-slate-950/95 backdrop-blur-xl px-4 py-2 rounded-2xl border border-cyan-500/50 group-hover:border-cyan-300 group-hover:shadow-[0_0_25px_rgba(6,182,212,0.45)] group-hover:scale-105 transition-all duration-300 text-right rtl:text-left shadow-xl">
+                    <span className="text-xl font-black bg-gradient-to-r from-white via-cyan-100 to-cyan-300 bg-clip-text text-transparent group-hover:from-cyan-200 group-hover:to-blue-300 transition-colors">
                       {isAskPrice ? 'Ask' : `€${service.priceAdult}`}
                     </span>
-                    <span className="text-[10px] text-slate-400 block -mt-0.5">
+                    <span className="text-[10px] text-slate-400 block -mt-0.5 font-medium">
                       {isAskPrice ? 'Price on Request' : t.excursions.perAdult}
                     </span>
                   </div>
@@ -979,15 +1005,19 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
                     </p>
                   </div>
 
-                  {/* Meta Specs */}
-                  <div className="grid grid-cols-2 gap-2 text-[11px] bg-slate-950/70 p-3 rounded-2xl border border-slate-800 text-slate-300">
+                  {/* Meta Specs with Distinct Tinted Pods */}
+                  <div className="grid grid-cols-2 gap-2 text-[11px] bg-slate-950/80 p-3 rounded-2xl border border-slate-800/90 text-slate-300">
                     <div className="flex items-center space-x-2 rtl:space-x-reverse">
-                      <Clock className="h-3.5 w-3.5 text-cyan-400 shrink-0" />
-                      <span className="font-medium">{durationDisplay}</span>
+                      <div className="p-1 rounded-lg bg-cyan-950/80 border border-cyan-500/40 text-cyan-400 shrink-0">
+                        <Clock className="h-3.5 w-3.5" />
+                      </div>
+                      <span className="font-semibold text-slate-200">{durationDisplay}</span>
                     </div>
                     <div className="flex items-center space-x-2 rtl:space-x-reverse">
-                      <Users className="h-3.5 w-3.5 text-blue-400 shrink-0" />
-                      <span className="font-medium">
+                      <div className="p-1 rounded-lg bg-blue-950/80 border border-blue-500/40 text-blue-400 shrink-0">
+                        <Users className="h-3.5 w-3.5" />
+                      </div>
+                      <span className="font-semibold text-slate-200">
                         {t.excursions.child}: {service.childPriceLabel || '(Ask)'}
                       </span>
                     </div>
@@ -1050,18 +1080,18 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
                     <div className="flex flex-wrap gap-1 text-[11px] text-slate-300">
                       {loc.inclusions.slice(0, 3).map((inc, i) => (
                         <span key={i} className="text-slate-300">
-                          ✓ {inc}
+                          <span className="text-emerald-400 font-bold">✓</span> {inc}
                           {i < 2 ? ' · ' : ''}
                         </span>
                       ))}
                     </div>
                   </div>
 
-                  {/* Action Buttons */}
+                  {/* Action Buttons with Dynamic Sheen and Hovers */}
                   <div className="pt-2 flex items-center space-x-2.5 rtl:space-x-reverse">
                     <button
                       onClick={() => onOpenBooking(service.id)}
-                      className="flex-1 py-3 px-4 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white rounded-xl text-xs font-bold shadow-md shadow-cyan-600/30 hover:shadow-cyan-500/50 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center space-x-2 rtl:space-x-reverse cursor-pointer group/btn"
+                      className="btn-shine-sweep flex-1 py-3 px-4 bg-gradient-to-r from-cyan-500 via-teal-400 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white rounded-xl text-xs font-black shadow-lg shadow-cyan-600/35 hover:shadow-cyan-400/60 hover:scale-[1.03] active:scale-[0.98] transition-all flex items-center justify-center space-x-2 rtl:space-x-reverse cursor-pointer group/btn"
                     >
                       <span>{t.excursions.bookOnline}</span>
                       <ArrowRight className="h-4 w-4 group-hover/btn:translate-x-1 rtl:group-hover/btn:-translate-x-1 transition-transform" />
@@ -1070,7 +1100,7 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
                     {/* Details button */}
                     <button
                       onClick={() => setSelectedService(service)}
-                      className="p-3 bg-slate-800 hover:bg-cyan-950 text-slate-400 hover:text-cyan-300 border border-slate-700 hover:border-cyan-500/40 rounded-xl transition-all duration-200 cursor-pointer hover:scale-105"
+                      className="p-3 bg-slate-800/90 hover:bg-cyan-950 text-slate-300 hover:text-cyan-300 border border-slate-700 hover:border-cyan-400/60 hover:shadow-[0_0_15px_rgba(6,182,212,0.3)] rounded-xl transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95"
                       title="View full details & photos"
                     >
                       <Images className="h-4 w-4" />
@@ -1078,7 +1108,7 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
 
                     <button
                       onClick={() => onOpenAiChat(getLocalizedAiPrompt(loc.title))}
-                      className="p-3 bg-slate-800 hover:bg-slate-700 text-cyan-400 hover:text-cyan-300 border border-slate-700 hover:border-cyan-500/40 rounded-xl transition-all duration-200 cursor-pointer hover:scale-105"
+                      className="p-3 bg-slate-800/90 hover:bg-blue-950 text-cyan-400 hover:text-blue-300 border border-slate-700 hover:border-blue-400/60 hover:shadow-[0_0_15px_rgba(59,130,246,0.3)] rounded-xl transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95"
                       title={t.excursions.askAi}
                     >
                       <MessageSquare className="h-4 w-4" />
@@ -1087,10 +1117,10 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
                     <button
                       type="button"
                       onClick={() => handleShareTrip(service, loc.title)}
-                      className={`p-3 border rounded-xl transition-all duration-200 cursor-pointer hover:scale-105 ${
+                      className={`p-3 border rounded-xl transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95 ${
                         copiedServiceId === service.id
-                          ? 'bg-emerald-950/80 border-emerald-500/60 text-emerald-300 shadow-md shadow-emerald-900/30'
-                          : 'bg-slate-800 hover:bg-slate-700 text-cyan-400 hover:text-cyan-300 border-slate-700 hover:border-cyan-500/40'
+                          ? 'bg-emerald-950/90 border-emerald-500/80 text-emerald-300 shadow-md shadow-emerald-900/50 scale-105'
+                          : 'bg-slate-800/90 hover:bg-emerald-950 text-cyan-400 hover:text-emerald-300 border-slate-700 hover:border-emerald-400/60 hover:shadow-[0_0_15px_rgba(16,185,129,0.3)]'
                       }`}
                       title={copiedServiceId === service.id ? 'Trip link copied!' : 'Share this excursion'}
                       aria-label="Share excursion"
@@ -1128,7 +1158,7 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
                         rel="noopener noreferrer"
                         aria-label="Inquire or Share on WhatsApp"
                         title="WhatsApp DiveGo Desk"
-                        className="p-1.5 rounded-lg bg-slate-950/80 border border-slate-800/90 text-slate-400 hover:text-[#25D366] hover:border-[#25D366]/50 hover:bg-[#25D366]/10 transition-all duration-200 hover:scale-110 shadow-sm"
+                        className="p-1.5 rounded-lg bg-slate-950/80 border border-slate-800/90 text-slate-400 hover:text-[#25D366] hover:border-[#25D366]/70 hover:bg-[#25D366]/15 hover:shadow-[0_0_15px_rgba(37,211,102,0.4)] transition-all duration-200 hover:scale-110 shadow-sm"
                       >
                         <svg className="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.65 3.742-.983zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
@@ -1142,7 +1172,7 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
                         rel="noopener noreferrer"
                         aria-label="Dive Go Hurghada Facebook"
                         title="Facebook Page"
-                        className="p-1.5 rounded-lg bg-slate-950/80 border border-slate-800/90 text-slate-400 hover:text-[#1877F2] hover:border-[#1877F2]/50 hover:bg-[#1877F2]/10 transition-all duration-200 hover:scale-110 shadow-sm"
+                        className="p-1.5 rounded-lg bg-slate-950/80 border border-slate-800/90 text-slate-400 hover:text-[#1877F2] hover:border-[#1877F2]/70 hover:bg-[#1877F2]/15 hover:shadow-[0_0_15px_rgba(24,119,242,0.4)] transition-all duration-200 hover:scale-110 shadow-sm"
                       >
                         <svg className="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
@@ -1156,7 +1186,7 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
                         rel="noopener noreferrer"
                         aria-label="Dive Go Hurghada Instagram"
                         title="Instagram Profile"
-                        className="p-1.5 rounded-lg bg-slate-950/80 border border-slate-800/90 text-slate-400 hover:text-pink-400 hover:border-pink-500/50 hover:bg-pink-500/10 transition-all duration-200 hover:scale-110 shadow-sm"
+                        className="p-1.5 rounded-lg bg-slate-950/80 border border-slate-800/90 text-slate-400 hover:text-pink-400 hover:border-pink-500/70 hover:bg-pink-500/15 hover:shadow-[0_0_15px_rgba(244,114,182,0.4)] transition-all duration-200 hover:scale-110 shadow-sm"
                       >
                         <svg className="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
@@ -1170,7 +1200,7 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
                         rel="noopener noreferrer"
                         aria-label="Dive Go Hurghada TikTok"
                         title="TikTok Channel"
-                        className="p-1.5 rounded-lg bg-slate-950/80 border border-slate-800/90 text-slate-400 hover:text-cyan-300 hover:border-cyan-400/50 hover:bg-cyan-400/10 transition-all duration-200 hover:scale-110 shadow-sm"
+                        className="p-1.5 rounded-lg bg-slate-950/80 border border-slate-800/90 text-slate-400 hover:text-cyan-300 hover:border-cyan-400/70 hover:bg-cyan-400/15 hover:shadow-[0_0_15px_rgba(6,182,212,0.4)] transition-all duration-200 hover:scale-110 shadow-sm"
                       >
                         <svg className="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.298-.002.595.042.88.13V9.4a6.33 6.33 0 0 0-1-.08A6.34 6.34 0 0 0 3 15.66a6.34 6.34 0 0 0 10.82 4.49 6.27 6.27 0 0 0 1.95-4.52V8.09a8.16 8.16 0 0 0 4.82 1.57V6.69z" />
@@ -1186,31 +1216,20 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
                         )}`}
                         aria-label="Email Dive Go Hurghada"
                         title="Email Inquiry"
-                        className="p-1.5 rounded-lg bg-slate-950/80 border border-slate-800/90 text-slate-400 hover:text-amber-400 hover:border-amber-400/50 hover:bg-amber-400/10 transition-all duration-200 hover:scale-110 shadow-sm"
+                        className="p-1.5 rounded-lg bg-slate-950/80 border border-slate-800/90 text-slate-400 hover:text-amber-400 hover:border-amber-400/70 hover:bg-amber-400/15 hover:shadow-[0_0_15px_rgba(245,158,11,0.4)] transition-all duration-200 hover:scale-110 shadow-sm"
                       >
                         <Mail className="h-3.5 w-3.5" />
                       </a>
 
-                      {/* Copy Trip Link / Native Share */}
+                      {/* Copy Link */}
                       <button
                         type="button"
                         onClick={() => handleShareTrip(service, loc.title)}
                         aria-label="Copy trip link or share"
-                        title={copiedServiceId === service.id ? 'Copied link!' : 'Copy trip link or share'}
-                        className={`p-1.5 rounded-lg border transition-all duration-200 hover:scale-110 shadow-sm cursor-pointer flex items-center space-x-1 rtl:space-x-reverse ${
-                          copiedServiceId === service.id
-                            ? 'bg-emerald-950/80 border-emerald-500/60 text-emerald-300'
-                            : 'bg-slate-950/80 border-slate-800/90 text-slate-400 hover:text-cyan-300 hover:border-cyan-400/50 hover:bg-cyan-400/10'
-                        }`}
+                        title="Copy trip link or share"
+                        className="p-1.5 rounded-lg border transition-all duration-200 hover:scale-110 shadow-sm cursor-pointer flex items-center space-x-1 rtl:space-x-reverse bg-slate-950/80 border-slate-800/90 text-slate-400 hover:text-cyan-300 hover:border-cyan-400/70 hover:bg-cyan-400/15 hover:shadow-[0_0_15px_rgba(6,182,212,0.4)]"
                       >
-                        {copiedServiceId === service.id ? (
-                          <>
-                            <Check className="h-3.5 w-3.5 text-emerald-400" />
-                            <span className="text-[9px] font-bold text-emerald-300">Copied!</span>
-                          </>
-                        ) : (
-                          <Link2 className="h-3.5 w-3.5" />
-                        )}
+                        <Link2 className="h-3.5 w-3.5" />
                       </button>
                     </div>
                   </div>

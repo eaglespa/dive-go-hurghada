@@ -117,14 +117,17 @@ export const WebsiteFooter: React.FC<WebsiteFooterProps> = ({ state }) => {
           </div>
 
           {/* Col 4: Hours & Departures */}
-          <div className="space-y-3 p-4 bg-slate-900 rounded-2xl border border-slate-800">
-            <span className="font-bold text-white text-xs block">{t.footer.headingHours}</span>
+          <div className="space-y-3 p-5 bg-gradient-to-b from-slate-900/90 to-slate-950/90 rounded-2xl border border-slate-800/90 hover:border-cyan-500/40 hover:shadow-xl hover:shadow-cyan-950/30 transition-all duration-300">
+            <span className="font-bold text-white text-xs block flex items-center gap-1.5">
+              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+              {t.footer.headingHours}
+            </span>
             <ul className="space-y-1.5 text-[11px] text-slate-300">
               <li>{t.footer.hoursDesk}</li>
               <li>{t.footer.hoursDepartures}</li>
               <li>{t.footer.hoursTransfers}</li>
-              <li className="text-emerald-400 font-medium pt-1">
-                {t.footer.hoursCancellation}
+              <li className="text-emerald-400 font-semibold pt-1 flex items-center gap-1">
+                <span>✓</span> {t.footer.hoursCancellation}
               </li>
             </ul>
           </div>
