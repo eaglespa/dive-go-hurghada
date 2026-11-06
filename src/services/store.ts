@@ -216,7 +216,7 @@ export class AppStore {
           parsed.profile.yearsExperience = 15;
 
           // Always enforce childPriceLabel: '(Ask)' and updated excursion pricing
-          parsed.services = (parsed.services || []).filter((s: any) => s.id !== 'srv-dgh-luxor-vip');
+          parsed.services = (parsed.services || []).filter((s: any) => s.id !== 'srv-dgh-luxor-vip' && s.id !== 'srv-dgh-glass-boat');
           parsed.services.forEach((s: any) => {
             s.childPriceLabel = '(Ask)';
             if (s.id === 'srv-dgh-desert-safari') {
@@ -258,24 +258,6 @@ export class AppStore {
               minParticipants: 2, maxCapacity: 50,
               cancellationPolicy: 'Free cancellation up to 24 hours prior.',
               childPolicy: 'Children under 4 free. Ages 4–11 child price applies.',
-              languagesOffered: ['English', 'German', 'Arabic', 'Russian', 'French', 'Polish'],
-              verificationSource: 'OWNER_VERIFIED', updatedAt: new Date().toISOString(), isAvailable: true,
-            });
-          }
-          if (!existingIds.includes('srv-dgh-glass-boat')) {
-            parsed.services.push({
-              id: 'srv-dgh-glass-boat',
-              title: 'Glass Bottom Boat & Snorkeling for Non-Swimmers',
-              category: 'sea_trip',
-              description: 'The perfect sea adventure for non-swimmers, families with young children, and those who prefer to stay dry! Glide over stunning Red Sea coral reefs through our transparent glass-bottom boat.',
-              priceAdult: 25, priceChild: 0, childPriceLabel: '(Ask)', currency: 'EUR (€)', durationHours: 4,
-              departureTimes: ['09:00 AM', '02:00 PM'], meetingPoint: 'Hotel Lobby pickup',
-              pickupAreasIncluded: ['All Hurghada Hotels'],
-              inclusions: ['Glass Bottom Boat Tour', 'Snorkeling Gear (Optional)', 'Life Jackets', 'Fresh Fruits & Soft Drinks', 'Hotel Transfers'],
-              exclusions: ['Lunch (not included on half-day)', 'National Park Fee (€5)'],
-              minParticipants: 2, maxCapacity: 30,
-              cancellationPolicy: 'Free cancellation up to 24 hours prior.',
-              childPolicy: 'All ages welcome. Infants free of charge.',
               languagesOffered: ['English', 'German', 'Arabic', 'Russian', 'French', 'Polish'],
               verificationSource: 'OWNER_VERIFIED', updatedAt: new Date().toISOString(), isAvailable: true,
             });
@@ -614,31 +596,6 @@ export class AppStore {
         maxCapacity: 50,
         cancellationPolicy: 'Free cancellation up to 24 hours prior.',
         childPolicy: 'Children under 4 free. Ages 4–11 child price applies.',
-        languagesOffered: ['English', 'German', 'Arabic', 'Russian', 'French', 'Polish'],
-        verificationSource: 'OWNER_VERIFIED',
-        updatedAt: new Date().toISOString(),
-        isAvailable: true,
-      },
-      {
-        id: 'srv-dgh-glass-boat',
-        title: 'Glass Bottom Boat & Snorkeling for Non-Swimmers',
-        category: 'sea_trip',
-        description:
-          'The perfect sea adventure for non-swimmers, families with young children, and those who prefer to stay dry! Glide over stunning Red Sea coral reefs through our transparent glass-bottom boat, watch colorful fish and corals without getting wet, followed by guided shallow snorkeling for those who wish to try.',
-        priceAdult: 25,
-        priceChild: 0,
-        childPriceLabel: '(Ask)',
-        currency: 'EUR (€)',
-        durationHours: 4,
-        departureTimes: ['09:00 AM', '02:00 PM'],
-        meetingPoint: 'Hotel Lobby pickup',
-        pickupAreasIncluded: ['All Hurghada Hotels'],
-        inclusions: ['Glass Bottom Boat Tour', 'Snorkeling Gear (Optional)', 'Life Jackets', 'Fresh Fruits & Soft Drinks', 'Hotel Transfers'],
-        exclusions: ['Lunch (not included on half-day)', 'National Park Fee (€5)'],
-        minParticipants: 2,
-        maxCapacity: 30,
-        cancellationPolicy: 'Free cancellation up to 24 hours prior.',
-        childPolicy: 'All ages welcome. Infants free of charge.',
         languagesOffered: ['English', 'German', 'Arabic', 'Russian', 'French', 'Polish'],
         verificationSource: 'OWNER_VERIFIED',
         updatedAt: new Date().toISOString(),
