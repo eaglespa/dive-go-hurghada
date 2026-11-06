@@ -841,7 +841,6 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
     if (activeFilter === 'diving') return s.category === 'diving';
     if (activeFilter === 'sea_trip') return s.category === 'sea_trip';
     if (activeFilter === 'desert_safari') return s.category === 'desert_safari';
-    if (activeFilter === 'city_tour') return s.category === 'city_tour';
     return true;
   });
 
@@ -962,29 +961,6 @@ export const WebsiteExcursions: React.FC<WebsiteExcursionsProps> = ({
                       ? 'Pouštní safari'
                       : 'Desert Quad Safari',
                   count: state.services.filter((s) => s.category === 'desert_safari').length,
-                },
-                {
-                  id: 'city_tour',
-                  icon: '🏛️',
-                  label:
-                    language === 'ar'
-                      ? 'الأقصر VIP'
-                      : language === 'de'
-                      ? 'Luxor VIP'
-                      : language === 'ru'
-                      ? 'Луксор VIP'
-                      : language === 'fr'
-                      ? 'Louxor VIP'
-                      : language === 'it'
-                      ? 'Luxor VIP'
-                      : language === 'pl'
-                      ? 'Luksor VIP'
-                      : language === 'nl'
-                      ? 'Luxor VIP'
-                      : language === 'cs'
-                      ? 'Luxor VIP'
-                      : 'Luxor Day Trip',
-                  count: state.services.filter((s) => s.category === 'city_tour').length,
                 },
               ].map((f) => {
                 const isActive = activeFilter === f.id;

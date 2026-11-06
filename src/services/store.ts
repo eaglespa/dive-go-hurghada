@@ -216,12 +216,9 @@ export class AppStore {
           parsed.profile.yearsExperience = 15;
 
           // Always enforce childPriceLabel: '(Ask)' and updated excursion pricing
+          parsed.services = (parsed.services || []).filter((s: any) => s.id !== 'srv-dgh-luxor-vip');
           parsed.services.forEach((s: any) => {
             s.childPriceLabel = '(Ask)';
-            if (s.id === 'srv-dgh-luxor-vip') {
-              s.priceAdult = 90;
-              s.category = 'city_tour';
-            }
             if (s.id === 'srv-dgh-desert-safari') {
               s.priceAdult = 35;
               s.category = 'desert_safari';
@@ -310,45 +307,6 @@ export class AppStore {
               exclusions: ['National Park Nature Reserve Fee (€5)', 'Professional Photo/Video Services'],
               minParticipants: 2,
               maxCapacity: 45,
-              cancellationPolicy: 'Free cancellation up to 24 hours prior.',
-              childPolicy: 'Children under 4 free. Ages 4-11 child price applies.',
-              languagesOffered: ['English', 'German', 'Arabic', 'Russian', 'French', 'Polish'],
-              verificationSource: 'OWNER_VERIFIED',
-              updatedAt: new Date().toISOString(),
-              isAvailable: true,
-            });
-          }
-          if (!existingIds.includes('srv-dgh-luxor-vip')) {
-            parsed.services.push({
-              id: 'srv-dgh-luxor-vip',
-              title: 'Luxor Day Trip by VIP Mini Bus (Max 8 Persons)',
-              category: 'city_tour',
-              description:
-                'Experience the majesty of ancient Thebes on a VIP small-group day trip to Luxor with maximum 8 guests. Travel comfortably in a modern air-conditioned mini bus, accompanied by a professional licensed Egyptologist. Discover the world-famous Karnak Temple, explore 3 royal tombs in the Valley of the Kings, admire the Mortuary Temple of Queen Hatshepsut and Colossi of Memnon, sail the Nile on a traditional boat, and enjoy an authentic buffet lunch on the riverbank.',
-              priceAdult: 90,
-              priceChild: 0,
-              childPriceLabel: '(Ask)',
-              currency: 'EUR (€)',
-              durationHours: 16,
-              durationLabel: '16 Hours (Full Day VIP Excursion)',
-              departureTimes: ['04:30 AM'],
-              meetingPoint: 'Hotel Lobby pickup',
-              pickupAreasIncluded: ['All Hurghada Hotels', 'El Gouna', 'Makadi Bay', 'Sahl Hasheesh', 'Soma Bay'],
-              inclusions: [
-                'VIP Mini Bus Transfer with A/C (Max 8 Persons)',
-                'Licensed Egyptologist Tour Guide',
-                'Karnak Temple Complex Guided Visit',
-                'Valley of the Kings (3 Royal Tombs included)',
-                'Mortuary Temple of Queen Hatshepsut',
-                'Colossi of Memnon Photo Stop',
-                'Traditional Nile River Boat Cruise',
-                'Buffet Lunch at Nile Restaurant',
-                'Mineral Water & Soft Drinks during transfers',
-                'Round-Trip Hotel Transfers',
-              ],
-              exclusions: ['King Tutankhamun Tomb (optional on-site)', 'Drinks inside restaurant'],
-              minParticipants: 1,
-              maxCapacity: 8,
               cancellationPolicy: 'Free cancellation up to 24 hours prior.',
               childPolicy: 'Children under 4 free. Ages 4-11 child price applies.',
               languagesOffered: ['English', 'German', 'Arabic', 'Russian', 'French', 'Polish'],
@@ -712,43 +670,6 @@ export class AppStore {
         exclusions: ['National Park Nature Reserve Fee (€5)', 'Professional Photo/Video Services'],
         minParticipants: 2,
         maxCapacity: 45,
-        cancellationPolicy: 'Free cancellation up to 24 hours prior.',
-        childPolicy: 'Children under 4 free. Ages 4-11 child price applies.',
-        languagesOffered: ['English', 'German', 'Arabic', 'Russian', 'French', 'Polish'],
-        verificationSource: 'OWNER_VERIFIED',
-        updatedAt: new Date().toISOString(),
-        isAvailable: true,
-      },
-      {
-        id: 'srv-dgh-luxor-vip',
-        title: 'Luxor Day Trip by VIP Mini Bus (Max 8 Persons)',
-        category: 'city_tour',
-        description:
-          'Experience the majesty of ancient Thebes on a VIP small-group day trip to Luxor with maximum 8 guests. Travel comfortably in a modern air-conditioned mini bus, accompanied by a professional licensed Egyptologist. Discover the world-famous Karnak Temple, explore 3 royal tombs in the Valley of the Kings, admire the Mortuary Temple of Queen Hatshepsut and Colossi of Memnon, sail the Nile on a traditional boat, and enjoy an authentic buffet lunch on the riverbank.',
-        priceAdult: 90,
-        priceChild: 0,
-        childPriceLabel: '(Ask)',
-        currency: 'EUR (€)',
-        durationHours: 16,
-        durationLabel: '16 Hours (Full Day VIP Excursion)',
-        departureTimes: ['04:30 AM'],
-        meetingPoint: 'Hotel Lobby pickup',
-        pickupAreasIncluded: ['All Hurghada Hotels', 'El Gouna', 'Makadi Bay', 'Sahl Hasheesh', 'Soma Bay'],
-        inclusions: [
-          'VIP Mini Bus Transfer with A/C (Max 8 Persons)',
-          'Licensed Egyptologist Tour Guide',
-          'Karnak Temple Complex Guided Visit',
-          'Valley of the Kings (3 Royal Tombs included)',
-          'Mortuary Temple of Queen Hatshepsut',
-          'Colossi of Memnon Photo Stop',
-          'Traditional Nile River Boat Cruise',
-          'Buffet Lunch at Nile Restaurant',
-          'Mineral Water & Soft Drinks during transfers',
-          'Round-Trip Hotel Transfers',
-        ],
-        exclusions: ['King Tutankhamun Tomb (optional on-site)', 'Drinks inside restaurant'],
-        minParticipants: 1,
-        maxCapacity: 8,
         cancellationPolicy: 'Free cancellation up to 24 hours prior.',
         childPolicy: 'Children under 4 free. Ages 4-11 child price applies.',
         languagesOffered: ['English', 'German', 'Arabic', 'Russian', 'French', 'Polish'],
