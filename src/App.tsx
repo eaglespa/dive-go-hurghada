@@ -35,6 +35,7 @@ import { SecurityAndAuditView } from './components/SecurityAndAuditView';
 import { AuditTestingSuiteView } from './components/AuditTestingSuiteView';
 import { AuditReportModal } from './components/AuditReportModal';
 import { WebsiteHome } from './components/website/WebsiteHome';
+import { Analytics } from '@vercel/analytics/react';
 
 export default function App() {
   const [state, setState] = useState<AppState>(appStore.getState());
@@ -246,6 +247,9 @@ export default function App() {
 
       {/* Master Production Audit & Certification Report Modal (§62) */}
       <AuditReportModal isOpen={showAuditReport} onClose={() => setShowAuditReport(false)} state={state} />
+      
+      {/* Vercel Web Analytics */}
+      <Analytics />
     </div>
   );
 }
